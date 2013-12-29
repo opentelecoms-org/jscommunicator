@@ -258,7 +258,7 @@ window.JSCommManager = {
 
   send_dtmf : function(dtmf_char) {
     this.current_session.sendDTMF(dtmf_char);
-  },
+  }
 
 };
 
