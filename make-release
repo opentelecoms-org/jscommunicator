@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+RELEASE_FILES="JSCommManager.js JSCommUI.js jssip-helper.js parseuri.js webrtc-check.js"
+RELEASE_JS="JSComm.js"
+
+MINIFY_GCC=closure-compiler
+# using a manually constructed JVM command line for
+# closure-compiler due to Debian bug 705565:
+#MINIFY_GCC="java -classpath /usr/share/java/closure-compiler.jar:/usr/share/java/args4j.jar:/usr/share/java/guava.jar:/usr/share/java/json.jar com.google.javascript.jscomp.CommandLineRunner"
+
+TMP_FILE=`mktemp --suffix=.js JSCommXXX`
+cat ${RELEASE_FILES} > ${TMP_FILE}
+${MINIFY_GCC} --js ${TMP_FILE} --js_output_file ${RELEASE_JS}
+rm ${TMP_FILE}
+
