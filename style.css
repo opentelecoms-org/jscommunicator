@@ -1,0 +1,85 @@
+/****************************************************************************
+ JSCommunicator
+ http://jscommunicator.org
+
+ Copyright (C) 2013  Daniel Pocock http://danielpocock.com
+
+ The JavaScript code in this page is free software: you can
+ redistribute it and/or modify it under the terms of the GNU
+ General Public License (GNU GPL) as published by the Free Software
+ Foundation, either version 2 of the License, or (at your option)
+ any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ without even the implied warranty of MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+ You may distribute non-source (e.g., minimized or compacted) forms of
+ that code without the full copy of the GNU GPL normally required
+ provided you include this license notice and a URL
+ through which recipients can access the Corresponding Source.
+****************************************************************************/
+
+#network-controls #error span {
+  display: none;
+}
+
+#network-controls #error #js {
+  display: inline;
+}
+
+#network-controls #ws {
+  display: none;
+}
+
+#network-controls #ws .state {
+  display: none;
+}
+
+#network-controls #reg {
+  display: none;
+}
+
+#network-controls #reg #de-reg-button {
+  display: none;
+}
+
+#dial-controls {
+  display: none;
+}
+
+#dial-controls #call-video {
+  display: none;
+}
+
+#session-controls {
+  display: none;
+}
+
+#video-session {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 300px;
+  padding: 6px;
+  border-radius: 10px;
+  border: 2px solid #EEE;
+  display: none;
+}
+
+#video-session video#remoteView {
+  width: 400px;
+  height: 300px;
+  background-color: #000;
+}
+
+#video-session video#selfView {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  width: 133px;
+  height: 100px;
+  background-color: #111;
+  border-top: 2px solid #CCC;
+  border-right: 2px solid #CCC;
+}
+
