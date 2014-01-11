@@ -187,7 +187,8 @@ window.JSCommManager = {
     });
 
     call.on('failed', function(e) {
-      JSCommUI.session_failed();
+      var cause = e.data.cause, response = e.data.response;
+      JSCommUI.session_failed(cause);
       delete JSCommManager.current_session;
     });
 
@@ -232,6 +233,7 @@ window.JSCommManager = {
         RTCConstraints: {"optional": [{'DtlsSrtpKeyAgreement': 'true'}]}
       });
     } catch(e){
+      JSCommUI.show_error_tmp('call-attempt-failed');
       console.log("make_call failed: " + e.toString());
       console.log(e);
     }

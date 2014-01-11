@@ -114,6 +114,17 @@ window.JSCommUI = {
     $("#network-controls #error #" + err_name).show();
   },
 
+  show_error_tmp : function(err_name) {
+
+    // Hide the message "This service requires JavaScript"
+    $("#network-controls #error #js").hide();
+
+    $("#network-controls #error #" + err_name).show();
+    $("#network-controls #error #" + err_name).fadeTo(5000, 1, function() {
+      $(this).hide();
+    });
+  },
+
   set_link_state : function(connected) {
     $("#network-controls #ws").show();
     $("#network-controls #ws .state").hide();
@@ -215,7 +226,14 @@ window.JSCommUI = {
     }
   },
 
-  session_failed : function() {
+  session_failed : function(cause) {
+    if(!cause) {
+      this.show_error_tmp('call-attempt-failed');
+    } else {
+      $("#network-controls #error #dynamic").empty();
+      $("#network-controls #error #dynamic").append(cause);
+      this.show_error_tmp('dynamic');
+    }
     soundPlayer.setAttribute("src", this.get_sound_url("outgoing-call-rejected"));
     soundPlayer.play();
     this.session_cleanup();

@@ -24,6 +24,8 @@
         <span id="no-config">ERROR: JsCommunicator configuration not found</span>
         <span id="ua-init-failure">ERROR: Failed to initialize user agent</span>
         <span id="reg-fail">ERROR: SIP Registration failure</span>
+        <span id="call-attempt-failed">ERROR: failed to start call, check that microphone/webcam are connected, check browser security settings, peer may not support compatible codecs</span>
+        <span id="dynamic"></span>
     </div>
 
     <div id="ws">
