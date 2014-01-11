@@ -12,6 +12,8 @@ MINIFY_GCC=closure-compiler
 
 TMP_FILE=`mktemp --suffix=.js JSCommXXX`
 cat ${RELEASE_FILES} > ${TMP_FILE}
-${MINIFY_GCC} --js ${TMP_FILE} --js_output_file ${RELEASE_JS}
-rm ${TMP_FILE}
+TMP_RELEASE=`mktemp --suffix=.js JSCommRelXXX`
+${MINIFY_GCC} --js ${TMP_FILE} --js_output_file ${TMP_RELEASE}
+head -20 JSCommManager.js | cat - ${TMP_RELEASE} > ${RELEASE_JS}
+rm ${TMP_FILE} ${TMP_RELEASE}
 
