@@ -30,15 +30,15 @@
 
     <div id="jsc-login">
         <div id="jsc-login-display-name">
-            <span>Display name (may be empty)</span>
+            <span class="jsc-login-label">Display name (may be empty)</span>
             <input type="text" id="jsc-login-display-name-field"/>
         </div>
         <div id="jsc-login-sip-uri">
-            <span>SIP address</span>
+            <span class="jsc-login-label">SIP address</span>
             <span>sip:<input type="text" id="jsc-login-sip-address-field"/></span>
         </div>
         <div id="jsc-login-password">
-            <span>Password</span>
+            <span class="jsc-login-label">Password</span>
             <input type="password" id="jsc-login-password-field"/>
         </div>
         <input type="button" value="Login" id="jsc-login-button"/>

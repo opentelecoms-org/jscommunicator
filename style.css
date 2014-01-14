@@ -30,6 +30,11 @@
   display: none;
 }
 
+#network-controls #jsc-login .jsc-login-label {
+  float: left;
+  width: 200px;
+}
+
 #network-controls #ws {
   display: none;
 }
