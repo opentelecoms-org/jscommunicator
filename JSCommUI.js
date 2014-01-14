@@ -26,7 +26,14 @@ window.JSCommUI = {
 
   url_prefix : '',
 
+  init_done : false,
+
   init : function() {
+
+    if(this.init_done) {
+      console.log("JSCommUI.init() called more than once");
+      return;
+    }
 
     console.log("starting init");
 
@@ -40,6 +47,24 @@ window.JSCommUI = {
     JSCommUI.link_down();
 
     soundPlayer = document.createElement("audio");
+
+    $("#jsc-login-display-name-field").keypress(function(e) {
+      if (e.which == 13) {
+        $("#jsc-login-sip-address-field").focus();
+      }
+    });
+
+    $("#jsc-login-sip-address-field").keypress(function(e) {
+      if (e.which == 13) {
+        $("#jsc-login-password-field").focus();
+      }
+    });
+
+    $("#jsc-login-password-field").keypress(function(e) {
+      if (e.which == 13) {
+        JSCommUI.do_login();
+      }
+    });
 
     $("#reg-button").click(function() {
       JSCommManager.register();
@@ -104,6 +129,26 @@ window.JSCommUI = {
       $("#reg #control").hide();
     }
 
+    this.init_done = true;
+  },
+
+  show_login : function() {
+    $("#jsc-login-display-name-field").val(JSCommManager.credentials.display_name);
+    if(JSCommManager.credentials.uri.length > 4) {
+       // strip off the "sip:" URI prefix, it is not shown in the login form
+       $("#jsc-login-sip-address-field").val(JSCommManager.credentials.uri.substr(4));
+    }
+    $("#jsc-login-password-field").val(JSCommManager.credentials.sip_auth_password);
+    $("#jsc-login").show();
+    $("#jsc-login-button").click(JSCommUI.do_login);
+  },
+
+  do_login : function() {
+    $("#jsc-login").hide();
+    JSCommManager.credentials.display_name = $("#jsc-login-display-name-field").val();
+    JSCommManager.credentials.uri = 'sip:' + $("#jsc-login-sip-address-field").val();
+    JSCommManager.credentials.sip_auth_password = $("#jsc-login-password-field").val();
+    JSCommManager.start_ua();
   },
 
   show_error : function(err_name) {

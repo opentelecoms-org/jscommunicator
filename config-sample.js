@@ -20,11 +20,17 @@ JSCommSettings = {
   },
 
   // User identity
+  // If uri == null or sip_auth_password == null the user will be
+  // greeted with the login box
+  // If sip_auth_user == null, it will be automatically derived from
+  // the value of uri
   user: {
     display_name: 'Bob',
     uri: 'sip:bob@example.org',
     sip_auth_user: 'bob',
     sip_auth_password: 'bob',
+    sip_auth_user_full_uri: true,   // Whether to use full URI or just 
+                                    // the user part to construct the auth user
   },
 
   // User SIP registration

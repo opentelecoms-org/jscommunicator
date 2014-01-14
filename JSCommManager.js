@@ -30,6 +30,14 @@ window.JSCommManager = {
 
   first_run : true,
 
+  credentials : {
+    display_name: null,
+    uri: null,
+    sip_auth_user: null,
+    sip_auth_password: null,
+    sip_auth_user_full_uri: true
+  },
+
   init : function() {
 
     if(!WebRTCSupported()) {
@@ -56,6 +64,77 @@ window.JSCommManager = {
         use_video: with_video
       };
     }
+
+    // Copy the credentials from the settings into a local object
+    // for use with the login form
+    this.credentials = JSCommSettings.user;
+
+    this.start_ua();
+  },
+
+  start_login : function() {
+    JSCommUI.show_login();
+  },
+
+  /**
+   * Try to start the user agent.
+   *
+   * Will go to the login box if credentials are not available.
+   */
+  start_ua : function() {
+
+    var have_credentials = false;
+
+    // The essential credentials are the SIP URI and a password
+    // Leave the password empty ('') if using client certificates
+    // and make it null to force the login box to appear.
+    if(this.credentials.uri && this.credentials.sip_auth_password) {
+      have_credentials = true;
+    }
+
+    if(!have_credentials) {
+      // If no credentials were found from config or a previous attempt
+      // in the login box, display the login box
+      JSCommUI.init();
+      this.start_login();
+      return;
+    }
+
+    if(!this.credentials.sip_auth_user || this.credentials.sip_auth_user.length == 0) {
+      // An auth username has not been specified
+      // Therefore, we will try to construct the auth username
+      // automatically from the SIP URI
+      if(this.credentials.sip_auth_user_full_uri) {
+         this.credentials.sip_auth_user = this.credentials.uri.substr(4);
+      } else {
+         var pos = this.credentials.uri.indexOf('@') - 4;
+         this.credentials.sip_auth_user = this.credentials.uri.substr(4, pos);
+      }
+      console.log("auth username has been automatically derived from the user SIP address: " + this.credentials.uri + " => " + this.credentials.sip_auth_user);
+    }
+
+    // Apply the credentials from SIP settings to any TURN server configuration
+    // that has no credentials yet
+    var turn_servers = JSCommSettings.turn_servers;
+    if(Object.prototype.toString.call(turn_servers) === '[object Array]') {
+      // for an array of TURN servers:
+      for(var i = 0; i < turn_servers.length; i++) {
+        if(!turn_servers[i].username || turn_servers[i].username.length == 0) {
+          turn_servers[i].username = this.credentials.sip_auth_user;
+          turn_servers[i].password = this.credentials.sip_auth_password;
+        }
+      }
+    } else {
+      // for just a single TURN server entry not in an array:
+      if(!turn_servers.username || turn_servers.username.length == 0) {
+        turn_servers.username = this.credentials.sip_auth_user;
+        turn_servers.password = this.credentials.sip_auth_password;
+      }
+    }
+
+    // Apply the user credentials from our local object back to
+    // the main settings object used to configure the JsSIP stack
+    JSCommSettings.user = this.credentials;
 
     try {
       this.phone = new JsSIP.UA(getJsSIPSettings(JSCommSettings));

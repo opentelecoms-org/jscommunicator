@@ -26,6 +26,10 @@
   display: inline;
 }
 
+#network-controls #jsc-login {
+  display: none;
+}
+
 #network-controls #ws {
   display: none;
 }
