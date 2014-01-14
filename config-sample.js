@@ -42,6 +42,7 @@ JSCommSettings = {
       use_video: true,            // Whether to auto-dial with video
     },
     edit_destination: true,      // Whether the user may edit the destination
+    show_destination: true,      // Whether the user can see the destination
     audio_dialing: true,         // Whether to offer an audio call button
     video_dialing: true,         // Whether to offer a video call button
     prefer_video: false,         // If user presses Enter to dial, use video?

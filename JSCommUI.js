@@ -162,9 +162,12 @@ window.JSCommUI = {
     JSCommManager.answer_call(with_video);
   },
 
-  set_destination : function(dest, locked) {
+  set_destination : function(dest, locked, display) {
     $("#address").val(dest);
     $("#address").attr('disabled', locked);
+    if(display) {
+      $("#dest").show();
+    }
   },
 
   incoming_dtmf : function(dtmf_char) {

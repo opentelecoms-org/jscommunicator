@@ -42,6 +42,10 @@
   display: none;
 }
 
+#dest {
+  display: none;
+}
+
 #dial-controls {
   display: none;
 }

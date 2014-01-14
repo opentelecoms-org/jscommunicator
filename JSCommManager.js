@@ -108,7 +108,8 @@ window.JSCommManager = {
     var default_dest = JSCommSettings.dialing.auto_dial.default_destination;
     if(default_dest) {
       var edit_dest = JSCommSettings.dialing.edit_destination;
-      JSCommUI.set_destination(default_dest, !edit_dest);
+      var show_dest = JSCommSettings.dialing.show_destination;
+      JSCommUI.set_destination(default_dest, !edit_dest, show_dest);
 
       var with_video = JSCommSettings.dialing.auto_dial.use_video;
 
