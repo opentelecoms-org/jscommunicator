@@ -21,7 +21,7 @@
 // Reads JsCommunicator settings and creates JsSIP configuration object
 function getJsSIPSettings(settings) {
 
-  return {
+  var jssip_settings = {
     uri: settings.user.uri,
     password: settings.user.sip_auth_password,
     ws_servers: settings.websocket.servers,
@@ -40,6 +40,8 @@ function getJsSIPSettings(settings) {
     hack_via_tcp: false,
     hack_ip_in_contact: false
   };
+
+  return jssip_settings;
 
 };
 
