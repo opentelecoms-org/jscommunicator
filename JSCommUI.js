@@ -24,6 +24,8 @@ window.JSCommUI = {
 
   soundPlayer : null,
 
+  soundLoop : null,
+
   url_prefix : '',
 
   init_done : false,
@@ -248,6 +250,10 @@ window.JSCommUI = {
     $("#network-controls #reg").show();
   },
 
+  play_again : function() {
+    soundPlayer.play();
+  },
+
   session_start : function(status, peer_name, with_video) {
     $("#dial-controls").hide();
     $(".session-active").hide();
@@ -260,6 +266,7 @@ window.JSCommUI = {
       $("#session-actions input.session-incoming:button").show();
       soundPlayer.setAttribute("src", this.get_sound_url("incoming-call2"));
       soundPlayer.play();
+      JSCommUI.soundLoop = setInterval(JSCommUI.play_again, 3000);
     } else if(status == 'trying') {
       $("#session-controls #state .session-outgoing").show();
       $("#session-actions input.session-outgoing:button").show();
@@ -275,6 +282,8 @@ window.JSCommUI = {
   },
 
   session_failed : function(cause) {
+    clearInterval(JSCommUI.soundLoop);
+    soundPlayer.pause();
     if(!cause) {
       this.show_error_tmp('call-attempt-failed');
     } else {
@@ -288,6 +297,8 @@ window.JSCommUI = {
   },
 
   session_cleanup : function() {
+    clearInterval(JSCommUI.soundLoop);
+    soundPlayer.pause();
     $("#session-controls").hide();
     $('#video-session').hide();
     JSCommUI.ready_to_dial();
@@ -298,10 +309,13 @@ window.JSCommUI = {
       console.log("starting ringback...");
       soundPlayer.setAttribute("src", this.get_sound_url("outgoing-call2"));
       soundPlayer.play();
+      JSCommUI.soundLoop = setInterval(JSCommUI.play_again, 5000);
     }
   },
 
   session_connect : function(call, e) {
+    clearInterval(JSCommUI.soundLoop);
+    soundPlayer.pause();
     $("#session-controls #state span").hide();
     $("#session-controls .session-active").show();
     if(JSCommSettings.session.show_dtmf_pad) {
