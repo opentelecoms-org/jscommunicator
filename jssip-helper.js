@@ -21,6 +21,23 @@
 // Reads JsCommunicator settings and creates JsSIP configuration object
 function getJsSIPSettings(settings) {
 
+  // JsSIP currently expects usernames in the turn_servers array
+  // to be URI encoded (e.g. the @ symbol replaced by %40)
+  // so we do the encoding here
+  // Eventually this might change in JsSIP and then this code can
+  // be removed
+  var turn_servers = settings.turn_servers;
+  var encoded_turn_servers = [];
+  if(Object.prototype.toString.call(turn_servers) === '[object Array]') {
+    for(var i = 0; i < turn_servers.length; i++) {
+      encoded_turn_servers[i] = turn_servers[i];
+      encoded_turn_servers[i].username = encodeURIComponent(turn_servers[i].username);
+    }
+  } else {
+    encoded_turn_servers = turn_servers;
+    encoded_turn_servers.username = encodeURIComponent(turn_servers.username);
+  }
+
   var jssip_settings = {
     uri: settings.user.uri,
     password: settings.user.sip_auth_password,
@@ -33,7 +50,7 @@ function getJsSIPSettings(settings) {
     no_answer_timeout: settings.dialing.no_answer_timeout,
     trace_sip: true,
     stun_servers: settings.stun_servers,
-    turn_servers: settings.turn_servers,
+    turn_servers: encoded_turn_servers,
     use_preloaded_route: false,
     connection_recovery_min_interval: settings.websocket.connection_recovery_min_interval,
     connection_recovery_max_interval: settings.websocket.connection_recovery_max_interval,
