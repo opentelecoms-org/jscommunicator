@@ -238,8 +238,10 @@ window.JSCommManager = {
 
     this.current_session = call;
 
-    var peer_name = call.remote_identity.display_name ||
-                      call.remote_identity.uri.user;
+    var peer_name = '<' + call.remote_identity.uri.toAor().toString() + '>';
+    if(call.remote_identity.display_name) {
+       peer_name = call.remote_identity.display_name + ' ' + peer_name;
+    }
     console.log("peer_name: " + peer_name);
 
     var status;

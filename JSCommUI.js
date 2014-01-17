@@ -259,7 +259,7 @@ window.JSCommUI = {
     $(".session-active").hide();
     $("#session-controls #state span").hide();
     $("#session-controls #peer").empty();
-    $("#session-controls #peer").append(peer_name);
+    $("#session-controls #peer").text(peer_name);
     $("#session-actions input:button").hide();
     if(status == 'incoming') {
       $("#session-controls #state .session-incoming").show();
