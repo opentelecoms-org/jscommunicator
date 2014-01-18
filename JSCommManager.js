@@ -195,6 +195,8 @@ window.JSCommManager = {
       if(JSCommSettings.dialing.auto_dial.on_startup) {
         this.make_call(default_dest, with_video);
       }
+    } else {
+      JSCommUI.set_destination('', false, true);
     }
   },
 
