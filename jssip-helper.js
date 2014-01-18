@@ -32,10 +32,12 @@ function getJsSIPSettings(settings) {
     for(var i = 0; i < turn_servers.length; i++) {
       encoded_turn_servers[i] = turn_servers[i];
       encoded_turn_servers[i].username = encodeURIComponent(turn_servers[i].username);
+      encoded_turn_servers[i].password = encodeURIComponent(turn_servers[i].password);
     }
   } else {
     encoded_turn_servers = turn_servers;
     encoded_turn_servers.username = encodeURIComponent(turn_servers.username);
+    encoded_turn_servers.password = encodeURIComponent(turn_servers.password);
   }
 
   var jssip_settings = {
