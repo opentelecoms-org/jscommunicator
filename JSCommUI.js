@@ -206,6 +206,18 @@ window.JSCommUI = {
   },
 
   answer_call : function(with_video) {
+
+    // Stop the ringback and hide the answer controls as soon as the user
+    // clicks answer.  Notice that sometimes there is a delay of several
+    // seconds between the time that the user clicks answer and the time
+    // the callback to session_connect() occurs.  This delay can occur when the
+    // ICE negotiation happens too slowly.
+    clearInterval(JSCommUI.soundLoop);
+    soundPlayer.pause();
+    $("#session-controls #state span").hide();
+    $("#session-controls #state .session-accepted").show();
+    $("#session-actions input:button").hide();
+
     JSCommManager.answer_call(with_video);
   },
 

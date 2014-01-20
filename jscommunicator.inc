@@ -77,6 +77,7 @@
     <div id="state">
         <span class="session-outgoing">Dialing...</span>
         <span class="session-incoming">Incoming call</span>
+        <span class="session-accepted">Answering, connectivity checks in progress...</span>
         <span class="session-active">Call connected</span>
     </div>
     <div id="peer"></div>
