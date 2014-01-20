@@ -30,14 +30,16 @@ function getJsSIPSettings(settings) {
   var encoded_turn_servers = [];
   if(Object.prototype.toString.call(turn_servers) === '[object Array]') {
     for(var i = 0; i < turn_servers.length; i++) {
-      encoded_turn_servers[i] = turn_servers[i];
-      encoded_turn_servers[i].username = encodeURIComponent(turn_servers[i].username);
-      encoded_turn_servers[i].password = encodeURIComponent(turn_servers[i].password);
+      encoded_turn_servers[i] = {};
+      encoded_turn_servers[i].urls = turn_servers[i].server;
+      encoded_turn_servers[i].username = turn_servers[i].username;
+      encoded_turn_servers[i].credential = turn_servers[i].password;
     }
   } else {
-    encoded_turn_servers = turn_servers;
-    encoded_turn_servers.username = encodeURIComponent(turn_servers.username);
-    encoded_turn_servers.password = encodeURIComponent(turn_servers.password);
+    encoded_turn_servers = {};
+    encoded_turn_servers.urls = turn_servers.server;
+    encoded_turn_servers.username = turn_servers.username;
+    encoded_turn_servers.credential = turn_servers.password;
   }
 
   var jssip_settings = {
