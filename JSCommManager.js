@@ -137,7 +137,8 @@ window.JSCommManager = {
     JSCommSettings.user = this.credentials;
 
     try {
-      this.phone = new JsSIP.UA(getJsSIPSettings(JSCommSettings));
+      this.JsSIPSettings = getJsSIPSettings(JSCommSettings);
+      this.phone = new JsSIP.UA(this.JsSIPSettings);
     } catch(e) {
       console.log(e.toString());
       JSCommUI.show_error('ua-init-failure');
@@ -314,7 +315,8 @@ window.JSCommManager = {
     try {
       this.phone.call(destination_address, {
         mediaConstraints: { audio: true, video: with_video },
-        RTCConstraints: {"optional": [{'DtlsSrtpKeyAgreement': 'true'}]}
+        RTCConstraints: {"optional": [{'DtlsSrtpKeyAgreement': 'true'}]},
+        turn_servers: this.JsSIPSettings.turn_servers
       });
     } catch(e){
       JSCommUI.show_error_tmp('call-attempt-failed');
