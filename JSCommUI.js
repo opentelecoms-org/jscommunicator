@@ -278,6 +278,7 @@ window.JSCommUI = {
       $("#session-actions input.session-incoming:button").show();
       soundPlayer.setAttribute("src", this.get_sound_url("incoming-call2"));
       soundPlayer.play();
+      clearInterval(JSCommUI.soundLoop);
       JSCommUI.soundLoop = setInterval(JSCommUI.play_again, 3000);
     } else if(status == 'trying') {
       $("#session-controls #state .session-outgoing").show();
@@ -321,6 +322,7 @@ window.JSCommUI = {
       console.log("starting ringback...");
       soundPlayer.setAttribute("src", this.get_sound_url("outgoing-call2"));
       soundPlayer.play();
+      clearInterval(JSCommUI.soundLoop);
       JSCommUI.soundLoop = setInterval(JSCommUI.play_again, 5000);
     }
   },
