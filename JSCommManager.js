@@ -173,6 +173,37 @@ window.JSCommManager = {
       JSCommManager.session_start(e);
     });
 
+    this.phone.on('newTransaction', function(e) {
+      // TODO: map JsSIP session to some local session definition
+      console.log("newTransaction");
+      var tx = e.data.transaction;
+      if(tx && tx.request_sender && tx.request_sender.applicant &&
+          tx.request_sender.applicant.direction == "outgoing") {
+        console.log("outgoing call");
+        var request = tx.request;
+        if(request && request.method && request.method == 'INVITE' &&
+          request.body) {
+          var pos = request.body.search("a=crypto");
+          console.log("pos = " + pos);
+          if(pos < 0) {
+            console.log("Doing workaround for Asterisk issue 22961");
+            // Looks like Firefox, implement hack for Asterisk issue 22961
+            var new_body = request.body.replace(/ RTP/g, ' UDP/TLS/RTP');
+            request.body = new_body;
+          }
+        }
+      } else if(tx) {
+        var request = tx.request;
+        if(request && request.method && request.method == 'INVITE' &&
+          request.body) {
+          console.log("fixing incoming SDP if necessary...");
+          // Fix the media descriptor, undo the hack below
+          var new_body = request.body.replace(/ UDP.TLS.RTP/g, ' RTP');
+          request.body = new_body;
+        }
+      }
+    });
+
     this.phone.on('newMessage', function(e) {
       JSCommManager.message_received(e);
     });
