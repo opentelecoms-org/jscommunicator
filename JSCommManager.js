@@ -344,10 +344,15 @@ window.JSCommManager = {
 
   make_call : function(destination_address, with_video) {
     try {
+      var extra_headers = [];
+      if(JSCommSettings.extra_headers) {
+        extra_headers = JSCommSettings.extra_headers;
+      }
       this.phone.call(destination_address, {
         mediaConstraints: { audio: true, video: with_video },
         RTCConstraints: {"optional": [{'DtlsSrtpKeyAgreement': 'true'}]},
-        turn_servers: this.JsSIPSettings.turn_servers
+        turn_servers: this.JsSIPSettings.turn_servers,
+        extraHeaders: extra_headers
       });
     } catch(e){
       JSCommUI.show_error_tmp('call-attempt-failed');

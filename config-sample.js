@@ -59,6 +59,10 @@ JSCommSettings = {
     show_dtmf_pad : true,        // Whether to show a DTMF dialpad during calls
   },
 
+  extra_headers : [
+    // 'X-WS-Session-Extra: some_token=value'
+  ],
+
 };
 
 
