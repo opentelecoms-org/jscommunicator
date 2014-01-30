@@ -27,6 +27,8 @@ web server or CMS:
 
   jQuery (v1.4 or greater has been tested)
 
+  ArbiterJS (v1.0 has been tested)
+
 Use cases
 ---------
 
@@ -41,6 +43,26 @@ Use cases
      the user or include <script> tags within the content body with
      the phone fragment.
 
+Integration
+-----------
+
+ArbiterJS is used to provide a loosely-coupled mechanism for integration
+with other JavaScript modules used in the same page/site.
+
+For example, you can:
+
+ * send a signal to JSCommunicator telling it which destination to dial
+
+ * receive notifications from JSCommunicator when calls are made
+   or received and use this information to query or update an
+   address book or CMS, display related information about the caller
+   in another part of the screen, etc
+
+For an example, see the files:
+
+ event-demo.shtml
+ event-demo.js
+
 Credits
 -------
 
@@ -53,7 +75,7 @@ License
 JSCommunicator
 http://jscommunicator.org
 
-Copyright (C) 2013  Daniel Pocock http://danielpocock.com
+Copyright (C) 2013-2014  Daniel Pocock http://danielpocock.com
 
 The JavaScript code in this page is free software: you can
 redistribute it and/or modify it under the terms of the GNU
