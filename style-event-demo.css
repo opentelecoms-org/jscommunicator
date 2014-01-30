@@ -1,0 +1,42 @@
+/****************************************************************************
+ JSCommunicator
+ http://jscommunicator.org
+
+ Copyright (C) 2014  Daniel Pocock http://danielpocock.com
+
+ The JavaScript code in this page is free software: you can
+ redistribute it and/or modify it under the terms of the GNU
+ General Public License (GNU GPL) as published by the Free Software
+ Foundation, either version 2 of the License, or (at your option)
+ any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ without even the implied warranty of MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+ You may distribute non-source (e.g., minimized or compacted) forms of
+ that code without the full copy of the GNU GPL normally required
+ provided you include this license notice and a URL
+ through which recipients can access the Corresponding Source.
+****************************************************************************/
+
+/* This CSS supplements the default style.css, adding
+   layout for the event log table */
+
+table#event-demo-log {
+  border-width: 0 0 1px 1px;
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-style: solid;
+}
+
+table#event-demo-log th, table#event-demo-log td {
+  margin: 0;
+  padding: 4px;
+  border-width: 1px 1px 0 0;
+  border-style: solid;
+}
+
+select#contact-directory {
+  disabled: true;
+}
+
+

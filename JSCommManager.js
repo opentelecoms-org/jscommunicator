@@ -42,11 +42,13 @@ window.JSCommManager = {
 
     if(!WebRTCSupported()) {
       JSCommUI.show_error('webrtc');
+      Arbiter.publish("jsc/unavailable/webrtc", null, {async:true});
       return;
     }
 
     if(!window.JSCommSettings) {
       JSCommUI.show_error('no-config');
+      Arbiter.publish("jsc/unavailable/config", null, {async:true});
       return false;
     }
 
@@ -208,6 +210,15 @@ window.JSCommManager = {
       JSCommManager.message_received(e);
     });
 
+    Arbiter.subscribe(
+      "jsc/destination/set",
+      { async:true },
+      function(data) {
+        var new_dest = data;
+        JSCommManager.set_destination(new_dest);
+      }
+    );
+
     this.phone.start();
 
   },
@@ -218,9 +229,7 @@ window.JSCommManager = {
 
     var default_dest = JSCommSettings.dialing.auto_dial.default_destination;
     if(default_dest) {
-      var edit_dest = JSCommSettings.dialing.edit_destination;
-      var show_dest = JSCommSettings.dialing.show_destination;
-      JSCommUI.set_destination(default_dest, !edit_dest, show_dest);
+      this.set_destination(default_dest);
 
       var with_video = JSCommSettings.dialing.auto_dial.use_video;
 
@@ -230,6 +239,14 @@ window.JSCommManager = {
     } else {
       JSCommUI.set_destination('', false, true);
     }
+  },
+
+  set_destination : function(dest) {
+    // FIXME: should check state, only change destination
+    // box if idle (no call in progress)
+    var edit_dest = JSCommSettings.dialing.edit_destination;
+    var show_dest = JSCommSettings.dialing.show_destination;
+    JSCommUI.set_destination(dest, !edit_dest, show_dest);
   },
 
   /*
@@ -242,10 +259,16 @@ window.JSCommManager = {
     if(this.first_run) {
       this.init_first_connection();
     }
+
+    // Signal that we are ready to make or receive calls
+    Arbiter.publish("jsc/ua/idle", null, {async:true});
   },
 
   link_down : function() {
     JSCommUI.link_down();
+
+    // Signal that we are not ready to make or receive calls
+    Arbiter.publish("jsc/ua/notready", null, {async:true});
   },
 
   registration_up : function() {
@@ -272,7 +295,11 @@ window.JSCommManager = {
 
     this.current_session = call;
 
-    var peer_name = '<' + call.remote_identity.uri.toAor().toString() + '>';
+    // Signal that we are no longer idle
+    Arbiter.publish("jsc/ua/incall", null, {async:true});
+
+    var peer_uri = call.remote_identity.uri.toAor().toString();
+    var peer_name = '<' + peer_uri + '>';
     if(call.remote_identity.display_name) {
        peer_name = call.remote_identity.display_name + ' ' + peer_name;
     }
@@ -281,8 +308,12 @@ window.JSCommManager = {
     var status;
     if (call.direction === 'incoming') {
       status = "incoming";
+      // Signal that an incoming call is ringing
+      Arbiter.publish("jsc/call/incoming", peer_uri, {async:true});
     } else {
       status = "trying";
+      // Signal that an outgoing call is starting
+      Arbiter.publish("jsc/call/outgoing", peer_uri, {async:true});
     }
 
     var with_video = (call.getLocalStreams().length > 0 &&
@@ -306,22 +337,32 @@ window.JSCommManager = {
       var cause = e.data.cause, response = e.data.response;
       JSCommUI.session_failed(cause);
       delete JSCommManager.current_session;
+      // Signal that a call failed
+      Arbiter.publish("jsc/call/failed", null, {async:true});
+      Arbiter.publish("jsc/ua/idle", null, {async:true});
     });
 
     call.on('started', function(e) {
       JSCommUI.session_connect(call, e);
+      // Signal that a call connected
+      Arbiter.publish("jsc/call/connected", null, {async:true});
     });
 
     call.on('newDTMF', function(e) {
       if (e.data.originator === 'remote') {
         dtmf_char = e.data.dtmf.tone;
         JSCommUI.incoming_dtmf(dtmf_char);
+        // Signal that a DTMF tone arrived
+        Arbiter.publish("jsc/call/dtmf", dtmf_char, {async:true});
       }
     }); 
 
     call.on('ended', function(e) {
       JSCommUI.session_end();
       delete JSCommManager.current_session;
+      // Signal that a call finished
+      Arbiter.publish("jsc/call/end", null, {async:true});
+      Arbiter.publish("jsc/ua/idle", null, {async:true});
     });
   },
 
