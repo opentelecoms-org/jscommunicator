@@ -110,7 +110,7 @@
 
 <div id="video-session" class="ws-connected in-call">
     <video id="remoteView" autoplay></video>
-    <video id="selfView" autoplay></video>
+    <video id="selfView" autoplay muted></video>
     <div id="video-controls">
         <input type="button" value="Self view" id="video-control-self-view" class="self"/>
         <input type="button" value="Self hide" id="video-control-self-hide" class="self"/>
