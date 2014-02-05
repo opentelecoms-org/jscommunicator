@@ -422,7 +422,14 @@ window.JSCommManager = {
   },
 
   send_dtmf : function(dtmf_char) {
-    this.current_session.sendDTMF(dtmf_char);
+    var duration = 100;
+    if(JSCommSettings.session.dtmf_duration) {
+      duration = JSCommSettings.session.dtmf_duration;
+    }
+    var dtmf_opts = {
+      duration : duration
+    }
+    this.current_session.sendDTMF(dtmf_char, dtmf_opts);
   }
 
 };

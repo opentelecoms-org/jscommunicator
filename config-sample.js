@@ -57,6 +57,7 @@ JSCommSettings = {
 
   session : {
     show_dtmf_pad : true,        // Whether to show a DTMF dialpad during calls
+    dtmf_duration : 160,         // Duration (ms) to signal a DTMF press
   },
 
   extra_headers : [
