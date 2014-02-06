@@ -185,6 +185,9 @@ window.JSCommManager = {
         var request = tx.request;
         if(request && request.method && request.method == 'INVITE' &&
           request.body) {
+          // search for a=crypto, if it is missing, it means this
+          // browser does not want to do SDES and a workaround
+          // may be needed for Asterisk
           var pos = request.body.search("a=crypto");
           console.log("pos = " + pos);
           if(pos < 0) {
