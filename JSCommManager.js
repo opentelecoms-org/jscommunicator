@@ -185,10 +185,21 @@ window.JSCommManager = {
         var request = tx.request;
         if(request && request.method && request.method == 'INVITE' &&
           request.body) {
+          // search for a relay candidate
+          var pos = request.body.search("typ relay");
+          if(pos < 0) {
+            console.log("No relay candidate found in SDP");
+            if(JSCommSettings.session.require_relay_candidate) {
+              console.log("require_relay_candidate is set yet no relay candidate found, call prohibited");
+              tx.onTransportError();
+              Arbiter.publish("jsc/unavailable/relay", null, {async:true});
+            }
+          }
+
           // search for a=crypto, if it is missing, it means this
           // browser does not want to do SDES and a workaround
           // may be needed for Asterisk
-          var pos = request.body.search("a=crypto");
+          pos = request.body.search("a=crypto");
           console.log("pos = " + pos);
           if(pos < 0) {
             console.log("Doing workaround for Asterisk issue 22961");
