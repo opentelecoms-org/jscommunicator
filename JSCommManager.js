@@ -40,6 +40,17 @@ window.JSCommManager = {
 
   init : function() {
 
+    /* We like to use console.log, so make sure it exists */
+    if(!window.console) {
+      window.console = {};
+    }
+    if(!window.console.log) {
+      window.console.log = function() {};
+    }
+    if(!window.console.error) {
+      window.console.error = function() {};
+    }
+
     if(!WebRTCSupported()) {
       JSCommUI.show_error('webrtc');
       Arbiter.publish("jsc/unavailable/webrtc", null, {async:true});
