@@ -41,6 +41,8 @@ window.JSCommUI = {
 
     // Hide the message "This service requires JavaScript"
     $("#network-controls #error #js").hide();
+ 
+ 
 
     if(JSCommSettings.webserver.url_prefix) {
       this.url_prefix = JSCommSettings.webserver.url_prefix;
@@ -178,9 +180,16 @@ window.JSCommUI = {
     if(connected) {
       $(".ws-disconnected").hide();
       $("#network-controls #ws #connected").show();
+      //re-enables phone 
+      $("#dest :input").prop('disabled', false);
+      $("#dialing-actions :input").prop('disabled', false);
     } else {
       $(".ws-connected").hide();
       $("#network-controls #ws #disconnected").show();
+      //keep phone visible but disabled.
+      $("#dial-controls").show();
+      $("#dest :input").prop('disabled', true);
+      $("#dialing-actions :input").prop('disabled', true);
     }
   },
 
