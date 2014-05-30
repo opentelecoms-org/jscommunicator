@@ -109,6 +109,12 @@
         <input type="button" value="*" class="dtmf-symbol"/>
         <input type="button" value="0" class="dtmf-number"/>
         <input type="button" value="#" class="dtmf-symbol"/>
+        <br/>
+        <input type="button" value="A" class="dtmf-symbol"/>
+        <input type="button" value="B" class="dtmf-symbol"/>
+        <input type="button" value="C" class="dtmf-symbol"/>
+        <br/>
+        <input type="button" value="D" class="dtmf-symbol"/>
     </div>
 </div>
 
