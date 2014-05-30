@@ -15,6 +15,8 @@
      Alternatively, if you are unable to modify the CMS generated <head>,
      it is completely valid to include the <script> elements in the
      HTML body where you include the HTML fragement from this file -->
+     
+<div id="encapsulate">
 
 <div id="network-controls">
 
@@ -39,7 +41,7 @@
         </div>
         <div id="jsc-login-sip-uri">
             <span class="jsc-login-label">SIP address</span>
-            <span>sip:<input type="text" id="jsc-login-sip-address-field"/></span>
+            <input type="text" id="jsc-login-sip-address-field"/>
         </div>
         <div id="jsc-login-password">
             <span class="jsc-login-label">Password</span>
@@ -47,7 +49,7 @@
         </div>
         <input type="button" value="Login" id="jsc-login-button"/>
     </div>
-
+    <br>
     <div id="ws">
         <span id="ws_link">WebSocket link:</span>
         <span id="connected" class="state ws-connected">Connected</span>
@@ -126,5 +128,7 @@
         <input type="button" value="Self hide" id="video-control-self-hide" class="self"/>
         <input type="button" value="Full screen" id="video-control-fullscreen" disabled/>
     </div>
+</div>
+
 </div>
 
