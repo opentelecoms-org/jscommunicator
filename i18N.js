@@ -1,17 +1,23 @@
 (function($) {
       	// load I18N bundles
 		$(document).ready(function() {
+          $.ajax({
+             type:"GET",
+             url:"available_languages.xml",
+             dataType: "xml",
+             success: function(xml) {
+             $(xml).find("language").each(function() {
+                  var display = $(this).find('display').text();
+                  var value = $(this).find('code').text();
+                  $('#lang_selection').append('<option value=' +value+ '>' +display+ '</option>');
+                  });
+             }
+             });
 
-			
-			if(jQuery.i18n.browserLang() == 'fr')
-			 {
-				loadBundles('fr_FR');
-			 }
-			else
-                         {
-				loadBundles('en');
-			 }
-					
+            try {
+                loadBundles(jQuery.i18n.browserLang());
+            } catch (error) {}
+                        
 			// configure language combo box
 			jQuery('#lang_selection').change(function() {
 				var selection = $(this).val();
@@ -20,11 +26,12 @@
 			
 			
 		});
+ 
 		
 		function loadBundles(lang) {
 			jQuery.i18n.properties({
 			    name:'Messages', 
-			    path:'internationalisation/', 
+			    path:'internationalization/', 
 			    mode:'both',
 			    language:lang, 
 			    callback: function() {

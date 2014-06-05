@@ -18,11 +18,9 @@
 
 <div id="network-controls">
 
-   <select id="lang_selection">
-  	<option value="lang_selection">Select a language</option>
-  	<option value="en">English</option>
-  	<option value="fr_FR">French</option>
-   </select>
+    <select id="lang_selection">
+        <option value="lang_selection">Select a language</option>
+    </select>
 
     <div id="error">
         <span id="js">ERROR: This service requires JavaScript.  Please enable JavaScript in your web browser settings.</span>
@@ -123,3 +121,4 @@
         <input type="button" value="Full screen" id="video-control-fullscreen" disabled/>
     </div>
 </div>
+
