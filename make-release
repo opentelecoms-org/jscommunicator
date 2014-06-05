@@ -2,7 +2,7 @@
 
 set -e
 
-RELEASE_FILES="JSCommManager.js JSCommUI.js jssip-helper.js parseuri.js webrtc-check.js"
+RELEASE_FILES="i18N.js JSCommManager.js JSCommUI.js jssip-helper.js parseuri.js webrtc-check.js"
 RELEASE_JS="JSComm.js"
 
 MINIFY_GCC=closure-compiler
