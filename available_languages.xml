@@ -5,7 +5,11 @@
     <code>en</code>
 </language>
 <language>
-    <display>French</display>
+    <display>Français</display>
     <code>fr</code>
+</language>
+<language>
+    <display>Português</display>
+    <code>pt_BR</code>
 </language>
 </list>
