@@ -16,6 +16,10 @@
 <script src="webrtc-check.js" type="text/javascript"></script>
 <script src="jssip-helper.js" type="text/javascript"></script>
 <script src="parseuri.js" type="text/javascript"></script>
+
+<!-- internationalisation script -->
+<script src="jquery.i18n.properties-1.0.9.js" type="text/javascript"></script>
+<script src="i18N.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -38,6 +42,23 @@
   is not working:
 -->
 <!--#include file="jscommunicator.inc"-->
+
+<!-- To use JSCommunicator, you can either cut and paste
+ this entire HTML fragment into an existing HTML page
+ or copy it into a CMS or other publishing framework.
+ 
+ If using a static HTML page, simply copy the <script>
+ definitions from the file phone.shtml into your own page
+ <head> section.
+ 
+ If using a CMS or some other framework, you will need to
+ copy the <script> references from phone.shtml into the
+ file or script used to generate the page header.
+ You may also be able to tell the CMS about the JavaScript
+ <script> references through its management console.
+ Alternatively, if you are unable to modify the CMS generated <head>,
+ it is completely valid to include the <script> elements in the
+ HTML body where you include the HTML fragement from this file -->
 
 </body>
 </html>
