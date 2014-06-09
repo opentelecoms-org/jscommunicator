@@ -1,8 +1,6 @@
-(function ($) {
-
-window.i18n = {
+(function($) {
       	// load I18N bundles
-    initI18n : function() {
+		$(document).ready(function() {
           $.ajax({
              type:"GET",
              url:"available_languages.xml",
@@ -17,32 +15,32 @@ window.i18n = {
              });
 
             try {
-                i18n.loadBundles(jQuery.i18n.browserLang());
+                loadBundles(jQuery.i18n.browserLang());
             } catch (error) {}
                         
 			// configure language combo box
 			jQuery('#lang_selection').change(function() {
 				var selection = $(this).val();
-				i18n.loadBundles(selection != 'lang_selection' ? selection : null);
+				loadBundles(selection != 'lang_selection' ? selection : null);
 			});
 			
 			
-    },
+		});
  
 		
-    loadBundles : function (lang) {
+		function loadBundles(lang) {
 			jQuery.i18n.properties({
 			    name:'Messages', 
 			    path:'internationalization/', 
 			    mode:'both',
 			    language:lang, 
 			    callback: function() {
-			        i18n.internationalize();
+			        internationalise();
 			    }
 			});
-		},
+		}
 		
-    internationalize : function () {
+		function internationalise() {
 			// Accessing values through the map
 				var msg1 = 'error_js';
 				var msg2 = 'error_webrtc';
@@ -206,5 +204,4 @@ window.i18n = {
 
 				
 		}
-};
 })(jQuery);
