@@ -96,3 +96,15 @@
   border-right: 2px solid #CCC;
 }
 
+#encapsulate {
+width: 400px;
+}
+
+#encapsulate input{
+float:right;
+}
+
+#jsc-login-button,#ws,#dialing-actions {
+clear:both;
+}
+

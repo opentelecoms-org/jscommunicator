@@ -35,6 +35,13 @@ Dependencies
 
 jquery.i18n.properties-1.0.9.js (see https://code.google.com/p/jquery-i18n-properties/)
 
+<<<<<<< HEAD
+=======
+i18n.js (originally from pull request https://github.com/opentelecoms-org/jscommunicator/pull/16 - modified to accept any language)
+
+avaiable_languages.xml and properties files (see above)
+
+>>>>>>> ad6af5e
 
 Observed bugs
 ------------------------------------------------

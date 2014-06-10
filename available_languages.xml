@@ -5,6 +5,7 @@
     <code>en</code>
 </language>
 <language>
+<<<<<<< HEAD
     <display>Français</display>
     <code>fr</code>
 </language>
@@ -12,4 +13,9 @@
     <display>Português</display>
     <code>pt_BR</code>
 </language>
+=======
+    <display>French</display>
+    <code>fr</code>
+</language>
+>>>>>>> ad6af5e
 </list>

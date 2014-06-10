@@ -97,18 +97,23 @@
         <input type="button" value="1" class="dtmf-number"/>
         <input type="button" value="2" class="dtmf-number"/>
         <input type="button" value="3" class="dtmf-number"/>
+        <input type="button" value="A" class="dtmf-symbol"/>
         <br/>
         <input type="button" value="4" class="dtmf-number"/>
         <input type="button" value="5" class="dtmf-number"/>
         <input type="button" value="6" class="dtmf-number"/>
+        <input type="button" value="B" class="dtmf-symbol"/>
         <br/>
         <input type="button" value="7" class="dtmf-number"/>
         <input type="button" value="8" class="dtmf-number"/>
         <input type="button" value="9" class="dtmf-number"/>
+        <input type="button" value="C" class="dtmf-symbol"/>
         <br/>
         <input type="button" value="*" class="dtmf-symbol"/>
         <input type="button" value="0" class="dtmf-number"/>
         <input type="button" value="#" class="dtmf-symbol"/>
+        <input type="button" value="D" class="dtmf-symbol"/>
+        <br/>
     </div>
 </div>
 
