@@ -49,10 +49,7 @@
  }
  
  JSCommUI.link_down();
- 
- /* load internationalization options */
- i18n.initI18n();
- 
+
  soundPlayer = document.createElement("audio");
  
  $("#jsc-login-display-name-field").keypress(function(e) {
