@@ -1,6 +1,23 @@
-(function($) {
+(function ($) {
+
+window.i18n = {
       	// load I18N bundles
-		$(document).ready(function() {
+    initI18n : function(show_menu) {
+
+        if(JSCommSettings.i18n.default_lang) {
+            try {
+            i18n.loadBundles(JSCommSettings.i18n.default_lang);
+            } catch (error) {}
+        }
+        else {
+            try {
+            i18n.loadBundles(jQuery.i18n.browserLang());
+            } catch (error) {}
+        }
+
+ 
+        if(show_menu) {
+          $("#lang_selection").show();
           $.ajax({
              type:"GET",
              url:"available_languages.xml",
@@ -14,33 +31,31 @@
              }
              });
 
-            try {
-                loadBundles(jQuery.i18n.browserLang());
-            } catch (error) {}
-                        
-			// configure language combo box
-			jQuery('#lang_selection').change(function() {
-				var selection = $(this).val();
-				loadBundles(selection != 'lang_selection' ? selection : null);
-			});
-			
-			
-		});
+            // configure language combo box
+            jQuery('#lang_selection').change(function() {
+                var selection = $(this).val();
+                i18n.loadBundles(selection != 'lang_selection' ? selection : null);
+            });
+        }
+        else {
+            $("#lang_selection").hide();
+        }
+    },
  
 		
-		function loadBundles(lang) {
+    loadBundles : function (lang) {
 			jQuery.i18n.properties({
 			    name:'Messages', 
 			    path:'internationalization/', 
 			    mode:'both',
 			    language:lang, 
 			    callback: function() {
-			        internationalise();
+			        i18n.internationalize();
 			    }
 			});
-		}
+		},
 		
-		function internationalise() {
+    internationalize : function () {
 			// Accessing values through the map
 				var msg1 = 'error_js';
 				var msg2 = 'error_webrtc';
@@ -204,4 +219,5 @@
 
 				
 		}
+};
 })(jQuery);

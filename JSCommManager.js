@@ -62,6 +62,12 @@ window.JSCommManager = {
       Arbiter.publish("jsc/unavailable/config", null, {async:true});
       return false;
     }
+ 
+    /* load internationalization options */
+    if(JSCommSettings.i18n.translate) {
+    i18n.initI18n(JSCommSettings.i18n.show_menu);
+    }
+
 
     this.currentURL = parseUri(window.location.toString());
     if(this.currentURL.queryKey["dial"]) {
