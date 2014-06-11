@@ -104,7 +104,17 @@ width: 400px;
 float:right;
 }
 
-#jsc-login-button,#ws,#dialing-actions {
+#jsc-login-button,#ws,#dialing-actions,#captcha {
 clear:both;
+}
+
+#displayCaptcha {
+border-style:solid;
+border-width:1px;
+margin-left:10px;
+}
+
+#dial-controls {
+margin-top: 5px;
 }
 
