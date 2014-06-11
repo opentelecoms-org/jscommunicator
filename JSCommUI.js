@@ -242,7 +242,9 @@ window.JSCommUI = {
   },
 
   incoming_dtmf : function(dtmf_char) {
-    this.play_dtmf_sound(dtmf_char);
+    if(JSCommSettings.session.dialpad_tone) {
+        this.play_dtmf_sound(dtmf_char);
+    }
   },
 
   link_up : function() {
@@ -388,8 +390,10 @@ window.JSCommUI = {
     console.log("DTMF press: " + dtmf_char);
     JSCommManager.send_dtmf(dtmf_char);
     // Local sound effects:
-    this.play_dtmf_sound(dtmf_char);
-  },
+    if(JSCommSettings.session.dialpad_tone) {
+        this.play_dtmf_sound(dtmf_char);
+    }
+ },
 
   self_view : function(see_self) {
     $("#video-controls input.self:button").hide();
