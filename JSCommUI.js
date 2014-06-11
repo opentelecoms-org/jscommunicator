@@ -137,6 +137,8 @@ window.JSCommUI = {
   },
 
   show_login : function() {
+    $("#dial-controls").hide();
+    $("#jsc-logout-button").hide();
     $("#jsc-login-display-name-field").val(JSCommManager.credentials.display_name);
     if(JSCommManager.credentials.uri.length > 4) {
        // strip off the "sip:" URI prefix, it is not shown in the login form
@@ -153,6 +155,8 @@ window.JSCommUI = {
     JSCommManager.credentials.uri = 'sip:' + $("#jsc-login-sip-address-field").val();
     JSCommManager.credentials.sip_auth_password = $("#jsc-login-password-field").val();
     JSCommManager.start_ua();
+    $("#jsc-logout-button").show();
+    $("#jsc-logout-button").click(JSCommUI.show_login);
   },
 
   show_error : function(err_name) {
@@ -195,7 +199,6 @@ window.JSCommUI = {
 
   ready_to_dial : function() {
     $("#dial-controls").show();
-    $("#dialing-actions input:button").hide();
     if(JSCommSettings.dialing.audio_dialing) {
       $("#dialing-actions #call-audio").show();
     }

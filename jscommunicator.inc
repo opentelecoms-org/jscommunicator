@@ -17,7 +17,7 @@
      HTML body where you include the HTML fragement from this file -->
 
 <div id="network-controls">
-
+    <input type="button" value="Logout" id="jsc-logout-button"/>
     <div id="error">
         <span id="js">ERROR: This service requires JavaScript.  Please enable JavaScript in your web browser settings.</span>
         <span id="webrtc">ERROR: This service requires WebRTC.  Please try <a href="http://www.mozilla.org">Mozilla Firefox</a> or <a href="http://www.google.com/chrome">Google Chrome</a>, using the latest version is strongly recommended.</span>
