@@ -41,6 +41,7 @@
             <span class="jsc-login-label">Password</span>
             <input type="password" id="jsc-login-password-field"/>
         </div>
+        <input type="checkbox" id="rememberMe">Remember me<br>
         <input type="button" value="Login" id="jsc-login-button"/>
     </div>
 

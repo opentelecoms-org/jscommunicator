@@ -156,7 +156,16 @@ window.JSCommUI = {
     JSCommManager.credentials.sip_auth_password = $("#jsc-login-password-field").val();
     JSCommManager.start_ua();
     $("#jsc-logout-button").show();
-    $("#jsc-logout-button").click(JSCommUI.show_login);
+    $("#jsc-logout-button").click(JSCommUI.do_logout);
+    if($("#rememberMe").prop("checked")) {
+        document.cookie = "displayName=".concat(JSCommManager.credentials.display_name);
+        document.cookie = "sipAddress=".concat(JSCommManager.credentials.uri);
+    }
+  },
+ 
+  do_logout : function() {
+    JSCommManager.credentials.sip_auth_password = null;
+    JSCommUI.show_login();
   },
 
   show_error : function(err_name) {
