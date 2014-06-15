@@ -6,12 +6,12 @@ window.i18n = {
 
         if(JSCommSettings.i18n.default_lang) {
             try {
-            i18n.loadBundles(JSCommSettings.i18n.default_lang);
+                i18n.loadBundles(JSCommSettings.i18n.default_lang);
             } catch (error) {}
         }
         else {
             try {
-            i18n.loadBundles(jQuery.i18n.browserLang());
+                i18n.loadBundles(jQuery.i18n.browserLang());
             } catch (error) {}
         }
 

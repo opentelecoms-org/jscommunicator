@@ -65,7 +65,7 @@ window.JSCommManager = {
  
     /* load internationalization options */
     if(JSCommSettings.i18n.translate) {
-    i18n.initI18n(JSCommSettings.i18n.show_menu);
+        i18n.initI18n(JSCommSettings.i18n.show_menu);
     }
 
 
