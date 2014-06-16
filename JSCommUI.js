@@ -139,12 +139,18 @@ window.JSCommUI = {
   show_login : function() {
     $("#dial-controls").hide();
     $("#jsc-logout-button").hide();
-    $("#jsc-login-display-name-field").val(JSCommManager.credentials.display_name);
-    if(JSCommManager.credentials.uri.length > 4) {
-       // strip off the "sip:" URI prefix, it is not shown in the login form
-       $("#jsc-login-sip-address-field").val(JSCommManager.credentials.uri.substr(4));
+    if(this.get_cookie("displayName")) {
+        $("#jsc-login-display-name-field").val(this.get_cookie("displayName"));
+        $("#jsc-login-sip-address-field").val(this.get_cookie("sipAddress"));
     }
-    $("#jsc-login-password-field").val(JSCommManager.credentials.sip_auth_password);
+    else {
+         $("#jsc-login-display-name-field").val(JSCommManager.credentials.display_name);
+         if(JSCommManager.credentials.uri.length > 4) {
+             // strip off the "sip:" URI prefix, it is not shown in the login form
+             $("#jsc-login-sip-address-field").val(JSCommManager.credentials.uri.substr(4));
+         }
+    }
+    $("#jsc-login-password-field").val("");
     $("#jsc-login").show();
     $("#jsc-login-button").click(JSCommUI.do_login);
   },
@@ -158,13 +164,15 @@ window.JSCommUI = {
     $("#jsc-logout-button").show();
     $("#jsc-logout-button").click(JSCommUI.do_logout);
     if($("#rememberMe").prop("checked")) {
-        document.cookie = "displayName=".concat(JSCommManager.credentials.display_name);
-        document.cookie = "sipAddress=".concat(JSCommManager.credentials.uri);
+        document.cookie = "displayName=".concat($("#jsc-login-display-name-field").val());
+        document.cookie = "sipAddress=".concat($("#jsc-login-sip-address-field").val());
     }
   },
  
   do_logout : function() {
-    JSCommManager.credentials.sip_auth_password = null;
+    $("#reg").hide();
+    // Clear any error from earlier failure:
+    $("#network-controls #error #reg-fail").hide();
     JSCommUI.show_login();
   },
 
@@ -440,6 +448,16 @@ window.JSCommUI = {
     console.log("Playing sound: " + sound_name);
     soundPlayer.setAttribute("src", this.get_sound_url('dialpad/' + sound_name));
     soundPlayer.play();
+  },
+ 
+  get_cookie : function(cookiename) {
+     var name = cookiename + "=";
+     var allcookies = document.cookie.split(';');
+     for(var i=0; i<allcookies.length; i++) {
+     var c = allcookies[i].trim();
+         if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+     }
+     return "";
   }
 
 };

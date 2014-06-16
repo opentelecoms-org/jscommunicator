@@ -77,16 +77,10 @@ window.JSCommManager = {
         use_video: with_video
       };
     }
-
-    // Copy the credentials from the settings or cookie into a local object
+ 
+    // Copy the credentials from the settings into a local object
     // for use with the login form
-    if(this.get_cookie("displayName")) {
-        this.credentials.display_name = this.get_cookie("displayName");
-        this.credentials.uri = this.get_cookie("sipAddress");
-    }
-    else {
-        this.credentials = JSCommSettings.user;
-    }
+    this.credentials = JSCommSettings.user;
 
     this.start_ua();
   },
@@ -462,16 +456,6 @@ window.JSCommManager = {
     }
     this.current_session.sendDTMF(dtmf_char, dtmf_opts);
   },
- 
-  get_cookie : function(cookiename) {
-    var name = cookiename + "=";
-    var allcookies = document.cookie.split(';');
-    for(var i=0; i<allcookies.length; i++) {
-        var c = allcookies[i].trim();
-        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
-    }
-    return "";
-  }
 
 };
 
