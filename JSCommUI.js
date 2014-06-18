@@ -139,16 +139,18 @@ window.JSCommUI = {
   show_login : function() {
     $("#dial-controls").hide();
     $("#jsc-logout-button").hide();
-    if(this.get_cookie("displayName")) {
-        $("#jsc-login-display-name-field").val(this.get_cookie("displayName"));
-        $("#jsc-login-sip-address-field").val(this.get_cookie("sipAddress"));
+    if(JSCommManager.credentials.uri) {
+        $("#jsc-login-display-name-field").val(JSCommManager.credentials.display_name);
+        if(JSCommManager.credentials.uri.length > 4) {
+            // strip off the "sip:" URI prefix, it is not shown in the login form
+            $("#jsc-login-sip-address-field").val(JSCommManager.credentials.uri.substr(4));
+        }
     }
     else {
-         $("#jsc-login-display-name-field").val(JSCommManager.credentials.display_name);
-         if(JSCommManager.credentials.uri.length > 4) {
-             // strip off the "sip:" URI prefix, it is not shown in the login form
-             $("#jsc-login-sip-address-field").val(JSCommManager.credentials.uri.substr(4));
-         }
+        if(this.get_cookie("displayName")) {
+            $("#jsc-login-display-name-field").val(this.get_cookie("displayName"));
+            $("#jsc-login-sip-address-field").val(this.get_cookie("sipAddress"));
+        }
     }
     $("#jsc-login-password-field").val("");
     $("#jsc-login").show();
