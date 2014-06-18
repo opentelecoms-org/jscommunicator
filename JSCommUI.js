@@ -347,6 +347,9 @@ window.JSCommUI = {
     soundPlayer.pause();
     $("#session-controls").hide();
     $('#video-session').hide();
+    if(JSCommSettings.dialing.clear_dialbox) {
+        $("#address").val("");
+    }
     JSCommUI.ready_to_dial();
   },
 

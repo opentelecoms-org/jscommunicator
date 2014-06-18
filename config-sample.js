@@ -53,6 +53,7 @@ JSCommSettings = {
     video_dialing: true,         // Whether to offer a video call button
     prefer_video: false,         // If user presses Enter to dial, use video?
     no_answer_timeout: 60,       // How long to wait for answer (seconds)
+    clear_dialbox:true,          // Whether to clear dialbox after call/attempted call
   },
 
   session : {
