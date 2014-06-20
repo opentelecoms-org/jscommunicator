@@ -114,9 +114,8 @@
         <input type="button" value="D" class="dtmf-symbol"/>
     </div>
 </div>
-
 <div id="video-session" class="ws-connected in-call">
-    <video id="remoteView" autoplay controls></video>
+    <video id="remoteView" autoplay controls style="height: 100%; width: 100%;"></video>
     <video id="selfView" autoplay muted></video>
     <div id="video-controls">
         <input type="button" value="Self view" id="video-control-self-view" class="self"/>

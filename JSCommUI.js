@@ -223,6 +223,8 @@ window.JSCommUI = {
     }
     if(JSCommSettings.dialing.video_dialing) {
       $("#dialing-actions #call-video").show();
+      $("#video-session").draggable();
+      $("#video-session").resizable();
     }
     $("#dest #address").focus();
   },
