@@ -112,7 +112,7 @@ window.JSCommUI = {
       JSCommManager.hangup_call();
     });
 
-    $("#dtmf-pad input:button").click(function() {
+    $("#dtmf-pad input:button").mousedown(function() {
       var dtmf_char = $(this).val();
       JSCommUI.send_dtmf(dtmf_char);
     });
