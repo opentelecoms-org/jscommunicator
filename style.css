@@ -95,11 +95,27 @@
   border-top: 2px solid #CCC;
   border-right: 2px solid #CCC;
 }
+#encapsulate {
+  width: 400px;
+}
+
+#encapsulate input{
+ float:right;
+}
+
+#jsc-login-button,#ws,#dialing-actions,#captcha {
+ clear:both;
+}
+
+#dial-controls {
+ margin-top: 5px;
+}
 
 #tabs {
   background-color:#F0F0F0;
   border-radius: 4px;
   padding: 5px;
+  margin-top: 3px;
 }
 
 .tab-label{
@@ -121,6 +137,7 @@
   clear:both;
   background-color:#FFF;
   padding: 5px;
+  overflow: hidden;
 }
 
 .active-tab {

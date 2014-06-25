@@ -16,6 +16,7 @@
      it is completely valid to include the <script> elements in the
      HTML body where you include the HTML fragement from this file -->
 
+<div id="encapsulate">
 <div id="network-controls">
 
     <div id="error">
@@ -35,7 +36,7 @@
         </div>
         <div id="jsc-login-sip-uri">
             <span class="jsc-login-label">SIP address</span>
-            <span>sip:<input type="text" id="jsc-login-sip-address-field"/></span>
+            <input type="text" id="jsc-login-sip-address-field"/>
         </div>
         <div id="jsc-login-password">
             <span class="jsc-login-label">Password</span>
@@ -45,7 +46,7 @@
     </div>
 
     <div id="ws">
-        <span>WebSocket link:</span>
+        <span id="ws_link">WebSocket link:</span>
         <span id="connected" class="state ws-connected">Connected</span>
         <span id="disconnected" class="state ws-disconnected">Disconnected</span>
     </div>
@@ -70,7 +71,7 @@
     <div class="tab-page" id="tab-1">
         <div id="dial-controls" class="ws-connected">
             <div id="dest">
-                <span>Destination:</span>
+                <span id="dest_label">Destination:</span>
                 <input type="text" id="address"/>
             </div>
             <div id="dialing-actions">
@@ -99,39 +100,38 @@
                 <input type="button" value="1" class="dtmf-number"/>
                 <input type="button" value="2" class="dtmf-number"/>
                 <input type="button" value="3" class="dtmf-number"/>
+                <input type="button" value="A" class="dtmf-symbol"/>
                 <br/>
                 <input type="button" value="4" class="dtmf-number"/>
                 <input type="button" value="5" class="dtmf-number"/>
                 <input type="button" value="6" class="dtmf-number"/>
+                <input type="button" value="B" class="dtmf-symbol"/>
                 <br/>
                 <input type="button" value="7" class="dtmf-number"/>
                 <input type="button" value="8" class="dtmf-number"/>
                 <input type="button" value="9" class="dtmf-number"/>
+                <input type="button" value="C" class="dtmf-symbol"/>
                 <br/>
                 <input type="button" value="*" class="dtmf-symbol"/>
                 <input type="button" value="0" class="dtmf-number"/>
                 <input type="button" value="#" class="dtmf-symbol"/>
-                <br/>
-                <input type="button" value="A" class="dtmf-symbol"/>
-                <input type="button" value="B" class="dtmf-symbol"/>
-                <input type="button" value="C" class="dtmf-symbol"/>
-                <br/>
                 <input type="button" value="D" class="dtmf-symbol"/>
-            </div>
-        </div>
-
-        <div id="video-session" class="ws-connected in-call">
-            <video id="remoteView" autoplay></video>
-            <video id="selfView" autoplay muted></video>
-            <div id="video-controls">
-                <input type="button" value="Self view" id="video-control-self-view" class="self"/>
-                <input type="button" value="Self hide" id="video-control-self-hide" class="self"/>
-                <input type="button" value="Full screen" id="video-control-fullscreen" disabled/>
+                <br/>
             </div>
         </div>
     </div>
     <div class="tab-page" id="tab-2">
     <p>TEST</p>
     </div>
+    <div id="video-session" class="ws-connected in-call">
+        <video id="remoteView" autoplay></video>
+        <video id="selfView" autoplay muted></video>
+        <div id="video-controls">
+            <input type="button" value="Self view" id="video-control-self-view" class="self"/>
+            <input type="button" value="Self hide" id="video-control-self-hide" class="self"/>
+            <input type="button" value="Full screen" id="video-control-fullscreen" disabled/>
+        </div>
+    </div>
+</div>
 </div>
 
