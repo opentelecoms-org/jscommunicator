@@ -145,10 +145,13 @@ window.JSCommUI = {
     $("#jsc-login-password-field").val(JSCommManager.credentials.sip_auth_password);
     $("#jsc-login").show();
     $("#jsc-login-button").click(JSCommUI.do_login);
+    $("#tabs").hide();
   },
 
   do_login : function() {
     $("#jsc-login").hide();
+    $("#tabs").show();
+    JSCommUI.load_tabs();
     JSCommManager.credentials.display_name = $("#jsc-login-display-name-field").val();
     JSCommManager.credentials.uri = 'sip:' + $("#jsc-login-sip-address-field").val();
     JSCommManager.credentials.sip_auth_password = $("#jsc-login-password-field").val();
@@ -424,6 +427,24 @@ window.JSCommUI = {
     console.log("Playing sound: " + sound_name);
     soundPlayer.setAttribute("src", this.get_sound_url('dialpad/' + sound_name));
     soundPlayer.play();
+  },
+ 
+  load_tabs : function() {
+    $("#label-1").addClass("active-tab");
+    $(".tab-page").hide();
+    $("#tab-1").show();
+    $(".tab-label").click(function() {
+       JSCommUI.change_tab($(this).attr("id"),$(this).attr("value"));
+    });
+  },
+ 
+  change_tab : function(label, tab) {
+    $(".tab-page").hide();
+    $(".active-tab").removeClass("active-tab");
+    $(".tab-page").hide();
+    $(tab).show();
+    label = '#' + label;
+    $(label).addClass("active-tab");
   }
 
 };

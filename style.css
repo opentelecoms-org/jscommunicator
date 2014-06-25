@@ -96,3 +96,34 @@
   border-right: 2px solid #CCC;
 }
 
+#tabs {
+  background-color:#F0F0F0;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.tab-label{
+  margin:0 5px 0 0;
+  padding:7px 10px;
+  display:block;
+  float:left;
+  background-color:#D8D8D8;
+  border-top-left-radius:2px;
+  border-top-right-radius:2px;
+}
+
+#tabs > ul {
+  padding: 0px;
+  margin: 0px;
+}
+
+.tab-page {
+  clear:both;
+  background-color:#FFF;
+  padding: 5px;
+}
+
+.active-tab {
+  background-color:#FFF;
+}
+
