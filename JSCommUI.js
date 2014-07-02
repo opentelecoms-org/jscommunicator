@@ -21,7 +21,7 @@
 (function($) {
 
 window.JSCommUI = {
-
+ 
   soundPlayer : null,
 
   soundLoop : null,
@@ -128,7 +128,7 @@ window.JSCommUI = {
     $("#video-control-fullscreen").click(function() {
       JSCommUI.video_fullscreen(true);
     });
-
+ 
     if(!JSCommSettings.registration.user_control) {
       $("#reg #control").hide();
     }
@@ -191,8 +191,8 @@ window.JSCommUI = {
       $("#network-controls #ws #disconnected").show();
       //keep phone visible but disabled.
       $("#dial-controls").show();
+	  $("#dialing-actions :input").prop('disabled', true);
       $("#dest :input").prop('disabled', true);
-      $("#dialing-actions :input").prop('disabled', true);
     }
   },
 
@@ -278,13 +278,14 @@ window.JSCommUI = {
     soundPlayer.play();
   },
 
-  session_start : function(status, peer_name, with_video) {
+  session_start : function(status, peer_name, peer_display, peer_uri, with_video) {
     $("#dial-controls").hide();
     $(".session-active").hide();
     $("#session-controls #state span").hide();
     $("#session-controls #peer").empty();
     $("#session-controls #peer").text(peer_name);
     $("#session-actions input:button").hide();
+    JSCommUI.createChatSession(peer_display, peer_uri);
     if(status == 'incoming') {
       $("#session-controls #state .session-incoming").show();
       $("#session-actions input.session-incoming:button").show();
@@ -445,7 +446,135 @@ window.JSCommUI = {
     $(tab).show();
     label = '#' + label;
     $(label).addClass("active-tab");
-  }
+  },
+ 
+ //adapted from try.jssip.net
+ createChatSession : function(display_name, uri) {
+	 var session_div = $('\
+	 <div class="chatSession"> \
+		<div class="close">x</div> \
+	    <div class="peer"> \
+			<span class="display-name">' + display_name + '</span> \
+			<span>&lt;</span><span class="uri">' + uri + '</span><span>&gt;</span> \
+		</div> \
+		<div class="chat"> \
+			<div class="chatting"></div> \
+			<input class="inactive" type="text" name="chat-input" value="type to chat..."/>\
+			<div class="iscomposing"></div> \
+		</div> \
+	 </div> \
+	 ');
+	
+	 $("#tab-2").append(session_div);
+	 
+	 var session = $("#tab-2 .chatSession").filter(":last");
+	 var close = $(session).find("> .close");
+	 var chat_input = $(session).find(".chat > input[type='text']");
+	
+	 close.click(function() {
+		JSCommUI.removeSession(session);
+	 });
+	 
+	 chat_input.focus(function(e) {
+		if ($(this).hasClass("inactive")) {
+			$(this).val("");
+			$(this).removeClass("inactive");
+		}
+	 });
+	 
+	 chat_input.blur(function(e) {
+		if ($(this).val() == "") {
+			$(this).addClass("inactive");
+			$(this).val("type to chat...");
+		}
+	 });
+	
+	
+	 chat_input.keydown(function(e) {
+		// Ignore TAB and ESC.
+		if (e.which == 9 || e.which == 27) {
+			return false;
+		}
+		// Enter pressed? so send chat.
+		else if (e.which == 13 && $(this).val() != "") {
+			var text = chat_input.val();
+			JSCommUI.addChatMessage(session, "me", text);
+			chat_input.val("");
+			JSCommUI.jssipMessage(uri, text);
+		}
+		// Ignore Enter when empty input.
+		else if (e.which == 13 && $(this).val() == "") {
+			return false;
+		}
+		// NOTE is-composing stuff.
+		// Ignore "windows" and ALT keys, DEL, mayusculas and 0 (que no sÃ© quÃ© es).
+		else if (e.which == 18 || e.which == 91 || e.which == 46 || e.which == 16 || e.which == 0)
+			return false;
+	 });
+	 
+	 $(session).fadeIn(100);
+	 
+	 // Return the jQuery object for the created session div.
+	 return session;
+ },
+ 
+ removeSession : function(session) {
+	$(session).remove();
+ },
+ 
+ addChatMessage : function(session, who, text) {
+	 var chatting = $(session).find(".chat > .chatting");
+	 $(chatting).removeClass("inactive");
+	 if (who != "error") {
+		var who_text = ( who == "me" ? "me" : $(session).find(".peer > .display-name").text() );
+		var message_div = $('<p class="' + who + '"><b>' + who_text + '</b>: ' + text + '</p>');
+	 }
+	 // ERROR sending the MESSAGE.
+	 else {
+		var message_div = $('<p class="error"><i>message failed: ' + text + '</i>');
+	 }
+	 $(chatting).append(message_div);
+	 $(chatting).scrollTop(1e4);
+ },
+ 
+ /*
+  * JsSIP.UA new_message event listener
+  */
+ new_message : function(e) {
+	var display_name, text,
+	message = e.data.message,
+	request = e.data.request,
+	uri = request.from.uri;
+	session = JSCommUI.getSession(uri);
+	display_name = request.from.display_name || request.from.uri.user;
+	text = request.body;
+
+	$(session).find(".peer > .display-name").text(display_name);
+	JSCommUI.addChatMessage(session, "peer", text);
+	$(session).find(".chat input").focus();
+ },
+ 
+ getSession : function(uri) {
+	var session_found = null;
+
+	$("#tab-2 > .chatSession").each(function(i, session) {
+		if (uri == $(this).find(".peer > .uri").text()) {
+			session_found = session;
+		}
+	});
+ 
+	if (session_found)
+		return session_found;
+	else
+		return false;
+ },
+ 
+ jssipMessage : function(uri, text) {
+	 JSCommManager.sendMessage(uri, text);
+ },
+
+ 
+ /* End of adapted from try.jssip.net */
 
 };
 

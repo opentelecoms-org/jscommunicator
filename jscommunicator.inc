@@ -70,10 +70,10 @@
     </ul>
     <div class="tab-page" id="tab-1">
         <div id="dial-controls" class="ws-connected">
-            <div id="dest">
-                <span id="dest_label">Destination:</span>
-                <input type="text" id="address"/>
-            </div>
+			<div id="dest">
+				<span id="dest_label">Destination:</span>
+				<input type="text" id="address"/>
+			</div>
             <div id="dialing-actions">
                 <input type="button" value="Call (audio only)" id="call-audio"/>
                 <input type="button" value="Call (audio and video)" id="call-video"/>
@@ -121,17 +121,15 @@
         </div>
     </div>
     <div class="tab-page" id="tab-2">
-    <p>TEST</p>
-    </div>
-    <div id="video-session" class="ws-connected in-call">
-        <video id="remoteView" autoplay></video>
-        <video id="selfView" autoplay muted></video>
-        <div id="video-controls">
-            <input type="button" value="Self view" id="video-control-self-view" class="self"/>
-            <input type="button" value="Self hide" id="video-control-self-hide" class="self"/>
-            <input type="button" value="Full screen" id="video-control-fullscreen" disabled/>
-        </div>
     </div>
 </div>
+ <div id="video-session" class="ws-connected in-call">
+    <video id="remoteView" autoplay></video>
+    <video id="selfView" autoplay muted></video>
+    <div id="video-controls">
+        <input type="button" value="Self view" id="video-control-self-view" class="self"/>
+        <input type="button" value="Self hide" id="video-control-self-hide" class="self"/>
+        <input type="button" value="Full screen" id="video-control-fullscreen" disabled/>
+    </div>
 </div>
 
