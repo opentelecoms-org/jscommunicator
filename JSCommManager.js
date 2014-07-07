@@ -394,8 +394,6 @@ window.JSCommManager = {
   },
 
   message_received : function(e) {
-    // FIXME: implement MESSAGE support
-    //console.log("received message, not handled: " + e);
 	JSCommUI.new_message(e);
   },
 
@@ -464,11 +462,11 @@ window.JSCommManager = {
 	try {
 		this.phone.sendMessage(uri,text);
 	} catch(e){
-	throw(e);
+		throw(e);
 		return;
 	}
   }
-
+ 
 };
 
 })(jQuery);

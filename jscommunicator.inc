@@ -121,6 +121,13 @@
         </div>
     </div>
     <div class="tab-page" id="tab-2">
+		<div id="new-chat">
+			<input type="button" value="Start chat" id="start-chat"/>
+			<input type="text" id="chat-address" placeholder="Enter contact"/>
+			<div id="chat-error">
+				<span id="no-contact">Please enter a contact.</span>
+			</div>
+		</div>
     </div>
 </div>
  <div id="video-session" class="ws-connected in-call">

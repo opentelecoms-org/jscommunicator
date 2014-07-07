@@ -254,6 +254,27 @@
   font-style: italic;
 }
 
+/* end of adapted from try.jssip.net */
+
+#new-chat {
+  display: block;
+  float: left;
+  margin-top: 3px;
+  margin-bottom: 10px;
+}
+
+#new-chat input[type="text"] {
+  font-family: sans-serif;
+}
+
+#chat-error {
+  height: 24px;
+  color: red;
+  font-style: italic;
+  font-family: sans-serif;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
 
 
 

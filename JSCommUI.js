@@ -129,6 +129,20 @@ window.JSCommUI = {
       JSCommUI.video_fullscreen(true);
     });
  
+	$("#chat-address").focus(function() {
+		$(this).val("");
+		$("#chat-error #no-contact").hide();
+	});
+ 
+	$("#start-chat").click(function () {
+		var address = $("#chat-address").val();
+		if(address!="Enter contact" && address) {
+			JSCommUI.createChatSession(address, "");
+		} else {
+			$("#chat-error #no-contact").show();
+		}
+	});
+ 
     if(!JSCommSettings.registration.user_control) {
       $("#reg #control").hide();
     }
@@ -433,6 +447,7 @@ window.JSCommUI = {
   load_tabs : function() {
     $("#label-1").addClass("active-tab");
     $(".tab-page").hide();
+	$("#chat-error #no-contact").hide();
     $("#tab-1").show();
     $(".tab-label").click(function() {
        JSCommUI.change_tab($(this).attr("id"),$(this).attr("value"));
@@ -446,6 +461,7 @@ window.JSCommUI = {
     $(tab).show();
     label = '#' + label;
     $(label).addClass("active-tab");
+    $("#chat-address").val("Enter contact");
   },
  
  //adapted from try.jssip.net
@@ -464,7 +480,9 @@ window.JSCommUI = {
 		</div> \
 	 </div> \
 	 ');
-	
+	 if(!uri) {
+		uri = display_name;
+	 }
 	 $("#tab-2").append(session_div);
 	 
 	 var session = $("#tab-2 .chatSession").filter(":last");
@@ -545,24 +563,29 @@ window.JSCommUI = {
 	message = e.data.message,
 	request = e.data.request,
 	uri = request.from.uri;
-	session = JSCommUI.getSession(uri);
 	display_name = request.from.display_name || request.from.uri.user;
 	text = request.body;
-
-	$(session).find(".peer > .display-name").text(display_name);
-	JSCommUI.addChatMessage(session, "peer", text);
-	$(session).find(".chat input").focus();
+	if(e.data.message.direction == 'incoming') {
+		session = JSCommUI.getSession(uri, display_name);
+		if (!session) {
+			session = JSCommUI.createChatSession(display_name, uri);
+		}
+		$(session).find(".peer > .display-name").text(display_name);
+		$(session).find(".peer > .uri").text(uri);
+		JSCommUI.addChatMessage(session, "peer", text);
+		$(session).find(".chat input").focus();
+	}
  },
  
- getSession : function(uri) {
+ getSession : function(uri, display_name) {
 	var session_found = null;
-
 	$("#tab-2 > .chatSession").each(function(i, session) {
 		if (uri == $(this).find(".peer > .uri").text()) {
 			session_found = session;
+		} else if (display_name == $(this).find(".peer > .display-name").text()) {
+			session_found = session;
 		}
 	});
- 
 	if (session_found)
 		return session_found;
 	else
