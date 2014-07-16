@@ -1,0 +1,22 @@
+{
+  "name": "jscommunicator",
+  "version": "0.1.0",
+  "homepage": "http://jscommunicator.org",
+  "authors": [
+    "Yehuda Korotkin <yehuda@korotkin.co.il>"
+  ],
+  "description": "http://jscommunicator.org",
+  "license": "GPL2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "arbiterjs": "https://github.com/yedako/arbiterjs.git",
+    "JsSIP": "https://github.com/versatica/JsSIP.git#~0.3.0"
+  }
+}

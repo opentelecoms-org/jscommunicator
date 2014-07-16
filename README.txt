@@ -22,12 +22,14 @@ Only recent versions of the SIP proxies support WebSockets.
   Kamailio
     http://www.kamailio.org
 
-You need to have the following JavaScript libraries available in your
-web server or CMS:
 
-  jQuery (v1.4 or greater has been tested)
+Install
+-------
 
-  ArbiterJS (v1.0 has been tested)
+Use http://bower.io/ to install dependencies 
+
+Do `bower install`
+  
 
 Use cases
 ---------
