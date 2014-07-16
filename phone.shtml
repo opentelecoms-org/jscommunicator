@@ -2,11 +2,21 @@
 <head>
 <title>Testing</title>
 <link rel="stylesheet" href="style.css" type="text/css"/>
-<link rel="stylesheet" href="style-horizontal.css" type="text/css"/>
-<script src="jquery.js" type="text/javascript"></script>
-<script src="Arbiter.js" type="text/javascript"></script>
+<link rel="stylesheet" href="style-horizontal.css" type="text/css"/>s
 <!--<script src="http://jssip.net/download/jssip-devel.js"></script>-->
-<script src="JsSIP.js" type="text/javascript"></script>
+<!-- 
+	Use bower for package manager of js 
+	http://bower.io/
+	
+	Run command: bower install
+	
+	By: Yehuda Korotkin
+-->
+<script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+<script src="bower_components/arbiterjs/Arbiter.js" type="text/javascript"></script>
+<script src="bower_components/JsSIP/src/JsSIP.js" type="text/javascript"></script>
+
+
 <script src="init.js" type="text/javascript"></script>
 <script src="config.js" type="text/javascript"></script>
 
