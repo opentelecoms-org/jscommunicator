@@ -18,10 +18,6 @@
 
 <div id="network-controls">
 
-    <select id="lang_selection">
-        <option value="lang_selection">Select a language</option>
-    </select>
-
     <div id="error">
         <span id="js">ERROR: This service requires JavaScript.  Please enable JavaScript in your web browser settings.</span>
         <span id="webrtc">ERROR: This service requires WebRTC.  Please try <a href="http://www.mozilla.org">Mozilla Firefox</a> or <a href="http://www.google.com/chrome">Google Chrome</a>, using the latest version is strongly recommended.</span>
@@ -49,7 +45,7 @@
     </div>
 
     <div id="ws">
-        <span id="ws_link">WebSocket link:</span>
+        <span>WebSocket link:</span>
         <span id="connected" class="state ws-connected">Connected</span>
         <span id="disconnected" class="state ws-disconnected">Disconnected</span>
     </div>
@@ -68,7 +64,7 @@
 
 <div id="dial-controls" class="ws-connected">
     <div id="dest">
-        <span id="dest_label">Destination:</span>
+        <span>Destination:</span>
         <input type="text" id="address"/>
     </div>
     <div id="dialing-actions">

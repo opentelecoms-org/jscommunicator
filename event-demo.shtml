@@ -1,57 +1,56 @@
 <!DOCTYPE html>
 <head>
-<title>Testing</title>
-<link rel="stylesheet" href="style.css" type="text/css"/>
-<link rel="stylesheet" href="style-horizontal.css" type="text/css"/>
-<link rel="stylesheet" href="style-event-demo.css" type="text/css"/>
-<script src="jquery.js" type="text/javascript"></script>
-<script src="Arbiter.js" type="text/javascript"></script>
-<script src="jquery.i18n.properties.js" type="text/javascript"></script>
-<!--<script src="http://jssip.net/download/jssip-devel.js"></script>-->
-<script src="JsSIP.js" type="text/javascript"></script>
-<script src="init.js" type="text/javascript"></script>
-<script src="config.js" type="text/javascript"></script>
-
-<!-- compressed JavaScript source built by make-release script -->
-<script src="JSComm.js" type="text/javascript"></script>
-
-<!-- The event demo logic -->
-<script src="event-demo.js" type="text/javascript"></script>
+	<title>Testing</title>
+	<link rel="stylesheet" href="style.css" type="text/css"/>
+	<link rel="stylesheet" href="style-horizontal.css" type="text/css"/>
+	<link rel="stylesheet" href="style-event-demo.css" type="text/css"/>
+	<script src="jquery.js" type="text/javascript"></script>
+	<script src="Arbiter.js" type="text/javascript"></script>
+	<!--<script src="http://jssip.net/download/jssip-devel.js"></script>-->
+	<script src="JsSIP.js" type="text/javascript"></script>
+	<script src="init.js" type="text/javascript"></script>
+	<script src="config.js" type="text/javascript"></script>
+	
+	<!-- compressed JavaScript source built by make-release script -->
+	<script src="JSComm.js" type="text/javascript"></script>
+	
+	<!-- The event demo logic -->
+	<script src="event-demo.js" type="text/javascript"></script>
 </head>
 <body>
-
-<h1>JSCommunicator</h1>
-
-<!-- To make this work, you must
-       a) have mod_include enabled in Apache (on Debian: a2enmod include)
-       b) have a Directory element in your server configuration
-          enabling the Includes option, here is an example:
-               <Directory /var/www/jquery/>
-                   Options +Includes
-               </Directory>
-
-  If you can't enable SSI for some reason, you can work around this by
-  simply cutting and pasting the contents of jscommunicator.inc into
-  this HTML file.
-
-  If you just see the reference to include jscommunicator.inc below
-  when viewing the page source in a browser, your SSI configuration
-  is not working:
--->
-<!--#include file="jscommunicator.inc"-->
-
-<select id="contact-directory">
-  <option value="operator@example.org">Operator</option>
-  <option value="help@example.org">Helpdesk</option>
-  <option value="sales@example.org">Sales</option>
-</select>
-
-<div>
-  <table id="event-demo-log">
-    <tr><th>Time</th><th>Event</th><th>Data</th></tr>
-  </table>
-</div>
-
-
+	
+	<h1>JSCommunicator</h1>
+	
+	<!-- To make this work, you must
+	 a) have mod_include enabled in Apache (on Debian: a2enmod include)
+	 b) have a Directory element in your server configuration
+	 enabling the Includes option, here is an example:
+	 <Directory /var/www/jquery/>
+	 Options +Includes
+	 </Directory>
+	 
+	 If you can't enable SSI for some reason, you can work around this by
+	 simply cutting and pasting the contents of jscommunicator.inc into
+	 this HTML file.
+	 
+	 If you just see the reference to include jscommunicator.inc below
+	 when viewing the page source in a browser, your SSI configuration
+	 is not working:
+	 -->
+	<!--#include file="jscommunicator.inc"-->
+	
+	<select id="contact-directory">
+		<option value="operator@example.org">Operator</option>
+		<option value="help@example.org">Helpdesk</option>
+		<option value="sales@example.org">Sales</option>
+	</select>
+	
+	<div>
+		<table id="event-demo-log">
+			<tr><th>Time</th><th>Event</th><th>Data</th></tr>
+		</table>
+	</div>
+	
+	
 </body>
 </html>
