@@ -65,6 +65,12 @@ JSCommSettings = {
                                     // the lack of a relay candidate is
                                     // likely to be a sign that UDP is blocked
   },
+    
+  i18n : {
+    translate: true,     // enables the call to i18n init function from JSCommManager.init()
+    show_menu: true,    // show the language chooser menu
+    default_lang: 'en',   // default language to use
+  },
 
   extra_headers : [
     // 'X-WS-Session-Extra: some_token=value'
