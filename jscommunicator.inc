@@ -18,7 +18,7 @@
 
 <div id="encapsulate">
 <div id="network-controls">
-
+    <input type="button" value="Logout" id="jsc-logout-button"/>
     <select id="lang_selection" display="none">
         <option value="lang_selection">Select a language</option>
     </select>
@@ -46,6 +46,7 @@
             <span class="jsc-login-label">Password</span>
             <input type="password" id="jsc-login-password-field"/>
         </div>
+        <input type="checkbox" id="rememberMe">Remember me<br>
         <input type="button" value="Login" id="jsc-login-button"/>
     </div>
 
@@ -117,13 +118,11 @@
         <br/>
     </div>
 </div>
-
 <div id="video-session" class="ws-connected in-call">
-    <video id="remoteView" autoplay></video>
+    <video id="remoteView" autoplay controls style="height: 100%; width: 100%;"></video>
     <video id="selfView" autoplay muted></video>
     <div id="video-controls">
         <input type="button" value="Self view" id="video-control-self-view" class="self"/>
         <input type="button" value="Self hide" id="video-control-self-hide" class="self"/>
-        <input type="button" value="Full screen" id="video-control-fullscreen" disabled/>
     </div>
 </div>

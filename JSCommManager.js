@@ -77,7 +77,7 @@ window.JSCommManager = {
         use_video: with_video
       };
     }
-
+ 
     // Copy the credentials from the settings into a local object
     // for use with the login form
     this.credentials = JSCommSettings.user;
@@ -455,7 +455,7 @@ window.JSCommManager = {
       duration : duration
     }
     this.current_session.sendDTMF(dtmf_char, dtmf_opts);
-  }
+  },
 
 };
 
