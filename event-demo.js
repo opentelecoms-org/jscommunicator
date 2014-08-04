@@ -30,7 +30,7 @@ $(document).ready(function() {
 
   var logEvent = function(event_name, data) {
     var now = new Date().toLocaleTimeString();
-    if(data.substring(0, 3)=="sip") {
+    if(data.length > 1) {
       data = "<a href=\"#\" onclick=\"JSCommManager.make_call('".concat(data,"');\">",data,"</a>");
     }
     $("#event-demo-log").append("<tr><td>" + now + "</td><td>" + event_name + "</td><td>" + data + "</td></tr>");
