@@ -118,3 +118,13 @@ margin-left:10px;
 margin-top: 5px;
 }
 
+#dtmf-pad input{
+  float:left;
+  width: 25px;
+  margin: 2px;
+}
+
+#dtmf-pad br{
+  clear:both;
+}
+
