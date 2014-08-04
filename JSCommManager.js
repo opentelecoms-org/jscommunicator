@@ -460,4 +460,3 @@ window.JSCommManager = {
 };
 
 })(jQuery);
-

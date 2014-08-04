@@ -16,8 +16,13 @@
      it is completely valid to include the <script> elements in the
      HTML body where you include the HTML fragement from this file -->
 
+<div id="encapsulate">
 <div id="network-controls">
     <input type="button" value="Logout" id="jsc-logout-button"/>
+    <select id="lang_selection" display="none">
+        <option value="lang_selection">Select a language</option>
+    </select>
+
     <div id="error">
         <span id="js">ERROR: This service requires JavaScript.  Please enable JavaScript in your web browser settings.</span>
         <span id="webrtc">ERROR: This service requires WebRTC.  Please try <a href="http://www.mozilla.org">Mozilla Firefox</a> or <a href="http://www.google.com/chrome">Google Chrome</a>, using the latest version is strongly recommended.</span>
@@ -35,7 +40,7 @@
         </div>
         <div id="jsc-login-sip-uri">
             <span class="jsc-login-label">SIP address</span>
-            <span>sip:<input type="text" id="jsc-login-sip-address-field"/></span>
+            <input type="text" id="jsc-login-sip-address-field"/>
         </div>
         <div id="jsc-login-password">
             <span class="jsc-login-label">Password</span>
@@ -46,7 +51,7 @@
     </div>
 
     <div id="ws">
-        <span>WebSocket link:</span>
+        <span id="ws_link">WebSocket link:</span>
         <span id="connected" class="state ws-connected">Connected</span>
         <span id="disconnected" class="state ws-disconnected">Disconnected</span>
     </div>
@@ -65,7 +70,7 @@
 
 <div id="dial-controls" class="ws-connected">
     <div id="dest">
-        <span>Destination:</span>
+        <span id="dest_label">Destination:</span>
         <input type="text" id="address"/>
     </div>
     <div id="dialing-actions">
@@ -94,24 +99,23 @@
         <input type="button" value="1" class="dtmf-number"/>
         <input type="button" value="2" class="dtmf-number"/>
         <input type="button" value="3" class="dtmf-number"/>
+        <input type="button" value="A" class="dtmf-symbol"/>
         <br/>
         <input type="button" value="4" class="dtmf-number"/>
         <input type="button" value="5" class="dtmf-number"/>
         <input type="button" value="6" class="dtmf-number"/>
+        <input type="button" value="B" class="dtmf-symbol"/>
         <br/>
         <input type="button" value="7" class="dtmf-number"/>
         <input type="button" value="8" class="dtmf-number"/>
         <input type="button" value="9" class="dtmf-number"/>
+        <input type="button" value="C" class="dtmf-symbol"/>
         <br/>
         <input type="button" value="*" class="dtmf-symbol"/>
         <input type="button" value="0" class="dtmf-number"/>
         <input type="button" value="#" class="dtmf-symbol"/>
-        <br/>
-        <input type="button" value="A" class="dtmf-symbol"/>
-        <input type="button" value="B" class="dtmf-symbol"/>
-        <input type="button" value="C" class="dtmf-symbol"/>
-        <br/>
         <input type="button" value="D" class="dtmf-symbol"/>
+        <br/>
     </div>
 </div>
 <div id="video-session" class="ws-connected in-call">
@@ -122,4 +126,3 @@
         <input type="button" value="Self hide" id="video-control-self-hide" class="self"/>
     </div>
 </div>
-

@@ -89,3 +89,35 @@
   padding: 5px;
 }
 
+#encapsulate {
+width: 400px;
+}
+
+#encapsulate input{
+float:right;
+}
+
+#jsc-login-button,#ws,#dialing-actions,#captcha {
+clear:both;
+}
+
+#displayCaptcha {
+border-style:solid;
+border-width:1px;
+margin-left:10px;
+}
+
+#dial-controls {
+margin-top: 5px;
+}
+
+#dtmf-pad input{
+  float:left;
+  width: 25px;
+  margin: 2px;
+}
+
+#dtmf-pad br{
+  clear:both;
+}
+
