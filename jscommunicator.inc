@@ -127,5 +127,3 @@
         <input type="button" value="Full screen" id="video-control-fullscreen" disabled/>
     </div>
 </div>
-</div>
-
