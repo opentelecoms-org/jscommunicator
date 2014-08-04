@@ -33,6 +33,7 @@
 #network-controls #jsc-login .jsc-login-label {
   float: left;
   width: 200px;
+  height:23px;
 }
 
 #network-controls #ws {
@@ -120,4 +121,13 @@ margin-top: 5px;
 #dtmf-pad br{
   clear:both;
 }
+
+#jsc-login-option input{
+  float:left;
+}
+
+#jsc-login-option {
+  clear:both;
+}
+
 
