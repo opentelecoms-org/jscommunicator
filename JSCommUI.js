@@ -238,6 +238,7 @@ window.JSCommUI = {
 
   ready_to_dial : function() {
     $("#dial-controls").show();
+    $("#dialing-actions input:button").hide();
     if(JSCommSettings.dialing.audio_dialing) {
       $("#dialing-actions #call-audio").show();
     }
