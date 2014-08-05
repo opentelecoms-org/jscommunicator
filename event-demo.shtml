@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="style-event-demo.css" type="text/css"/>
 <script src="jquery.js" type="text/javascript"></script>
 <script src="Arbiter.js" type="text/javascript"></script>
+<script src="jquery.i18n.properties.js" type="text/javascript"></script>
 <!-- For resizeable webcam display -->
 <script src="jquery-ui-1.10.4.js"></script>
 <link rel="stylesheet" href="jquery-ui-1.10.4.css" type="text/css"/>
