@@ -112,7 +112,7 @@ window.JSCommUI = {
       JSCommManager.hangup_call();
     });
 
-    $("#dtmf-pad input:button").click(function() {
+    $("#dtmf-pad input:button").mousedown(function() {
       var dtmf_char = $(this).val();
       JSCommUI.send_dtmf(dtmf_char);
     });
@@ -154,12 +154,22 @@ window.JSCommUI = {
   },
 
   show_login : function() {
-    $("#jsc-login-display-name-field").val(JSCommManager.credentials.display_name);
-    if(JSCommManager.credentials.uri.length > 4) {
-       // strip off the "sip:" URI prefix, it is not shown in the login form
-       $("#jsc-login-sip-address-field").val(JSCommManager.credentials.uri.substr(4));
+    $("#dial-controls").hide();
+    $("#jsc-logout-button").hide();
+    if(JSCommManager.credentials.uri) {
+        $("#jsc-login-display-name-field").val(JSCommManager.credentials.display_name);
+        if(JSCommManager.credentials.uri.length > 4) {
+            // strip off the "sip:" URI prefix, it is not shown in the login form
+            $("#jsc-login-sip-address-field").val(JSCommManager.credentials.uri.substr(4));
+        }
     }
-    $("#jsc-login-password-field").val(JSCommManager.credentials.sip_auth_password);
+    else {
+        if(this.get_cookie("displayName")) {
+            $("#jsc-login-display-name-field").val(this.get_cookie("displayName"));
+            $("#jsc-login-sip-address-field").val(this.get_cookie("sipAddress"));
+        }
+    }
+    $("#jsc-login-password-field").val("");
     $("#jsc-login").show();
     $("#jsc-login-button").click(JSCommUI.do_login);
     $("#tabs").hide();
@@ -173,6 +183,19 @@ window.JSCommUI = {
     JSCommManager.credentials.uri = 'sip:' + $("#jsc-login-sip-address-field").val();
     JSCommManager.credentials.sip_auth_password = $("#jsc-login-password-field").val();
     JSCommManager.start_ua();
+    $("#jsc-logout-button").show();
+    $("#jsc-logout-button").click(JSCommUI.do_logout);
+    if($("#rememberMe").prop("checked")) {
+        document.cookie = "displayName=".concat($("#jsc-login-display-name-field").val());
+        document.cookie = "sipAddress=".concat($("#jsc-login-sip-address-field").val());
+    }
+  },
+ 
+  do_logout : function() {
+    $("#reg").hide();
+    // Clear any error from earlier failure:
+    $("#network-controls #error #reg-fail").hide();
+    JSCommUI.show_login();
   },
 
   show_error : function(err_name) {
@@ -215,12 +238,13 @@ window.JSCommUI = {
 
   ready_to_dial : function() {
     $("#dial-controls").show();
-    $("#dialing-actions input:button").hide();
     if(JSCommSettings.dialing.audio_dialing) {
       $("#dialing-actions #call-audio").show();
     }
     if(JSCommSettings.dialing.video_dialing) {
       $("#dialing-actions #call-video").show();
+      $("#video-session").draggable();
+      $("#video-session").resizable();
     }
     $("#dest #address").focus();
   },
@@ -259,7 +283,9 @@ window.JSCommUI = {
   },
 
   incoming_dtmf : function(dtmf_char) {
-    this.play_dtmf_sound(dtmf_char);
+    if(JSCommSettings.session.dialpad_tone) {
+        this.play_dtmf_sound(dtmf_char);
+    }
   },
 
   link_up : function() {
@@ -347,6 +373,9 @@ window.JSCommUI = {
     soundPlayer.pause();
     $("#session-controls").hide();
     $('#video-session').hide();
+    if(JSCommSettings.dialing.clear_dialbox) {
+        $("#address").val("");
+    }
     JSCommUI.ready_to_dial();
   },
 
@@ -409,8 +438,10 @@ window.JSCommUI = {
     console.log("DTMF press: " + dtmf_char);
     JSCommManager.send_dtmf(dtmf_char);
     // Local sound effects:
-    this.play_dtmf_sound(dtmf_char);
-  },
+    if(JSCommSettings.session.dialpad_tone) {
+        this.play_dtmf_sound(dtmf_char);
+    }
+ },
 
   self_view : function(see_self) {
     $("#video-controls input.self:button").hide();
@@ -604,6 +635,16 @@ window.JSCommUI = {
 
  
  /* End of adapted from try.jssip.net */
+
+  get_cookie : function(cookiename) {
+     var name = cookiename + "=";
+     var allcookies = document.cookie.split(';');
+     for(var i=0; i<allcookies.length; i++) {
+     var c = allcookies[i].trim();
+         if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+     }
+     return "";
+  }
 
 };
 

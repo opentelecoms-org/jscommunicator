@@ -18,6 +18,10 @@
 
 <div id="encapsulate">
 <div id="network-controls">
+    <input type="button" value="Logout" id="jsc-logout-button"/>
+    <select id="lang_selection" display="none">
+        <option value="lang_selection">Select a language</option>
+    </select>
 
     <div id="error">
         <span id="js">ERROR: This service requires JavaScript.  Please enable JavaScript in your web browser settings.</span>
@@ -41,6 +45,9 @@
         <div id="jsc-login-password">
             <span class="jsc-login-label">Password</span>
             <input type="password" id="jsc-login-password-field"/>
+        </div>
+        <div id="jsc-login-option">
+            <input type="checkbox" id="rememberMe">Remember me<br>
         </div>
         <input type="button" value="Login" id="jsc-login-button"/>
     </div>
@@ -120,6 +127,7 @@
             </div>
         </div>
     </div>
+
     <div class="tab-page" id="tab-2">
 		<div id="new-chat">
 			<input type="button" value="Start chat" id="start-chat"/>
@@ -136,7 +144,5 @@
     <div id="video-controls">
         <input type="button" value="Self view" id="video-control-self-view" class="self"/>
         <input type="button" value="Self hide" id="video-control-self-hide" class="self"/>
-        <input type="button" value="Full screen" id="video-control-fullscreen" disabled/>
     </div>
 </div>
-

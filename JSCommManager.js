@@ -77,7 +77,7 @@ window.JSCommManager = {
         use_video: with_video
       };
     }
-
+ 
     // Copy the credentials from the settings into a local object
     // for use with the login form
     this.credentials = JSCommSettings.user;
@@ -459,15 +459,14 @@ window.JSCommManager = {
   },
  
   sendMessage : function(uri, text) {
-	try {
-		this.phone.sendMessage(uri,text);
-	} catch(e){
-		throw(e);
-		return;
-	}
+  	try {
+  		this.phone.sendMessage(uri,text);
+  	} catch(e){
+  		throw(e);
+  		return;
+  	}
   }
- 
+
 };
 
 })(jQuery);
-

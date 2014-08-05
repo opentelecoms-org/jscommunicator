@@ -33,6 +33,7 @@
 #network-controls #jsc-login .jsc-login-label {
   float: left;
   width: 200px;
+  height:23px;
 }
 
 #network-controls #ws {
@@ -48,10 +49,6 @@
 }
 
 #network-controls #reg #de-reg-button {
-  display: none;
-}
-
-#dest {
   display: none;
 }
 
@@ -90,6 +87,29 @@
   background-color: #111;
   border-top: 2px solid #CCC;
   border-right: 2px solid #CCC;
+  padding: 5px;
+}
+
+#encapsulate {
+width: 400px;
+}
+
+#encapsulate input{
+float:right;
+}
+
+#jsc-login-button,#ws,#dialing-actions,#captcha {
+clear:both;
+}
+
+#displayCaptcha {
+border-style:solid;
+border-width:1px;
+margin-left:10px;
+}
+
+#dial-controls {
+margin-top: 5px;
 }
 #encapsulate {
   width: 360px;
@@ -276,5 +296,24 @@
   margin-bottom: 5px;
 }
 
+
+
+#dtmf-pad input{
+  float:left;
+  width: 25px;
+  margin: 2px;
+}
+
+#dtmf-pad br{
+  clear:both;
+}
+
+#jsc-login-option input{
+  float:left;
+}
+
+#jsc-login-option {
+  clear:both;
+}
 
 
