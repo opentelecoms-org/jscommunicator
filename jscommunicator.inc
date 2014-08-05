@@ -70,58 +70,76 @@
     </div>
 </div>
 
-<div id="dial-controls" class="ws-connected">
-    <div id="dest">
-        <span id="dest_label">Destination:</span>
-        <input type="text" id="address"/>
-    </div>
-    <div id="dialing-actions">
-        <input type="button" value="Call (audio only)" id="call-audio"/>
-        <input type="button" value="Call (audio and video)" id="call-video"/>
-    </div>
-</div>
+<div id="tabs">
+    <ul>
+        <li class="tab-label" id="label-1" value="#tab-1">Call</li>
+        <li class="tab-label" id="label-2" value="#tab-2">Chat</li>
+    </ul>
+    <div class="tab-page" id="tab-1">
+        <div id="dial-controls" class="ws-connected">
+			<div id="dest">
+				<span id="dest_label">Destination:</span>
+				<input type="text" id="address"/>
+			</div>
+            <div id="dialing-actions">
+                <input type="button" value="Call (audio only)" id="call-audio"/>
+                <input type="button" value="Call (audio and video)" id="call-video"/>
+            </div>
+        </div>
 
-<div id="session-controls" class="ws-connected in-call">
-    <div id="state">
-        <span class="session-outgoing">Dialing...</span>
-        <span class="session-incoming">Incoming call</span>
-        <span class="session-accepted">Answering, connectivity checks in progress...</span>
-        <span class="session-active">Call connected</span>
+        <div id="session-controls" class="ws-connected in-call">
+            <div id="state">
+                <span class="session-outgoing">Dialing...</span>
+                <span class="session-incoming">Incoming call</span>
+                <span class="session-accepted">Answering, connectivity checks in progress...</span>
+                <span class="session-active">Call connected</span>
+            </div>
+            <div id="peer"></div>
+            <div id="session-actions">
+                <input type="button" value="Cancel" id="session-cancel" class="session-outgoing"/>
+                <input type="button" value="Reject" id="session-reject" class="session-incoming"/>
+                <input type="button" value="Answer" id="session-answer" class="session-incoming"/>
+                <input type="button" value="Answer (with video)" id="session-answer-video" class="session-incoming"/>
+                <input type="button" value="Hold" id="session-hold" class="session-active" disabled/>
+                <input type="button" value="Hangup" id="session-hangup" class="session-active"/>
+            </div>
+            <div id="dtmf-pad" class="session-active">
+                <input type="button" value="1" class="dtmf-number"/>
+                <input type="button" value="2" class="dtmf-number"/>
+                <input type="button" value="3" class="dtmf-number"/>
+                <input type="button" value="A" class="dtmf-symbol"/>
+                <br/>
+                <input type="button" value="4" class="dtmf-number"/>
+                <input type="button" value="5" class="dtmf-number"/>
+                <input type="button" value="6" class="dtmf-number"/>
+                <input type="button" value="B" class="dtmf-symbol"/>
+                <br/>
+                <input type="button" value="7" class="dtmf-number"/>
+                <input type="button" value="8" class="dtmf-number"/>
+                <input type="button" value="9" class="dtmf-number"/>
+                <input type="button" value="C" class="dtmf-symbol"/>
+                <br/>
+                <input type="button" value="*" class="dtmf-symbol"/>
+                <input type="button" value="0" class="dtmf-number"/>
+                <input type="button" value="#" class="dtmf-symbol"/>
+                <input type="button" value="D" class="dtmf-symbol"/>
+                <br/>
+            </div>
+        </div>
     </div>
-    <div id="peer"></div>
-    <div id="session-actions">
-        <input type="button" value="Cancel" id="session-cancel" class="session-outgoing"/>
-        <input type="button" value="Reject" id="session-reject" class="session-incoming"/>
-        <input type="button" value="Answer" id="session-answer" class="session-incoming"/>
-        <input type="button" value="Answer (with video)" id="session-answer-video" class="session-incoming"/>
-        <input type="button" value="Hold" id="session-hold" class="session-active" disabled/>
-        <input type="button" value="Hangup" id="session-hangup" class="session-active"/>
-    </div>
-    <div id="dtmf-pad" class="session-active">
-        <input type="button" value="1" class="dtmf-number"/>
-        <input type="button" value="2" class="dtmf-number"/>
-        <input type="button" value="3" class="dtmf-number"/>
-        <input type="button" value="A" class="dtmf-symbol"/>
-        <br/>
-        <input type="button" value="4" class="dtmf-number"/>
-        <input type="button" value="5" class="dtmf-number"/>
-        <input type="button" value="6" class="dtmf-number"/>
-        <input type="button" value="B" class="dtmf-symbol"/>
-        <br/>
-        <input type="button" value="7" class="dtmf-number"/>
-        <input type="button" value="8" class="dtmf-number"/>
-        <input type="button" value="9" class="dtmf-number"/>
-        <input type="button" value="C" class="dtmf-symbol"/>
-        <br/>
-        <input type="button" value="*" class="dtmf-symbol"/>
-        <input type="button" value="0" class="dtmf-number"/>
-        <input type="button" value="#" class="dtmf-symbol"/>
-        <input type="button" value="D" class="dtmf-symbol"/>
-        <br/>
+
+    <div class="tab-page" id="tab-2">
+		<div id="new-chat">
+			<input type="button" value="Start chat" id="start-chat"/>
+			<input type="text" id="chat-address" placeholder="Enter contact"/>
+			<div id="chat-error">
+				<span id="no-contact">Please enter a contact.</span>
+			</div>
+		</div>
     </div>
 </div>
-<div id="video-session" class="ws-connected in-call">
-    <video id="remoteView" autoplay controls style="height: 100%; width: 100%;"></video>
+ <div id="video-session" class="ws-connected in-call">
+    <video id="remoteView" autoplay></video>
     <video id="selfView" autoplay muted></video>
     <div id="video-controls">
         <input type="button" value="Self view" id="video-control-self-view" class="self"/>

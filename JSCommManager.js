@@ -325,8 +325,10 @@ window.JSCommManager = {
 
     var peer_uri = call.remote_identity.uri.toAor().toString();
     var peer_name = '<' + peer_uri + '>';
+	var peer_display = '';
     if(call.remote_identity.display_name) {
        peer_name = call.remote_identity.display_name + ' ' + peer_name;
+	   peer_display = call.remote_identity.display_name;
     }
     console.log("peer_name: " + peer_name);
 
@@ -346,7 +348,7 @@ window.JSCommManager = {
                      (call.getRemoteStreams().length > 0 &&
                       call.getRemoteStreams()[0].getVideoTracks().length > 0);
 
-    JSCommUI.session_start(status, peer_name, with_video);
+    JSCommUI.session_start(status, peer_name, peer_display, peer_uri, with_video);
 
     call.on('progress', function(e) {
       var status;
@@ -392,8 +394,7 @@ window.JSCommManager = {
   },
 
   message_received : function(e) {
-    // FIXME: implement MESSAGE support
-    console.log("received message, not handled: " + e);
+	JSCommUI.new_message(e);
   },
 
   /*
@@ -456,6 +457,15 @@ window.JSCommManager = {
     }
     this.current_session.sendDTMF(dtmf_char, dtmf_opts);
   },
+ 
+  sendMessage : function(uri, text) {
+  	try {
+  		this.phone.sendMessage(uri,text);
+  	} catch(e){
+  		throw(e);
+  		return;
+  	}
+  }
 
 };
 
