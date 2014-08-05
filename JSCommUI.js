@@ -135,9 +135,12 @@ window.JSCommUI = {
 	});
  
 	$("#start-chat").click(function () {
-		var address = $("#chat-address").val();
-		if(address!="Enter contact" && address) {
-			JSCommUI.createChatSession(address, "");
+		var destination = $("#chat-address").val();
+		if(destination!="Enter contact" && destination) {
+      session = JSCommUI.getSession(destination, destination);
+      if (!session) {
+        JSCommUI.createChatSession(destination, destination);
+      }
 		} else {
 			$("#chat-error #no-contact").show();
 		}
@@ -299,7 +302,10 @@ window.JSCommUI = {
     $("#session-controls #peer").empty();
     $("#session-controls #peer").text(peer_name);
     $("#session-actions input:button").hide();
-    JSCommUI.createChatSession(peer_display, peer_uri);
+    session = JSCommUI.getSession(peer_uri, peer_display);
+    if (!session) {
+      JSCommUI.createChatSession(peer_display, peer_uri);
+    }
     if(status == 'incoming') {
       $("#session-controls #state .session-incoming").show();
       $("#session-actions input.session-incoming:button").show();
