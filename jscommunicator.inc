@@ -72,8 +72,8 @@
 
 <div id="tabs">
     <ul>
-        <li class="tab-label" id="label-1" value="#tab-1">Call</li>
-        <li class="tab-label" id="label-2" value="#tab-2">Chat</li>
+        <li class="tab-label" id="label-1">Call</li>
+        <li class="tab-label" id="label-2">Chat</li>
     </ul>
     <div class="tab-page" id="tab-1">
         <div id="dial-controls" class="ws-connected">

@@ -488,14 +488,18 @@ window.JSCommUI = {
 	$("#chat-error #no-contact").hide();
     $("#tab-1").show();
     $(".tab-label").click(function() {
-       JSCommUI.change_tab($(this).attr("id"),$(this).attr("value"));
+       JSCommUI.change_tab($(this).attr("id"));
     });
   },
  
-  change_tab : function(label, tab) {
+  change_tab : function(label) {
     $(".tab-page").hide();
     $(".active-tab").removeClass("active-tab");
-    $(".tab-page").hide();
+    var number = label.substring(5);
+    var tab = "#tab";
+    alert(number);
+    tab = tab.concat(number);
+    alert(tab);
     $(tab).show();
     label = '#' + label;
     $(label).addClass("active-tab");
