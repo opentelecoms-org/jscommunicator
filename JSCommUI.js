@@ -261,19 +261,13 @@ window.JSCommUI = {
   },
 
   registration_down : function() {
-     // Clear any error from earlier failure:
-    $("#network-controls #error #reg-fail").hide();
     $("#network-controls #reg .up").hide();
-
     $("#network-controls #reg .down").show();
     $("#network-controls #reg").show();
   },
 
   registration_failure : function() {
-     // Clear any error from earlier failure:
-    $("#network-controls #error #down").hide();
     $("#network-controls #reg .up").hide();
-
     $("#network-controls #error #reg-fail").show();
     $("#network-controls #reg").show();
   },
