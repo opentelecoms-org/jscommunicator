@@ -148,15 +148,15 @@ window.i18n = {
 				.empty()
 				.append(jQuery.i18n.prop(msg14));
 
-			jQuery('#reg reg-label')
+			jQuery('#reg #reg-label')
 				.empty()
 				.append(jQuery.i18n.prop(msg15));
 
-			jQuery('#reg .state #up')
+			jQuery('#reg #state .up')
 				.empty()
 				.append(jQuery.i18n.prop(msg16));
 
-			jQuery('#reg .state #down')
+			jQuery('#reg #state .down')
 				.empty()
 				.append(jQuery.i18n.prop(msg17));
 
