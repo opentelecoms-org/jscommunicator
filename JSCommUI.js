@@ -497,9 +497,7 @@ window.JSCommUI = {
     $(".active-tab").removeClass("active-tab");
     var number = label.substring(5);
     var tab = "#tab";
-    alert(number);
     tab = tab.concat(number);
-    alert(tab);
     $(tab).show();
     label = '#' + label;
     $(label).addClass("active-tab");
