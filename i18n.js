@@ -148,7 +148,7 @@ window.i18n = {
 				.empty()
 				.append(jQuery.i18n.prop(msg14));
 
-			jQuery('#reg')
+			jQuery('#reg reg-label')
 				.empty()
 				.append(jQuery.i18n.prop(msg15));
 
