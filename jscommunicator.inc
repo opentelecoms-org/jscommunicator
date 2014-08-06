@@ -54,7 +54,7 @@
         <span id="disconnected" class="state ws-disconnected">Disconnected</span>
     </div>
 
-    <div id="reg" class="ws-connected up down"><span>SIP registration:</span>
+    <div id="reg" class="ws-connected up down"><span id="reg-label">SIP registration:</span>
         <span id="state">
             <span class="up">Registered</span>
             <span class="down">Not Registered</span>
