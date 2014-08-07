@@ -301,9 +301,9 @@ window.JSCommUI = {
   registration_up : function() {
     // Clear any error from earlier failure:
     $("#network-controls #error #reg-fail").hide();
-
     $("#network-controls #reg .down").hide();
-    $("#network-controls #reg .up").show();
+
+    $("#network-controls #reg #state .up").show();
     $("#network-controls #reg").show();
   },
 
@@ -314,6 +314,7 @@ window.JSCommUI = {
   },
 
   registration_failure : function() {
+    $("#network-controls #reg .up").hide();
     $("#network-controls #error #reg-fail").show();
     $("#network-controls #reg").show();
   },
