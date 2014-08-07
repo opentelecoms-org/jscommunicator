@@ -62,12 +62,11 @@ window.JSCommManager = {
       Arbiter.publish("jsc/unavailable/config", null, {async:true});
       return false;
     }
- 
+
     /* load internationalization options */
     if(JSCommSettings.i18n.translate) {
         i18n.initI18n(JSCommSettings.i18n.show_menu);
     }
-
 
     this.currentURL = parseUri(window.location.toString());
     if(this.currentURL.queryKey["dial"]) {
@@ -83,7 +82,7 @@ window.JSCommManager = {
         use_video: with_video
       };
     }
-
+ 
     // Copy the credentials from the settings into a local object
     // for use with the login form
     this.credentials = JSCommSettings.user;
@@ -331,8 +330,10 @@ window.JSCommManager = {
 
     var peer_uri = call.remote_identity.uri.toAor().toString();
     var peer_name = '<' + peer_uri + '>';
+	  var peer_display = '';
     if(call.remote_identity.display_name) {
-       peer_name = call.remote_identity.display_name + ' ' + peer_name;
+      peer_name = call.remote_identity.display_name + ' ' + peer_name;
+	    peer_display = call.remote_identity.display_name;
     }
     console.log("peer_name: " + peer_name);
 
@@ -352,7 +353,7 @@ window.JSCommManager = {
                      (call.getRemoteStreams().length > 0 &&
                       call.getRemoteStreams()[0].getVideoTracks().length > 0);
 
-    JSCommUI.session_start(status, peer_name, with_video);
+    JSCommUI.session_start(status, peer_name, peer_display, peer_uri, with_video);
 
     call.on('progress', function(e) {
       var status;
@@ -398,8 +399,7 @@ window.JSCommManager = {
   },
 
   message_received : function(e) {
-    // FIXME: implement MESSAGE support
-    console.log("received message, not handled: " + e);
+	JSCommUI.new_message(e);
   },
 
   /*
@@ -461,9 +461,17 @@ window.JSCommManager = {
       duration : duration
     }
     this.current_session.sendDTMF(dtmf_char, dtmf_opts);
+  },
+ 
+  sendMessage : function(uri, text) {
+  	try {
+  		this.phone.sendMessage(uri,text);
+  	} catch(e){
+  		throw(e);
+  		return;
+  	}
   }
 
 };
 
 })(jQuery);
-

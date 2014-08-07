@@ -21,7 +21,7 @@
 (function($) {
 
 window.JSCommUI = {
-
+ 
   soundPlayer : null,
 
   soundLoop : null,
@@ -112,7 +112,7 @@ window.JSCommUI = {
       JSCommManager.hangup_call();
     });
 
-    $("#dtmf-pad input:button").click(function() {
+    $("#dtmf-pad input:button").mousedown(function() {
       var dtmf_char = $(this).val();
       JSCommUI.send_dtmf(dtmf_char);
     });
@@ -128,7 +128,24 @@ window.JSCommUI = {
     $("#video-control-fullscreen").click(function() {
       JSCommUI.video_fullscreen(true);
     });
-
+ 
+	$("#chat-address").focus(function() {
+		$(this).val("");
+		$("#chat-error #no-contact").hide();
+	});
+ 
+	$("#start-chat").click(function () {
+		var destination = $("#chat-address").val();
+		if(destination!="Enter contact" && destination) {
+      session = JSCommUI.getSession(destination, destination);
+      if (!session) {
+        JSCommUI.createChatSession(destination, destination);
+      }
+		} else {
+			$("#chat-error #no-contact").show();
+		}
+	});
+ 
     if(!JSCommSettings.registration.user_control) {
       $("#reg #control").hide();
     }
@@ -137,22 +154,48 @@ window.JSCommUI = {
   },
 
   show_login : function() {
-    $("#jsc-login-display-name-field").val(JSCommManager.credentials.display_name);
-    if(JSCommManager.credentials.uri.length > 4) {
-       // strip off the "sip:" URI prefix, it is not shown in the login form
-       $("#jsc-login-sip-address-field").val(JSCommManager.credentials.uri.substr(4));
+    $("#dial-controls").hide();
+    $("#jsc-logout-button").hide();
+    if(JSCommManager.credentials.uri) {
+        $("#jsc-login-display-name-field").val(JSCommManager.credentials.display_name);
+        if(JSCommManager.credentials.uri.length > 4) {
+            // strip off the "sip:" URI prefix, it is not shown in the login form
+            $("#jsc-login-sip-address-field").val(JSCommManager.credentials.uri.substr(4));
+        }
     }
-    $("#jsc-login-password-field").val(JSCommManager.credentials.sip_auth_password);
+    else {
+        if(this.get_cookie("displayName")) {
+            $("#jsc-login-display-name-field").val(this.get_cookie("displayName"));
+            $("#jsc-login-sip-address-field").val(this.get_cookie("sipAddress"));
+        }
+    }
+    $("#jsc-login-password-field").val("");
     $("#jsc-login").show();
     $("#jsc-login-button").click(JSCommUI.do_login);
+    $("#tabs").hide();
   },
 
   do_login : function() {
     $("#jsc-login").hide();
+    $("#tabs").show();
+    JSCommUI.load_tabs();
     JSCommManager.credentials.display_name = $("#jsc-login-display-name-field").val();
     JSCommManager.credentials.uri = 'sip:' + $("#jsc-login-sip-address-field").val();
     JSCommManager.credentials.sip_auth_password = $("#jsc-login-password-field").val();
     JSCommManager.start_ua();
+    $("#jsc-logout-button").show();
+    $("#jsc-logout-button").click(JSCommUI.do_logout);
+    if($("#rememberMe").prop("checked")) {
+        document.cookie = "displayName=".concat($("#jsc-login-display-name-field").val());
+        document.cookie = "sipAddress=".concat($("#jsc-login-sip-address-field").val());
+    }
+  },
+ 
+  do_logout : function() {
+    $("#reg").hide();
+    // Clear any error from earlier failure:
+    $("#network-controls #error #reg-fail").hide();
+    JSCommUI.show_login();
   },
 
   show_error : function(err_name) {
@@ -188,8 +231,8 @@ window.JSCommUI = {
       $("#network-controls #ws #disconnected").show();
       //keep phone visible but disabled.
       $("#dial-controls").show();
+	  $("#dialing-actions :input").prop('disabled', true);
       $("#dest :input").prop('disabled', true);
-      $("#dialing-actions :input").prop('disabled', true);
     }
   },
 
@@ -201,6 +244,8 @@ window.JSCommUI = {
     }
     if(JSCommSettings.dialing.video_dialing) {
       $("#dialing-actions #call-video").show();
+      $("#video-session").draggable();
+      $("#video-session").resizable();
     }
     $("#dest #address").focus();
   },
@@ -239,7 +284,9 @@ window.JSCommUI = {
   },
 
   incoming_dtmf : function(dtmf_char) {
-    this.play_dtmf_sound(dtmf_char);
+    if(JSCommSettings.session.dialpad_tone) {
+        this.play_dtmf_sound(dtmf_char);
+    }
   },
 
   link_up : function() {
@@ -276,13 +323,17 @@ window.JSCommUI = {
     soundPlayer.play();
   },
 
-  session_start : function(status, peer_name, with_video) {
+  session_start : function(status, peer_name, peer_display, peer_uri, with_video) {
     $("#dial-controls").hide();
     $(".session-active").hide();
     $("#session-controls #state span").hide();
     $("#session-controls #peer").empty();
     $("#session-controls #peer").text(peer_name);
     $("#session-actions input:button").hide();
+    session = JSCommUI.getSession(peer_uri, peer_display);
+    if (!session) {
+      JSCommUI.createChatSession(peer_display, peer_uri);
+    }
     if(status == 'incoming') {
       $("#session-controls #state .session-incoming").show();
       $("#session-actions input.session-incoming:button").show();
@@ -324,6 +375,9 @@ window.JSCommUI = {
     soundPlayer.pause();
     $("#session-controls").hide();
     $('#video-session').hide();
+    if(JSCommSettings.dialing.clear_dialbox) {
+        $("#address").val("");
+    }
     JSCommUI.ready_to_dial();
   },
 
@@ -386,8 +440,10 @@ window.JSCommUI = {
     console.log("DTMF press: " + dtmf_char);
     JSCommManager.send_dtmf(dtmf_char);
     // Local sound effects:
-    this.play_dtmf_sound(dtmf_char);
-  },
+    if(JSCommSettings.session.dialpad_tone) {
+        this.play_dtmf_sound(dtmf_char);
+    }
+ },
 
   self_view : function(see_self) {
     $("#video-controls input.self:button").hide();
@@ -425,6 +481,173 @@ window.JSCommUI = {
     console.log("Playing sound: " + sound_name);
     soundPlayer.setAttribute("src", this.get_sound_url('dialpad/' + sound_name));
     soundPlayer.play();
+  },
+ 
+  load_tabs : function() {
+    $("#label-1").addClass("active-tab");
+    $(".tab-page").hide();
+	$("#chat-error #no-contact").hide();
+    $("#tab-1").show();
+    $(".tab-label").click(function() {
+       JSCommUI.change_tab($(this).attr("id"));
+    });
+  },
+ 
+  change_tab : function(label) {
+    $(".tab-page").hide();
+    $(".active-tab").removeClass("active-tab");
+    var number = label.substring(5);
+    var tab = "#tab";
+    tab = tab.concat(number);
+    $(tab).show();
+    label = '#' + label;
+    $(label).addClass("active-tab");
+    $("#chat-address").val("Enter contact");
+  },
+ 
+ //adapted from try.jssip.net
+ createChatSession : function(display_name, uri) {
+	 var session_div = $('\
+	 <div class="chatSession"> \
+		<div class="close">x</div> \
+	    <div class="peer"> \
+			<span class="display-name">' + display_name + '</span> \
+			<span>&lt;</span><span class="uri">' + uri + '</span><span>&gt;</span> \
+		</div> \
+		<div class="chat"> \
+			<div class="chatting"></div> \
+			<input class="inactive" type="text" name="chat-input" value="type to chat..."/>\
+			<div class="iscomposing"></div> \
+		</div> \
+	 </div> \
+	 ');
+	 if(!uri) {
+		uri = display_name;
+	 }
+	 $("#tab-2").append(session_div);
+	 
+	 var session = $("#tab-2 .chatSession").filter(":last");
+	 var close = $(session).find("> .close");
+	 var chat_input = $(session).find(".chat > input[type='text']");
+	
+	 close.click(function() {
+		JSCommUI.removeSession(session);
+	 });
+	 
+	 chat_input.focus(function(e) {
+		if ($(this).hasClass("inactive")) {
+			$(this).val("");
+			$(this).removeClass("inactive");
+		}
+	 });
+	 
+	 chat_input.blur(function(e) {
+		if ($(this).val() == "") {
+			$(this).addClass("inactive");
+			$(this).val("type to chat...");
+		}
+	 });
+	
+	
+	 chat_input.keydown(function(e) {
+		// Ignore TAB and ESC.
+		if (e.which == 9 || e.which == 27) {
+			return false;
+		}
+		// Enter pressed? so send chat.
+		else if (e.which == 13 && $(this).val() != "") {
+			var text = chat_input.val();
+			JSCommUI.addChatMessage(session, "me", text);
+			chat_input.val("");
+			JSCommUI.jssipMessage(uri, text);
+		}
+		// Ignore Enter when empty input.
+		else if (e.which == 13 && $(this).val() == "") {
+			return false;
+		}
+		// NOTE is-composing stuff.
+		// Ignore "windows" and ALT keys, DEL, mayusculas and 0 (que no sÃ© quÃ© es).
+		else if (e.which == 18 || e.which == 91 || e.which == 46 || e.which == 16 || e.which == 0)
+			return false;
+	 });
+	 
+	 $(session).fadeIn(100);
+	 
+	 // Return the jQuery object for the created session div.
+	 return session;
+ },
+ 
+ removeSession : function(session) {
+	$(session).remove();
+ },
+ 
+ addChatMessage : function(session, who, text) {
+	 var chatting = $(session).find(".chat > .chatting");
+	 $(chatting).removeClass("inactive");
+	 if (who != "error") {
+		var who_text = ( who == "me" ? "me" : $(session).find(".peer > .display-name").text() );
+		var message_div = $('<p class="' + who + '"><b>' + who_text + '</b>: ' + text + '</p>');
+	 }
+	 // ERROR sending the MESSAGE.
+	 else {
+		var message_div = $('<p class="error"><i>message failed: ' + text + '</i>');
+	 }
+	 $(chatting).append(message_div);
+	 $(chatting).scrollTop(1e4);
+ },
+ 
+ /*
+  * JsSIP.UA new_message event listener
+  */
+ new_message : function(e) {
+	var display_name, text,
+	message = e.data.message,
+	request = e.data.request,
+	uri = request.from.uri;
+	display_name = request.from.display_name || request.from.uri.user;
+	text = request.body;
+	if(e.data.message.direction == 'incoming') {
+		session = JSCommUI.getSession(uri, display_name);
+		if (!session) {
+			session = JSCommUI.createChatSession(display_name, uri);
+		}
+		$(session).find(".peer > .display-name").text(display_name);
+		$(session).find(".peer > .uri").text(uri);
+		JSCommUI.addChatMessage(session, "peer", text);
+		$(session).find(".chat input").focus();
+	}
+ },
+ 
+ getSession : function(uri, display_name) {
+	var session_found = null;
+	$("#tab-2 > .chatSession").each(function(i, session) {
+		if (uri == $(this).find(".peer > .uri").text()) {
+			session_found = session;
+		} else if (display_name == $(this).find(".peer > .display-name").text()) {
+			session_found = session;
+		}
+	});
+	if (session_found)
+		return session_found;
+	else
+		return false;
+ },
+ 
+ jssipMessage : function(uri, text) {
+	 JSCommManager.sendMessage(uri, text);
+ },
+
+ 
+ /* End of adapted from try.jssip.net */
+
+  get_cookie : function(cookiename) {
+     var name = cookiename + "=";
+     var allcookies = document.cookie.split(';');
+     for(var i=0; i<allcookies.length; i++) {
+     var c = allcookies[i].trim();
+         if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+     }
+     return "";
   }
 
 };

@@ -6,6 +6,9 @@
 <script src="jquery.js" type="text/javascript"></script>
 <script src="Arbiter.js" type="text/javascript"></script>
 <script src="jquery.i18n.properties.js" type="text/javascript"></script>
+<!-- For resizeable webcam display -->
+<script src="jquery-ui.js"></script>
+<link rel="stylesheet" href="jquery-ui.css" type="text/css"/>
 <!--<script src="http://jssip.net/download/jssip-devel.js"></script>-->
 <script src="JsSIP.js" type="text/javascript"></script>
 <script src="init.js" type="text/javascript"></script>
