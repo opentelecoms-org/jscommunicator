@@ -18,16 +18,17 @@
  through which recipients can access the Corresponding Source.
 ****************************************************************************/
 
-#network-controls #error span {
+#error span {
   display: none;
 }
 
-#network-controls #error #js {
+#error #js {
   display: inline;
 }
 
 #network-controls #jsc-login {
   display: none;
+  clear:both;
 }
 
 #network-controls #jsc-login .jsc-login-label {
@@ -36,24 +37,24 @@
   height:23px;
 }
 
-#network-controls #ws {
+#encapsulate #ws {
   display: none;
 }
 
-#network-controls #ws .state {
+#encapsulate #reg {
   display: none;
 }
 
-#network-controls #reg {
+#encapsulate #reg #de-reg-button {
   display: none;
 }
 
-#network-controls #reg #de-reg-button {
-  display: none;
+#dest {
+  float:left;
 }
 
-#dial-controls {
-  display: none;
+#dialing-actions {
+  float:right;
 }
 
 #session-controls {
@@ -90,15 +91,11 @@
   padding: 5px;
 }
 
-#encapsulate {
-width: 400px;
-}
-
-#encapsulate input{
+#network-controls input{
 float:right;
 }
 
-#jsc-login-button,#ws,#dialing-actions,#captcha {
+#jsc-login-button,#ws{
 clear:both;
 }
 
@@ -108,30 +105,10 @@ border-width:1px;
 margin-left:10px;
 }
 
-#dial-controls {
-margin-top: 5px;
-}
-#encapsulate {
-  width: 360px;
-}
-
-#encapsulate input{
- float:right;
-}
-
-#jsc-login-button,#ws,#dialing-actions {
- clear:both;
-}
-
-#dial-controls {
- margin-top: 5px;
-}
-
-#tabs {
-  background-color:#F0F0F0;
-  border-radius: 4px;
+#chat {
   padding: 5px;
-  margin-top: 3px;
+  clear:both;
+  min-height: 70px;
 }
 
 .tab-label{
@@ -144,7 +121,7 @@ margin-top: 5px;
   border-top-right-radius:2px;
 }
 
-#tabs > ul {
+#chat > ul {
   padding: 0px;
   margin: 0px;
 }
@@ -158,25 +135,7 @@ margin-top: 5px;
 
 .active-tab {
   background-color:#FFF;
-}
-
-#session-actions {
-  clear:both;
-}
-
-#dtmf-pad {
-  clear:both;
-}     
-
-#dtmf-pad > input {
- float: none;
- width: 25px;
-}
-
-
-#dialing-actions {
-  float:left;
-}
+}   
 
 /* adapted from try.jssip.net */
 
@@ -278,22 +237,15 @@ margin-top: 5px;
 
 #new-chat {
   display: block;
-  float: left;
   margin-top: 3px;
-  margin-bottom: 10px;
 }
 
-#new-chat input[type="text"] {
-  font-family: sans-serif;
-}
-
-#chat-error {
-  height: 24px;
-  color: red;
+.no-contact {
+  color: darkred;
   font-style: italic;
   font-family: sans-serif;
   font-size: 12px;
-  margin-bottom: 5px;
+  display: block;
 }
 
 
@@ -314,6 +266,130 @@ margin-top: 5px;
 
 #jsc-login-option {
   clear:both;
+}
+
+#encapsulate {
+  width: 360px;
+  background-color: #888;
+  border-radius: 6px;
+  padding: 3px;
+}
+
+#call {
+  height: 64px;
+  padding: 5px;
+  clear:both;
+}
+
+#error span, #ws span, #reg span {
+  color: white;
+  font: -webkit-small-control;
+  letter-spacing: normal;
+}
+
+#header {
+  height: 100px;
+}
+
+#header h1 {
+  color: white;
+  font-family: Arial;
+  font-weight: normal;
+  margin:0;
+  display: block;
+}
+
+#jsc-logout-button {
+  float:right;
+  color: #FFF;
+  margin: 3px;
+}
+
+#welcome {
+  display: block;
+}
+
+h3 {
+  color: white;
+  font-family: Arial;
+  font-weight: normal;
+  margin:0;
+  margin-top: 5px;
+}
+
+hr {
+  margin:6px;
+  margin-bottom: 0px;
+}
+
+span {
+  font-family: Arial;
+  font-size: 14px;
+  color:#FFF;
+  margin-left: 3px;
+}
+
+#peer {
+  font-family: Arial;
+  font-size: 14px;
+  color:#FFF;
+  margin-left: 3px;
+  display: inline;
+  float: left;
+}
+
+.red-phone {
+  -webkit-transform:rotate(135deg);
+  -moz-transform:rotate(135deg);
+  -o-transform:rotate(135deg);
+  color:red;
+}
+
+#lang_selection {
+  float:left;
+  display: inline;
+  background-color: #888;
+  color:#FFF;
+  margin-bottom: 8px;
+}
+
+#jsc-login-option {
+  float:right;
+}
+
+#communicator {
+  border-radius: 6px;
+  border-style: solid;
+  clear: both;
+  border-color: #FFF;
+  border-width: 1px;
+}
+
+#dtmf-pad {
+  z-index: 200;
+  position: absolute;
+  top: 72px;
+  left: 242px;
+  border: 1px solid #FFF;
+  opacity: 0.8;
+  display: none;
+}
+
+#session-actions {
+  float: right;
+}
+
+#start-chat {
+  float:right;
+}
+
+#chat-error, #call-info {
+  height: 12px;
+  margin-bottom: 4px;
+}
+
+#chat-error span, #call-info span{
+  display: none;
 }
 
 
