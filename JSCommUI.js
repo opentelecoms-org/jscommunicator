@@ -187,18 +187,15 @@ window.JSCommUI = {
   do_login : function() {
     $("#jsc-login").hide();
     $("#communicator").show();
-    JSCommUI.load_tabs();
     JSCommManager.credentials.display_name = $("#jsc-login-display-name-field").val();
     JSCommManager.credentials.uri = 'sip:' + $("#jsc-login-sip-address-field").val();
     JSCommManager.credentials.sip_auth_password = $("#jsc-login-password-field").val();
     if(JSCommManager.credentials.display_name) {
-      $("#welcome").text("Wecome, " + JSCommManager.credentials.display_name);
+      var name = JSCommManager.credentials.display_name
     } else {
-      //Create a name from SIP uri for welcome message
-      var full_uri = JSCommManager.credentials.uri.split(/:|@/);
-      var name = full_uri[1];
-      $("#welcome").text("Wecome, " + name);
+      name = JSCommUI.get_name(JSCommManager.credentials.uri);
     }
+    $("#welcome").text("Wecome, " + name);
     JSCommManager.start_ua();
     $("#jsc-logout-button").show();
     $("#jsc-logout-button").click(JSCommUI.do_logout);
@@ -505,33 +502,32 @@ window.JSCommUI = {
     soundPlayer.play();
   },
  
-  load_tabs : function() {
-    $("#label-1").addClass("active-tab");
-    $(".tab-page").hide();
-    $("#tab-1").show();
-    $(".tab-label").click(function() {
-       JSCommUI.change_tab($(this).attr("id"),$(this).attr("value"));
-    });
-  },
- 
-  change_tab : function(label, tab) {
-    $(".tab-page").hide();
+  change_tab : function(label) {
+    $(".chatSession").hide();
     $(".active-tab").removeClass("active-tab");
-    $(".tab-page").hide();
+    var number = label.substring(5);
+    var tab = "#tab";
+    tab = tab.concat(number);
     $(tab).show();
     label = '#' + label;
     $(label).addClass("active-tab");
-    $("#chat-address").val("Enter contact");
   },
  
  //adapted from try.jssip.net
  createChatSession : function(display_name, uri) {
+   if(!display_name) {
+    display_name = JSCommUI.get_name(uri);
+   }
+   $(".chatSession").hide();
+   $(".tab-label").removeClass("active-tab");
+   var number = $(".chatSession").length;
+   var label_div = $('<li class="tab-label active-tab" id="label-'+number+'">'+ display_name +'</li>');
 	 var session_div = $('\
-	 <div class="chatSession"> \
-		<div class="close">x</div> \
+	 <div class="chatSession" id="tab-'+ number +'"> \
+		<div class="close" value="'+ number +'">x</div> \
 	    <div class="peer"> \
-			<span class="display-name">' + display_name + '</span> \
-			<span>&lt;</span><span class="uri">' + uri + '</span><span>&gt;</span> \
+      <span class="display-name">' + display_name + '</span> \
+			<span>&lt;</span><span class="uri" style="font-weight:bold;">' + uri + '</span><span>&gt;</span> \
 		</div> \
 		<div class="chat"> \
 			<div class="chatting"></div> \
@@ -540,17 +536,26 @@ window.JSCommUI = {
 		</div> \
 	 </div> \
 	 ');
-	 if(!uri) {
-		uri = display_name;
-	 }
-	 $("#tab-2").append(session_div);
-	 
-	 var session = $("#tab-2 .chatSession").filter(":last");
+   $("#tab-labels").append(label_div);
+	 $("#tab-pages").append(session_div);
+   var label = "#label-".concat(number);
+   var tab = "#tab-".concat(number);
+   var session = $("#tab-pages .chatSession").filter(":last");
 	 var close = $(session).find("> .close");
 	 var chat_input = $(session).find(".chat > input[type='text']");
+
+   $(label).click(function() {
+       JSCommUI.change_tab($(this).attr('id'));
+    });
 	
 	 close.click(function() {
-		JSCommUI.removeSession(session);
+		$(tab).remove();
+    $(label).remove();
+    var number = $(".chatSession").length;
+    if(number > 0) {
+      var existingLabel = $("#tab-labels .tab-label").filter(":last");
+      JSCommUI.change_tab($(existingLabel).attr("id"));
+    }
 	 });
 	 
 	 chat_input.focus(function(e) {
@@ -595,11 +600,7 @@ window.JSCommUI = {
 	 // Return the jQuery object for the created session div.
 	 return session;
  },
- 
- removeSession : function(session) {
-	$(session).remove();
- },
- 
+
  addChatMessage : function(session, who, text) {
 	 var chatting = $(session).find(".chat > .chatting");
 	 $(chatting).removeClass("inactive");
@@ -639,7 +640,8 @@ window.JSCommUI = {
  
  getSession : function(uri, display_name) {
 	var session_found = null;
-	$("#tab-2 > .chatSession").each(function(i, session) {
+	$("#tab-pages > .chatSession").each(function(i, session) {
+    alert(uri);
 		if (uri == $(this).find(".peer > .uri").text()) {
 			session_found = session;
 		} else if (display_name == $(this).find(".peer > .display-name").text()) {
@@ -667,6 +669,13 @@ window.JSCommUI = {
          if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
      }
      return "";
+  },
+
+  //Create a name from SIP uri - useful when display name is absent
+  get_name : function(uri) {
+      var full_uri = uri.split(/:|@/);
+      var name = full_uri[1];
+      return name;
   }
 
 };

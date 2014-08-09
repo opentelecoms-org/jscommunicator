@@ -92,7 +92,7 @@
                         <i class="fa fa-phone fa-lg red-phone" style="color:red;"></i>
                     </button>
                     <button id="dtmf-button" class="session-active">
-                        <i class="fa fa-th fa-lg" style="color:blue;"></i>
+                        <i class="fa fa-th fa-lg" style="color:darkblue;"></i>
                     </button>
                 </div>
             </div>
@@ -128,19 +128,12 @@
             <div id="new-chat">
                 <span id="dest_label">Destination:</span>
                 <input type="text" id="chat-address" placeholder="Enter contact"/>
-                <button id="start-chat"><i class="fa fa-comments fa-lg" style="color:blue;"></i></button>
+                <button id="start-chat"><i class="fa fa-comments fa-lg" style="color:darkblue;"></i></button>
             </div>
-            <!--<ul id="tab-labels">
-                <li class="tab-label" id="label-1" value="#tab-1">Call</li>
-                <li class="tab-label" id="label-2" value="#tab-2">Chat</li>
+            <ul id="tab-labels">
             </ul>
             <div id="tab-pages">
-                <div class="tab-page" id="tab-1">
-                    <p>etc</p>
-                </div>
-                <div class="tab-page" id="tab-2">
-                </div>
-            </div>-->
+            </div>
         </div>
     </div>
 
