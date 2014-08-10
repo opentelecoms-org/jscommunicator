@@ -172,13 +172,13 @@ window.i18n = {
 				.empty()
 				.append(jQuery.i18n.prop(msg18));
 
-			jQuery('#dial-controls #dialing-actions #call-audio')
+			/*jQuery('#dial-controls #dialing-actions #call-audio')
 				.empty()
 				.append(jQuery.i18n.prop(msg26));
 			
 			jQuery('#dial-controls #dialing-actions #call-video')
 				.empty()
-				.append(jQuery.i18n.prop(msg29));
+				.append(jQuery.i18n.prop(msg29));*/
 
 
 			jQuery('#session-controls #state .session-outgoing')
@@ -193,7 +193,7 @@ window.i18n = {
 			jQuery('#session-controls #state .session-active')
 				.val(jQuery.i18n.prop(msg22)).change();
 
-			jQuery('#peer #session-actions #session-cancel')
+			/*jQuery('#peer #session-actions #session-cancel')
 				.val(jQuery.i18n.prop(msg23)).change();
 
 			jQuery('#peer #session-actions #session-reject')
@@ -206,7 +206,7 @@ window.i18n = {
 				.val(jQuery.i18n.prop(msg31)).change();
 
 			jQuery('#peer #session-actions #session-hangup')
-				.val(jQuery.i18n.prop(msg32)).change();
+				.val(jQuery.i18n.prop(msg32)).change();*/
 
 			jQuery('#video-session #video-controls #video-control-self-view')
 				.val(jQuery.i18n.prop(msg33)).change();
