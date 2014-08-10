@@ -58,6 +58,7 @@
                     <span class="session-active">Call connected</span>
                 </div>
             </div>
+
             <div id="dial-controls" class="ws-connected">
                 <div id="dest">
                     <span id="dest_label">Destination:</span>

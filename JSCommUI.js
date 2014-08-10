@@ -256,6 +256,7 @@ window.JSCommUI = {
 
   ready_to_dial : function() {
     $("#dial-controls").show();
+    $("#dialing-actions input:button").hide();
     if(JSCommSettings.dialing.audio_dialing) {
       $("#dialing-actions #call-audio").show();
     }
@@ -333,6 +334,7 @@ window.JSCommUI = {
   },
 
   registration_failure : function() {
+    $("#reg .up").hide();
     $("#error #reg-fail").show();
     $("#encapsulate #reg").show();
   },
@@ -502,6 +504,16 @@ window.JSCommUI = {
     soundPlayer.play();
   },
  
+  load_tabs : function() {
+    $("#label-1").addClass("active-tab");
+    $(".tab-page").hide();
+	$("#chat-error #no-contact").hide();
+    $("#tab-1").show();
+    $(".tab-label").click(function() {
+       JSCommUI.change_tab($(this).attr("id"));
+    });
+  },
+ 
   change_tab : function(label) {
     $(".chatSession").hide();
     $(".active-tab").removeClass("active-tab");
@@ -639,9 +651,11 @@ window.JSCommUI = {
  },
  
  getSession : function(uri, display_name) {
+  if(!display_name) {
+    display_name = JSCommUI.get_name(uri);
+   }
 	var session_found = null;
 	$("#tab-pages > .chatSession").each(function(i, session) {
-    alert(uri);
 		if (uri == $(this).find(".peer > .uri").text()) {
 			session_found = session;
 		} else if (display_name == $(this).find(".peer > .display-name").text()) {

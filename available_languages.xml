@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+<language>
+    <display>English</display>
+    <code>en</code>
+</language>
+<language>
+    <display>Français</display>
+    <code>fr</code>
+</language>
+<language>
+    <display>Español</display>
+    <code>es</code>
+</language>
+<language>
+    <display>Português</display>
+    <code>pt</code>
+</language>
+
+<language>
+    <display>עברית</display>
+    <code>he</code>
+</language>
+</list>

@@ -63,6 +63,11 @@ window.JSCommManager = {
       return false;
     }
 
+    /* load internationalization options */
+    if(JSCommSettings.i18n.translate) {
+        i18n.initI18n(JSCommSettings.i18n.show_menu);
+    }
+
     this.currentURL = parseUri(window.location.toString());
     if(this.currentURL.queryKey["dial"]) {
       var with_video = JSCommSettings.dialing.auto_dial.use_video;
@@ -325,10 +330,10 @@ window.JSCommManager = {
 
     var peer_uri = call.remote_identity.uri.toAor().toString();
     var peer_name = '<' + peer_uri + '>';
-	var peer_display = '';
+	  var peer_display = '';
     if(call.remote_identity.display_name) {
-       peer_name = call.remote_identity.display_name + ' ' + peer_name;
-	   peer_display = call.remote_identity.display_name;
+      peer_name = call.remote_identity.display_name + ' ' + peer_name;
+	    peer_display = call.remote_identity.display_name;
     }
     console.log("peer_name: " + peer_name);
 
