@@ -19,8 +19,6 @@
 </head>
 <body>
 
-<h1>JSCommunicator</h1>
-
 <!-- To make this work, you must
        a) have mod_include enabled in Apache (on Debian: a2enmod include)
        b) have a Directory element in your server configuration

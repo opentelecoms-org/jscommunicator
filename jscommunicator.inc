@@ -17,93 +17,87 @@
      HTML body where you include the HTML fragement from this file -->
 
 <div id="encapsulate">
-<div id="network-controls">
-    <input type="button" value="Logout" id="jsc-logout-button"/>
-    <select id="lang_selection" display="none">
-        <option value="lang_selection">Select a language</option>
-    </select>
-
-    <div id="error">
-        <span id="js">ERROR: This service requires JavaScript.  Please enable JavaScript in your web browser settings.</span>
-        <span id="webrtc">ERROR: This service requires WebRTC.  Please try <a href="http://www.mozilla.org">Mozilla Firefox</a> or <a href="http://www.google.com/chrome">Google Chrome</a>, using the latest version is strongly recommended.</span>
-        <span id="no-config">ERROR: JsCommunicator configuration not found</span>
-        <span id="ua-init-failure">ERROR: Failed to initialize user agent</span>
-        <span id="reg-fail">ERROR: SIP Registration failure</span>
-        <span id="call-attempt-failed">ERROR: failed to start call, check that microphone/webcam are connected, check browser security settings, peer may not support compatible codecs</span>
-        <span id="dynamic"></span>
+    <div id="header">
+        <select id="lang_selection">
+            <option value="lang_selection">Select a language</option>
+        </select>
+        <i class="fa fa-power-off" id="jsc-logout-button"></i>
+        <h1>JSCommunicator</h1>
+        <span id="welcome"></span>
     </div>
-
-    <div id="jsc-login">
-        <div id="jsc-login-display-name">
-            <span class="jsc-login-label">Display name (may be empty)</span>
-            <input type="text" id="jsc-login-display-name-field"/>
-        </div>
-        <div id="jsc-login-sip-uri">
-            <span class="jsc-login-label">SIP address</span>
-            <input type="text" id="jsc-login-sip-address-field"/>
-        </div>
-        <div id="jsc-login-password">
-            <span class="jsc-login-label">Password</span>
-            <input type="password" id="jsc-login-password-field"/>
-        </div>
-        <div id="jsc-login-option">
-            <input type="checkbox" id="rememberMe">Remember me<br>
-        </div>
-        <input type="button" value="Login" id="jsc-login-button"/>
-    </div>
-
-    <div id="ws">
-        <span id="ws_link">WebSocket link:</span>
-        <span id="connected" class="state ws-connected">Connected</span>
-        <span id="disconnected" class="state ws-disconnected">Disconnected</span>
-    </div>
-
-    <div id="reg" class="ws-connected up down"><span id="reg-label">SIP registration:</span>
-        <span id="state">
-            <span class="up">Registered</span>
-            <span class="down">Not Registered</span>
-        </span>
-        <span id="control">
-            <input type="button" value="Register" id="reg-button" class="down"/>
-            <input type="button" value="De-Register" id="de-reg-button" class="up"/>
-        </span>
-    </div>
-</div>
-
-<div id="tabs">
-    <ul>
-        <li class="tab-label" id="label-1">Call</li>
-        <li class="tab-label" id="label-2">Chat</li>
-    </ul>
-    <div class="tab-page" id="tab-1">
-        <div id="dial-controls" class="ws-connected">
-			<div id="dest">
-				<span id="dest_label">Destination:</span>
-				<input type="text" id="address"/>
-			</div>
-            <div id="dialing-actions">
-                <input type="button" value="Call (audio only)" id="call-audio"/>
-                <input type="button" value="Call (audio and video)" id="call-video"/>
+    <div id="network-controls">
+        <div id="jsc-login">
+            <div id="jsc-login-display-name">
+                <span class="jsc-login-label">Display name (may be empty)</span>
+                <input type="text" id="jsc-login-display-name-field"/>
             </div>
+            <div id="jsc-login-sip-uri">
+                <span class="jsc-login-label">SIP address</span>
+                <input type="text" id="jsc-login-sip-address-field"/>
+            </div>
+            <div id="jsc-login-password">
+                <span class="jsc-login-label">Password</span>
+                <input type="password" id="jsc-login-password-field"/>
+            </div>
+            <div id="jsc-login-option">
+                <input type="checkbox" id="rememberMe"><span>Remember me</span><br>
+            </div>
+            <input type="button" value="Login" id="jsc-login-button"/>
         </div>
+    </div>
 
-        <div id="session-controls" class="ws-connected in-call">
-            <div id="state">
-                <span class="session-outgoing">Dialing...</span>
-                <span class="session-incoming">Incoming call</span>
-                <span class="session-accepted">Answering, connectivity checks in progress...</span>
-                <span class="session-active">Call connected</span>
+    <div id="communicator">
+        <div id="call">
+            <h3>Call</h3>
+            <div id="call-info">
+                <span class="no-contact" id="call-contact-error">Please enter a contact.</span>
+                <div id="state">
+                    <span class="session-outgoing">Dialing...</span>
+                    <span class="session-incoming">Incoming call</span>
+                    <span class="session-accepted">Answering, connectivity checks in progress...</span>
+                    <span class="session-active">Call connected</span>
+                </div>
             </div>
-            <div id="peer"></div>
-            <div id="session-actions">
-                <input type="button" value="Cancel" id="session-cancel" class="session-outgoing"/>
-                <input type="button" value="Reject" id="session-reject" class="session-incoming"/>
-                <input type="button" value="Answer" id="session-answer" class="session-incoming"/>
-                <input type="button" value="Answer (with video)" id="session-answer-video" class="session-incoming"/>
-                <input type="button" value="Hold" id="session-hold" class="session-active" disabled/>
-                <input type="button" value="Hangup" id="session-hangup" class="session-active"/>
+
+            <div id="dial-controls" class="ws-connected">
+                <div id="dest">
+                    <span id="dest_label">Destination:</span>
+                    <input type="text" id="address" placeholder="Enter contact"/>
+                </div>
+                <div id="dialing-actions">
+                    <button id="call-audio"><i class="fa fa-phone fa-lg" style="color:green;"></i></button>
+                    <button id="call-video"><i class="fa fa-video-camera fa-lg" style="color:green;"></i></button>
+                </div>
             </div>
-            <div id="dtmf-pad" class="session-active">
+
+            <div id="session-controls" class="ws-connected in-call">
+                <div id="peer"></div>
+                <div id="session-actions">
+                    <button value="Cancel" id="session-cancel" class="session-outgoing">
+                        <i class="fa fa-phone fa-lg red-phone" ></i>
+                    </button>
+                    <button value="Reject" id="session-reject" class="session-incoming">
+                        <i class="fa fa-phone fa-lg red-phone" style="color:red;"></i>
+                    </button>
+                    <button value="Answer" id="session-answer" class="session-incoming">
+                        <i class="fa fa-phone fa-lg" style="color:green;"></i>
+                    </button>
+                    <button value="Answer (with video)" id="session-answer-video" class="session-incoming">
+                        <i class="fa fa-video-camera fa-lg" style="color:green;"></i>
+                    </button>
+                    <!-- Not implemented yet?
+                    <button value="Hold" id="session-hold" class="session-active" disabled>
+                        <i class="fa fa-pause fa-lg" style="color:red;"></i>
+                    </button>-->
+                    <button value="Hangup" id="session-hangup" class="session-active">
+                        <i class="fa fa-phone fa-lg red-phone" style="color:red;"></i>
+                    </button>
+                    <button id="dtmf-button" class="session-active">
+                        <i class="fa fa-th fa-lg" style="color:darkblue;"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="dtmf-pad">
                 <input type="button" value="1" class="dtmf-number"/>
                 <input type="button" value="2" class="dtmf-number"/>
                 <input type="button" value="3" class="dtmf-number"/>
@@ -126,23 +120,58 @@
                 <br/>
             </div>
         </div>
+        <hr>
+        <div id="chat">
+            <h3>Chat</h3>
+            <div id="chat-error">
+                <span class="no-contact" id="chat-contact-error">Please enter a contact.</span>
+            </div>
+            <div id="new-chat">
+                <span id="dest_label">Destination:</span>
+                <input type="text" id="chat-address" placeholder="Enter contact"/>
+                <button id="start-chat"><i class="fa fa-comments fa-lg" style="color:darkblue;"></i></button>
+            </div>
+            <ul id="tab-labels">
+            </ul>
+            <div id="tab-pages">
+            </div>
+        </div>
     </div>
 
-    <div class="tab-page" id="tab-2">
-		<div id="new-chat">
-			<input type="button" value="Start chat" id="start-chat"/>
-			<input type="text" id="chat-address" placeholder="Enter contact"/>
-			<div id="chat-error">
-				<span id="no-contact">Please enter a contact.</span>
-			</div>
-		</div>
+    <div id="error">
+        <span id="js">ERROR: This service requires JavaScript.  Please enable JavaScript in your web browser settings.</span>
+        <span id="webrtc">ERROR: This service requires WebRTC.  Please try <a href="http://www.mozilla.org">Mozilla Firefox</a> or <a href="http://www.google.com/chrome">Google Chrome</a>, using the latest version is strongly recommended.</span>
+        <span id="no-config">ERROR: JsCommunicator configuration not found</span>
+        <span id="ua-init-failure">ERROR: Failed to initialize user agent</span>
+        <span id="reg-fail">ERROR: SIP Registration failure</span>
+        <span id="call-attempt-failed">ERROR: failed to start call, check that microphone/webcam are connected, check browser security settings, peer may not support compatible codecs</span>
+        <span id="dynamic"></span>
     </div>
+    <div id="ws">
+        <span id="ws_link">WebSocket link:</span>
+        <span id="connected" class="state ws-connected">Connected</span>
+        <span id="disconnected" class="state ws-disconnected">Disconnected</span>
+    </div>
+    <div id="reg" class="ws-connected up down"><span>SIP registration:</span>
+        <span id="state">
+            <span class="up">Registered</span>
+            <span class="down">Not Registered</span>
+        </span>
+        <span id="control">
+            <input type="button" value="Register" id="reg-button" class="down"/>
+            <input type="button" value="De-Register" id="de-reg-button" class="up"/>
+        </span>
+    </div>
+    
 </div>
- <div id="video-session" class="ws-connected in-call">
-    <video id="remoteView" autoplay controls style="height: 100%; width: 100%;"></video>
+    
+<div id="video-session" class="ws-connected in-call">
+    <video id="remoteView" autoplay></video>
     <video id="selfView" autoplay muted></video>
     <div id="video-controls">
         <input type="button" value="Self view" id="video-control-self-view" class="self"/>
         <input type="button" value="Self hide" id="video-control-self-hide" class="self"/>
     </div>
 </div>
+
+

@@ -21,10 +21,11 @@
 <script src="webrtc-check.js" type="text/javascript"></script>
 <script src="jssip-helper.js" type="text/javascript"></script>
 <script src="parseuri.js" type="text/javascript"></script>
+
+<!--font-->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-
-<h1>JSCommunicator</h1>
 
 <!-- To make this work, you must
        a) have mod_include enabled in Apache (on Debian: a2enmod include)
