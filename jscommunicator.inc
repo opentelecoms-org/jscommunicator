@@ -19,7 +19,7 @@
 <div id="encapsulate">
     <div id="header">
         <select id="lang_selection">
-            <option value="lang_selection">Select a language</option>
+            <option value="en">Select a language</option>
         </select>
         <i class="fa fa-power-off" id="jsc-logout-button"></i>
         <h1>JSCommunicator</h1>
@@ -40,7 +40,7 @@
                 <input type="password" id="jsc-login-password-field"/>
             </div>
             <div id="jsc-login-option">
-                <input type="checkbox" id="rememberMe"><span>Remember me</span><br>
+                <input type="checkbox" id="rememberMe"><span id="remember-label">Remember me</span><br>
             </div>
             <input type="button" value="Login" id="jsc-login-button"/>
         </div>

@@ -165,6 +165,7 @@ window.JSCommUI = {
 
   show_login : function() {
     $("#welcome").hide();
+    $("#welcome_name").hide();
     $("#communicator").hide();
     $("#jsc-logout-button").hide();
     if(JSCommManager.credentials.uri) {
@@ -197,6 +198,7 @@ window.JSCommUI = {
       name = JSCommUI.get_name(JSCommManager.credentials.uri);
     }
     $("#welcome").show();
+    $("#welcome_name").show();
     $("#welcome_name").text(" " + name);
     JSCommManager.start_ua();
     $("#jsc-logout-button").show();
@@ -209,8 +211,6 @@ window.JSCommUI = {
  
   do_logout : function() {
     $("#reg").hide();
-    //Clear welcome message
-    $("#welcome").empty();
     // Clear any error from earlier failure:
     $("#error #reg-fail").hide();
     JSCommUI.show_login();
@@ -545,13 +545,14 @@ window.JSCommUI = {
 		</div> \
 		<div class="chat"> \
 			<div class="chatting"></div> \
-			<input class="inactive" type="text" name="chat-input" value="type to chat..."/>\
+			<input class="inactive" type="text" name="chat-input" placeholder="type to chat..."/>\
 			<div class="iscomposing"></div> \
 		</div> \
 	 </div> \
 	 ');
    $("#tab-labels").append(label_div);
 	 $("#tab-pages").append(session_div);
+   i18n.loadBundles($("#lang_selection").val());
    var label = "#label-".concat(number);
    var tab = "#tab-".concat(number);
    var session = $("#tab-pages .chatSession").filter(":last");
@@ -618,8 +619,9 @@ window.JSCommUI = {
  addChatMessage : function(session, who, text) {
 	 var chatting = $(session).find(".chat > .chatting");
 	 $(chatting).removeClass("inactive");
+   name = JSCommUI.get_name(JSCommManager.credentials.uri);
 	 if (who != "error") {
-		var who_text = ( who == "me" ? "me" : $(session).find(".peer > .display-name").text() );
+		var who_text = ( who == "me" ? name : $(session).find(".peer > .display-name").text() );
 		var message_div = $('<p class="' + who + '"><b>' + who_text + '</b>: ' + text + '</p>');
 	 }
 	 // ERROR sending the MESSAGE.

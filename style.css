@@ -349,6 +349,7 @@ span {
   clear: both;
   border-color: #FFF;
   border-width: 1px;
+  padding-bottom: 1px;
   overflow: hidden;
 }
 

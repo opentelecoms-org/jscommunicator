@@ -95,12 +95,13 @@ window.i18n = {
 				var msg36 = 'welcome';
 				var msg37 = 'call';
 				var msg38 = 'chat';
-				var msg40 = 'enter_contact';
-				var msg41 = 'type_to_chat';
-				var msg42 = 'start_chat';
-				var msg43 = 'me';
-				var msg44 = 'logout';
-				var msg45 = 'no_contact';
+				var msg39 = 'enter_contact';
+				var msg40 = 'type_to_chat';
+				var msg41 = 'start_chat';
+				var msg42 = 'me';
+				var msg43 = 'logout';
+				var msg44 = 'no_contact';
+				var msg45 = 'remember_me';
             
 			jQuery('#error #js')
 				.empty()
@@ -224,8 +225,23 @@ window.i18n = {
 
 			jQuery('#welcome').text(jQuery.i18n.prop(msg36));		
 
-			jQuery('#call h3')
-				.val(jQuery.i18n.prop(msg37)).change();
+			jQuery('#call h3').text(jQuery.i18n.prop(msg37));
+
+			jQuery('#chat h3').text(jQuery.i18n.prop(msg38));
+
+			jQuery('#address').attr("placeholder", jQuery.i18n.prop(msg39));
+
+			jQuery('#chat-address').attr("placeholder", jQuery.i18n.prop(msg39));
+
+			jQuery('.inactive').attr("placeholder", jQuery.i18n.prop(msg40));
+
+			jQuery('#start-chat').attr("title", jQuery.i18n.prop(msg41));
+
+			jQuery('#jsc-logout-button').attr("title", jQuery.i18n.prop(msg43));
+
+			jQuery('.no-contact').text(jQuery.i18n.prop(msg44));
+
+			jQuery('#remember-label').text(jQuery.i18n.prop(msg45));
 	
 		}
 };
