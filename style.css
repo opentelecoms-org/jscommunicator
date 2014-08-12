@@ -292,7 +292,7 @@ clear:both;
 }
 
 #welcome {
-  display: block;
+  display: inline;
 }
 
 h3 {
@@ -378,6 +378,7 @@ span {
 #chat-error span, #call-info span{
   display: none;
 }
+
 
 
 

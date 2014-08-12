@@ -23,7 +23,7 @@
         </select>
         <i class="fa fa-power-off" id="jsc-logout-button"></i>
         <h1>JSCommunicator</h1>
-        <span id="welcome"></span>
+        <span id="welcome"></span><span id="welcome_name"></span>
     </div>
     <div id="network-controls">
         <div id="jsc-login">
@@ -127,7 +127,7 @@
                 <span class="no-contact" id="chat-contact-error">Please enter a contact.</span>
             </div>
             <div id="new-chat">
-                <span id="dest_label">Destination:</span>
+                <span id="chat_dest_label">Destination:</span>
                 <input type="text" id="chat-address" placeholder="Enter contact"/>
                 <button id="start-chat"><i class="fa fa-comments fa-lg" style="color:darkblue;"></i></button>
             </div>

@@ -164,6 +164,7 @@ window.JSCommUI = {
   },
 
   show_login : function() {
+    $("#welcome").hide();
     $("#communicator").hide();
     $("#jsc-logout-button").hide();
     if(JSCommManager.credentials.uri) {
@@ -195,7 +196,8 @@ window.JSCommUI = {
     } else {
       name = JSCommUI.get_name(JSCommManager.credentials.uri);
     }
-    $("#welcome").text("Wecome, " + name);
+    $("#welcome").show();
+    $("#welcome_name").text(" " + name);
     JSCommManager.start_ua();
     $("#jsc-logout-button").show();
     $("#jsc-logout-button").click(JSCommUI.do_logout);

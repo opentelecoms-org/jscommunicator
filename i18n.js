@@ -92,6 +92,15 @@ window.i18n = {
 				var msg33 = 'button_video_control_self_view';
 				var msg34 = 'button_video_control_self_hide';
 				var msg35 = 'button_video_control_full_screen';
+				var msg36 = 'welcome';
+				var msg37 = 'call';
+				var msg38 = 'chat';
+				var msg40 = 'enter_contact';
+				var msg41 = 'type_to_chat';
+				var msg42 = 'start_chat';
+				var msg43 = 'me';
+				var msg44 = 'logout';
+				var msg45 = 'no_contact';
             
 			jQuery('#error #js')
 				.empty()
@@ -171,7 +180,7 @@ window.i18n = {
 				.empty()
 				.append(jQuery.i18n.prop(msg18));
 
-			jQuery('#chat_dest_label')
+			jQuery('#chat #new-chat #chat_dest_label')
 				.empty()
 				.append(jQuery.i18n.prop(msg18));
 
@@ -213,7 +222,11 @@ window.i18n = {
 			jQuery('#video-session #video-controls #video-control-fullscreen')
 				.val(jQuery.i18n.prop(msg35)).change();
 
-				
+			jQuery('#welcome').text(jQuery.i18n.prop(msg36));		
+
+			jQuery('#call h3')
+				.val(jQuery.i18n.prop(msg37)).change();
+	
 		}
 };
 })(jQuery);
