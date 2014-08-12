@@ -167,19 +167,17 @@ window.i18n = {
 				.val(jQuery.i18n.prop(msg28)).change();
 
 
-
 			jQuery('#dial-controls #dest #dest_label')
 				.empty()
 				.append(jQuery.i18n.prop(msg18));
 
-			/*jQuery('#dial-controls #dialing-actions #call-audio')
+			jQuery('#chat_dest_label')
 				.empty()
-				.append(jQuery.i18n.prop(msg26));
-			
-			jQuery('#dial-controls #dialing-actions #call-video')
-				.empty()
-				.append(jQuery.i18n.prop(msg29));*/
+				.append(jQuery.i18n.prop(msg18));
 
+			jQuery('#dial-controls #dialing-actions #call-audio').attr("title", jQuery.i18n.prop(msg26));
+			
+			jQuery('#dial-controls #dialing-actions #call-video').attr("title", jQuery.i18n.prop(msg29));
 
 			jQuery('#session-controls #state .session-outgoing')
 				.val(jQuery.i18n.prop(msg19)).change();
@@ -193,20 +191,18 @@ window.i18n = {
 			jQuery('#session-controls #state .session-active')
 				.val(jQuery.i18n.prop(msg22)).change();
 
-			/*jQuery('#peer #session-actions #session-cancel')
-				.val(jQuery.i18n.prop(msg23)).change();
+			jQuery('#session-actions #session-cancel').attr("title", jQuery.i18n.prop(msg23));
 
-			jQuery('#peer #session-actions #session-reject')
-				.val(jQuery.i18n.prop(msg24)).change();
+			jQuery('#session-actions #session-reject').attr("title", jQuery.i18n.prop(msg24));
 
-			jQuery('#peer #session-actions #session-answer')
-				.val(jQuery.i18n.prop(msg25)).change();
+			jQuery('#session-actions #session-answer').attr("title", jQuery.i18n.prop(msg25));
 
-			jQuery('#peer #session-actions #session-hold')
-				.val(jQuery.i18n.prop(msg31)).change();
+			jQuery('#session-actions #session-answer-video').attr("title", jQuery.i18n.prop(msg30));
 
-			jQuery('#peer #session-actions #session-hangup')
-				.val(jQuery.i18n.prop(msg32)).change();*/
+			/*jQuery('#peer #session-actions #session-hold')
+				.val(jQuery.i18n.prop(msg31)).change();*/
+
+			jQuery('#session-actions #session-hangup').attr("title", jQuery.i18n.prop(msg32));
 
 			jQuery('#video-session #video-controls #video-control-self-view')
 				.val(jQuery.i18n.prop(msg33)).change();

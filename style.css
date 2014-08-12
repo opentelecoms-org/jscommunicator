@@ -57,10 +57,6 @@
   float:right;
 }
 
-#dial-controls #call-video {
-  display: none;
-}
-
 #session-controls {
   display: none;
 }
