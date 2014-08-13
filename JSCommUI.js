@@ -525,6 +525,7 @@ window.JSCommUI = {
     $(tab).show();
     label = '#' + label;
     $(label).addClass("active-tab");
+    $(label).css("font-weight", "normal");
   },
  
  //adapted from try.jssip.net
@@ -647,12 +648,36 @@ window.JSCommUI = {
 		if (!session) {
 			session = JSCommUI.createChatSession(display_name, uri);
 		}
+    JSCommUI.message_alert(session);
 		$(session).find(".peer > .display-name").text(display_name);
 		$(session).find(".peer > .uri").text(uri);
 		JSCommUI.addChatMessage(session, "peer", text);
 		$(session).find(".chat input").focus();
 	}
  },
+
+  //flash chat tab when new message arrives
+  message_alert : function(session) {
+    if(JSCommSettings.session.message_tone) {
+      this.play_message_sound();
+    }
+    var number = $(session).attr('id').substring(4);
+    var label = "#label-";
+    label = label.concat(number);
+    if(!$(label).hasClass('active-tab')) {
+      for(i=0;i<3;i++) {
+        $(label).fadeTo('', 0.5).fadeTo('', 1.0);
+      }
+      $(label).css("font-weight", "bold");
+    }
+  },
+
+  play_message_sound : function() {
+    var sound_name = "new_message";
+    console.log("Playing sound: " + sound_name);
+    soundPlayer.setAttribute("src", this.get_sound_url(sound_name));
+    soundPlayer.play();
+  },
  
  getSession : function(uri, display_name) {
   if(!display_name) {
