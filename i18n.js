@@ -92,6 +92,16 @@ window.i18n = {
 				var msg33 = 'button_video_control_self_view';
 				var msg34 = 'button_video_control_self_hide';
 				var msg35 = 'button_video_control_full_screen';
+				var msg36 = 'welcome';
+				var msg37 = 'call';
+				var msg38 = 'chat';
+				var msg39 = 'enter_contact';
+				var msg40 = 'type_to_chat';
+				var msg41 = 'start_chat';
+				var msg42 = 'me';
+				var msg43 = 'logout';
+				var msg44 = 'no_contact';
+				var msg45 = 'remember_me';
             
 			jQuery('#error #js')
 				.empty()
@@ -167,19 +177,17 @@ window.i18n = {
 				.val(jQuery.i18n.prop(msg28)).change();
 
 
-
 			jQuery('#dial-controls #dest #dest_label')
 				.empty()
 				.append(jQuery.i18n.prop(msg18));
 
-			jQuery('#dial-controls #dialing-actions #call-audio')
+			jQuery('#chat #new-chat #chat_dest_label')
 				.empty()
-				.append(jQuery.i18n.prop(msg26));
-			
-			jQuery('#dial-controls #dialing-actions #call-video')
-				.empty()
-				.append(jQuery.i18n.prop(msg29));
+				.append(jQuery.i18n.prop(msg18));
 
+			jQuery('#dial-controls #dialing-actions #call-audio').attr("title", jQuery.i18n.prop(msg26));
+			
+			jQuery('#dial-controls #dialing-actions #call-video').attr("title", jQuery.i18n.prop(msg29));
 
 			jQuery('#session-controls #state .session-outgoing')
 				.val(jQuery.i18n.prop(msg19)).change();
@@ -193,20 +201,18 @@ window.i18n = {
 			jQuery('#session-controls #state .session-active')
 				.val(jQuery.i18n.prop(msg22)).change();
 
-			jQuery('#peer #session-actions #session-cancel')
-				.val(jQuery.i18n.prop(msg23)).change();
+			jQuery('#session-actions #session-cancel').attr("title", jQuery.i18n.prop(msg23));
 
-			jQuery('#peer #session-actions #session-reject')
-				.val(jQuery.i18n.prop(msg24)).change();
+			jQuery('#session-actions #session-reject').attr("title", jQuery.i18n.prop(msg24));
 
-			jQuery('#peer #session-actions #session-answer')
-				.val(jQuery.i18n.prop(msg25)).change();
+			jQuery('#session-actions #session-answer').attr("title", jQuery.i18n.prop(msg25));
 
-			jQuery('#peer #session-actions #session-hold')
-				.val(jQuery.i18n.prop(msg31)).change();
+			jQuery('#session-actions #session-answer-video').attr("title", jQuery.i18n.prop(msg30));
 
-			jQuery('#peer #session-actions #session-hangup')
-				.val(jQuery.i18n.prop(msg32)).change();
+			/*jQuery('#peer #session-actions #session-hold')
+				.val(jQuery.i18n.prop(msg31)).change();*/
+
+			jQuery('#session-actions #session-hangup').attr("title", jQuery.i18n.prop(msg32));
 
 			jQuery('#video-session #video-controls #video-control-self-view')
 				.val(jQuery.i18n.prop(msg33)).change();
@@ -217,7 +223,26 @@ window.i18n = {
 			jQuery('#video-session #video-controls #video-control-fullscreen')
 				.val(jQuery.i18n.prop(msg35)).change();
 
-				
+			jQuery('#welcome').text(jQuery.i18n.prop(msg36));		
+
+			jQuery('#call h3').text(jQuery.i18n.prop(msg37));
+
+			jQuery('#chat h3').text(jQuery.i18n.prop(msg38));
+
+			jQuery('#address').attr("placeholder", jQuery.i18n.prop(msg39));
+
+			jQuery('#chat-address').attr("placeholder", jQuery.i18n.prop(msg39));
+
+			jQuery('.inactive').attr("placeholder", jQuery.i18n.prop(msg40));
+
+			jQuery('#start-chat').attr("title", jQuery.i18n.prop(msg41));
+
+			jQuery('#jsc-logout-button').attr("title", jQuery.i18n.prop(msg43));
+
+			jQuery('.no-contact').text(jQuery.i18n.prop(msg44));
+
+			jQuery('#remember-label').text(jQuery.i18n.prop(msg45));
+	
 		}
 };
 })(jQuery);
