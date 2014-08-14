@@ -1,0 +1,14 @@
+#!/bin/sh
+
+wget http://code.jquery.com/jquery-2.1.1.min.js -O jquery.js
+wget http://jssip.net/download/jssip-0.3.0.min.js -O JsSIP.js
+wget http://arbiterjs.com/Arbiter.js -O Arbiter.js
+wget https://github.com/jquery-i18n-properties/jquery-i18n-properties/blob/master/jquery.i18n.properties.js -O jquery.i18n.properties.js
+
+
+mkdir -p temp
+wget -P temp http://jqueryui.com/resources/download/jquery-ui-1.10.4.zip
+unzip -d temp temp/jquery-ui-1.10.4.zip
+cp temp/jquery-ui-1.10.4/js/jquery-ui-1.10.4.min.js jquery-ui.js 
+cp temp/jquery-ui-1.10.4/css/ui-lightness/jquery-ui-1.10.4.css jquery-ui.css
+rm -r temp

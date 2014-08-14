@@ -1,0 +1,45 @@
+span {
+  color:#FFF;
+ }
+
+ #peer {
+  color:#FFF;
+}
+
+#lang_selection {
+  background-color: #888;
+  color:#FFF;
+}
+
+#communicator {
+  border-radius: 6px;
+  border-style: solid;
+  border-color: #FFF;
+  border-width: 1px;
+}
+
+#dtmf-pad {
+  border: 1px solid #FFF;
+  opacity: 0.8;
+}
+
+#encapsulate {
+  background-color: #888;
+  border-radius: 6px;
+}
+
+#error span, #ws span, #reg span {
+  color: white;
+}
+
+#header h1 {
+  color: white;
+}
+
+#jsc-logout-button {
+  color: #FFF;
+}
+
+h3 {
+  color: white;
+}
