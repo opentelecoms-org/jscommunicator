@@ -17,6 +17,8 @@
 
 <!-- compressed JavaScript source built by make-release script -->
 <script src="JSComm.js" type="text/javascript"></script>
+<!--font-->
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 </head>
 <body>
 
