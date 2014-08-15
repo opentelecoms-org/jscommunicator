@@ -22,7 +22,7 @@
 <!-- The event demo logic -->
 <script src="event-demo.js" type="text/javascript"></script>
 <!--font-->
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 </head>
 <body>
 

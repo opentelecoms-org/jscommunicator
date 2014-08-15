@@ -91,10 +91,10 @@ clear:both;
   display:block;
   float:left;
   background-color:#C1C1C1;
-  border-top-left-radius:2px;
-  border-top-right-radius:2px;
+  border-top-left-radius:4px;
+  border-top-right-radius:4px;
   font: -webkit-small-control;
-  width: 40px;
+  width: 42px;
   overflow: hidden;
 }
 

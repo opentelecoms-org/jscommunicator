@@ -561,12 +561,15 @@ window.JSCommUI = {
  
  //adapted from try.jssip.net
  createChatSession : function(display_name, uri) {
+   var number = $(".chatSession").length;
+   if(number > 5) {
+      return;
+   }
    if(!display_name) {
     display_name = JSCommUI.get_name(uri);
    }
    $(".chatSession").hide();
    $(".tab-label").removeClass("active-tab");
-   var number = $(".chatSession").length;
    var label_div = $('<li class="tab-label active-tab" id="label-'+number+'">'+ display_name +'</li>');
 	 var session_div = $('\
 	 <div class="chatSession" id="tab-'+ number +'"> \
