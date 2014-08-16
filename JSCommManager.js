@@ -238,6 +238,9 @@ window.JSCommManager = {
     });
 
     this.phone.on('newMessage', function(e) {
+      // FIXME: if JSCommSettings.chat.enable == false,
+      // we should rejecting incoming messages and send back
+      // a SIP error code.
       JSCommManager.message_received(e);
     });
 

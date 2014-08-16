@@ -186,6 +186,10 @@ window.JSCommUI = {
 			$("#chat-contact-error").show();
 		}
 	});
+
+    if(!JSCommSettings.chat || !JSCommSettings.chat.enable) {
+      $("#communicator #chat").hide();
+    }
  
     if(!JSCommSettings.registration.user_control) {
       $("#reg #control").text("");
