@@ -220,6 +220,9 @@ window.JSCommUI = {
   do_login : function() {
     $("#jsc-login").hide();
     $("#communicator").show();
+    if(!JSCommSettings.session.enable_chat) {
+      $("#chat").hide();
+    }
     JSCommManager.credentials.display_name = $("#jsc-login-display-name-field").val();
     JSCommManager.credentials.uri = 'sip:' + $("#jsc-login-sip-address-field").val();
     JSCommManager.credentials.sip_auth_password = $("#jsc-login-password-field").val();
@@ -383,9 +386,11 @@ window.JSCommUI = {
     $("#session-controls #peer").empty();
     $("#session-controls #peer").text(peer_name);
     $("#session-actions button").hide();
-    session = JSCommUI.getSession(peer_uri, peer_display);
-    if (!session) {
-      JSCommUI.createChatSession(peer_display, peer_uri);
+    if(JSCommSettings.session.enable_chat) {
+      session = JSCommUI.getSession(peer_uri, peer_display);
+      if (!session) {
+        JSCommUI.createChatSession(peer_display, peer_uri);
+      }   
     }
     if(status == 'incoming') {
       $("#call-info #state .session-incoming").show();
