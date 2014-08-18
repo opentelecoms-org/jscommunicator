@@ -5,12 +5,20 @@
     <code>en</code>
 </language>
 <language>
-    <display>Français</display>
-    <code>fr</code>
+    <display>Čeština</display>
+    <code>cs</code>
+</language>
+<language>
+    <display>Deutsch</display>
+    <code>de</code>
 </language>
 <language>
     <display>Español</display>
     <code>es</code>
+</language>
+<language>
+    <display>Français</display>
+    <code>fr</code>
 </language>
 <language>
     <display>Português</display>
@@ -19,9 +27,5 @@
 <language>
     <display>עברית</display>
     <code>he</code>
-</language>
-<language>
-    <display>Deutsch</display>
-    <code>de</code>
 </language>
 </list>
