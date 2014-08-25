@@ -16,7 +16,7 @@ JSCommSettings = {
   websocket: {
     servers: 'wss://ws1.example.org',
     connection_recovery_min_interval: 2,
-    connection_recovery_max_interval: 30,
+    connection_recovery_max_interval: 30
   },
 
   // User identity
@@ -29,7 +29,7 @@ JSCommSettings = {
     uri: 'sip:bob@example.org',
     sip_auth_user: 'bob',
     sip_auth_password: 'bob',
-    sip_auth_user_full_uri: true,   // Whether to use full URI or just 
+    sip_auth_user_full_uri: true    // Whether to use full URI or just
                                     // the user part to construct the auth user
   },
 
@@ -38,14 +38,14 @@ JSCommSettings = {
     on_startup: true,          // Register when websocket link starts?
     expiry: 3600,              // Registration expiry (seconds)
     user_control: false,        // Show button for user to (de)register
-    server: null,              // Registration server
+    server: null               // Registration server
   },
 
   dialing : {
     auto_dial : {
       default_destination : 'alice',  // A name or full URI
       on_startup: false,           // Whether to wait for user to click dial
-      use_video: true,            // Whether to auto-dial with video
+      use_video: true             // Whether to auto-dial with video
     },
     edit_destination: true,      // Whether the user may edit the destination
     show_destination: true,      // Whether the user can see the destination
@@ -53,11 +53,11 @@ JSCommSettings = {
     video_dialing: true,         // Whether to offer a video call button
     prefer_video: false,         // If user presses Enter to dial, use video?
     no_answer_timeout: 60,       // How long to wait for answer (seconds)
-    clear_dialbox: false,        // Whether to clear dialbox after call/attempted call
+    clear_dialbox: false         // Whether to clear dialbox after call/attempted call
   },
 
   chat : {
-    enable: true,                // Whether to show chat functions
+    enable: true                 // Whether to show chat functions
   },
 
   session : {
@@ -76,12 +76,12 @@ JSCommSettings = {
   i18n : {
     translate: true,     // enables the call to i18n init function from JSCommManager.init()
     show_menu: true,    // show the language chooser menu
-    default_lang: 'en',   // default language to use
+    default_lang: 'en'    // default language to use
   },
 
   extra_headers : [
     // 'X-WS-Session-Extra: some_token=value'
-  ],
+  ]
 
 };
 
