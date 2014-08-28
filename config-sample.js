@@ -61,6 +61,7 @@ JSCommSettings = {
   },
 
   session : {
+    enable_chat: true,           // Whether to enable the IM component in the app
     show_dtmf_pad : true,        // Whether to show a DTMF dialpad during calls
     dtmf_duration : 160,         // Duration (ms) to signal a DTMF press
     dialpad_tone: true,          // Whether to play sound after pressing dialpad button

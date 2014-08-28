@@ -14,7 +14,7 @@
 #network-controls #jsc-login .jsc-login-label {
   float: left;
   width: 230px;
-  height:23px;
+  height:auto;
 }
 
 #encapsulate #ws {
