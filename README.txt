@@ -25,9 +25,25 @@ Only recent versions of the SIP proxies support WebSockets.
 You need to have the following JavaScript libraries available in your
 web server or CMS:
 
+  JsSIP (we currently rely on the code from the develop branch)
+
   jQuery (v1.4 or greater has been tested)
 
+  jQuery UI
+
+  jQuery.i18n.properties
+
   ArbiterJS (v1.0 has been tested)
+
+  Font Awesome (v4.1 or greater has been tested, earlier versions
+    do not work)
+
+All requirements can be easily fetched using either of the following
+methods:
+
+ * on a Debian/Ubuntu system, use the "deb-setup.sh" script
+
+ * on other systems, see the "code_grabber" script
 
 Use cases
 ---------
