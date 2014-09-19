@@ -337,6 +337,8 @@ window.JSCommUI = {
     $("#address").attr('disabled', locked);
     if(display) {
       $("#dest").show();
+    } else {
+      $("#dest").hide();
     }
   },
 

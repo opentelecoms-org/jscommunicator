@@ -271,7 +271,9 @@ window.JSCommManager = {
         this.make_call(default_dest, with_video);
       }
     } else {
-      JSCommUI.set_destination('', false, true);
+      var edit_dest = JSCommSettings.dialing.edit_destination;
+      var show_dest = JSCommSettings.dialing.show_destination;
+      JSCommUI.set_destination('', !edit_dest, show_dest);
     }
   },
 
