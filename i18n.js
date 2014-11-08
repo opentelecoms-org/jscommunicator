@@ -25,14 +25,21 @@ window.i18n = {
       	// load I18N bundles
     initI18n : function(show_menu) {
 
+        url_prefix = '';
+        if(JSCommSettings.webserver) {
+            if(JSCommSettings.webserver.url_prefix) {
+                url_prefix = JSCommSettings.webserver.url_prefix;
+            }
+        }
+
         if(JSCommSettings.i18n.default_lang) {
             try {
-                i18n.loadBundles(JSCommSettings.i18n.default_lang);
+                i18n.loadBundles(url_prefix, JSCommSettings.i18n.default_lang);
             } catch (error) {}
         }
         else {
             try {
-                i18n.loadBundles(jQuery.i18n.browserLang());
+                i18n.loadBundles(url_prefix, jQuery.i18n.browserLang());
             } catch (error) {}
         }
 
@@ -41,7 +48,7 @@ window.i18n = {
           $("#lang_selection").show();
           $.ajax({
              type:"GET",
-             url:"available_languages.xml",
+             url: url_prefix + "available_languages.xml",
              dataType: "xml",
              success: function(xml) {
              $(xml).find("language").each(function() {
@@ -55,7 +62,7 @@ window.i18n = {
             // configure language combo box
             jQuery('#lang_selection').change(function() {
                 var selection = $(this).val();
-                i18n.loadBundles(selection != 'lang_selection' ? selection : null);
+                i18n.loadBundles(url_prefix, selection != 'lang_selection' ? selection : null);
             });
         }
         else {
@@ -64,10 +71,10 @@ window.i18n = {
     },
  
 		
-    loadBundles : function (lang) {
+    loadBundles : function (url_prefix, lang) {
 			jQuery.i18n.properties({
 			    name:'Messages', 
-			    path:'internationalization/', 
+			    path: url_prefix + 'internationalization/',
 			    mode:'both',
 			    language:lang, 
 			    callback: function() {
