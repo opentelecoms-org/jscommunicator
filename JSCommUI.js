@@ -238,7 +238,7 @@ window.JSCommUI = {
     JSCommManager.start_ua();
     $("#jsc-logout-button").show();
     $("#jsc-logout-button").click(JSCommUI.do_logout);
-    if($("#rememberMe").prop("checked")) {
+    if($("#rememberMe").attr("checked")) {
         document.cookie = "displayName=".concat($("#jsc-login-display-name-field").val());
         document.cookie = "sipAddress=".concat($("#jsc-login-sip-address-field").val());
     }
@@ -277,17 +277,17 @@ window.JSCommUI = {
       $(".ws-disconnected").hide();
       $("#encapsulate #ws #connected").show();
       //re-enables phone 
-      $("#dest :input").prop('disabled', false);
-      $("#dialing-actions :input").prop('disabled', false);
-      $("#new-chat :input").prop('disabled', false);
+      $("#dest :input").attr('disabled', false);
+      $("#dialing-actions :input").attr('disabled', false);
+      $("#new-chat :input").attr('disabled', false);
     } else {
       $(".ws-connected").hide();
       $("#encapsulate #ws #disconnected").show();
       //keep phone and chat visible but disabled.
       $("#dial-controls").show();
-	    $("#dialing-actions :input").prop('disabled', true);
-      $("#dest :input").prop('disabled', true);
-      $("#new-chat :input").prop('disabled', true);
+	    $("#dialing-actions :input").attr('disabled', true);
+      $("#dest :input").attr('disabled', true);
+      $("#new-chat :input").attr('disabled', true);
     }
   },
 
