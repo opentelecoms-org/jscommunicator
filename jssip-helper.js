@@ -58,7 +58,8 @@ function getJsSIPSettings(settings) {
     connection_recovery_min_interval: settings.websocket.connection_recovery_min_interval,
     connection_recovery_max_interval: settings.websocket.connection_recovery_max_interval,
     hack_via_tcp: false,
-    hack_ip_in_contact: false
+    hack_ip_in_contact: false,
+    log: { level: "debug" }
   };
 
   return jssip_settings;
