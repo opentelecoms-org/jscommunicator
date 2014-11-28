@@ -107,7 +107,7 @@ window.JSCommManager = {
     // The essential credentials are the SIP URI and a password
     // Leave the password empty ('') if using client certificates
     // and make it null to force the login box to appear.
-    if(this.credentials.uri && this.credentials.sip_auth_password) {
+    if(this.credentials.uri && this.credentials.sip_auth_password!=null) {
       have_credentials = true;
     }
 
