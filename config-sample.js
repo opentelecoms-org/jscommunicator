@@ -90,8 +90,8 @@ JSCommSettings = {
  JSCommunicator
  http://jscommunicator.org
 
- Copyright (C) 2013  Daniel Pocock http://danielpocock.com
- Copyright (C) 2014  Juliana Louback http://julianalouback.com
+ Copyright (C) 2013-2015  Daniel Pocock http://danielpocock.com
+ Copyright (C) 2014       Juliana Louback http://julianalouback.com
 
  The JavaScript code in this page is free software: you can
  redistribute it and/or modify it under the terms of the GNU

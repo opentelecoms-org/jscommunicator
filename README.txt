@@ -93,7 +93,7 @@ License
 JSCommunicator
 http://jscommunicator.org
 
-Copyright (C) 2013-2014  Daniel Pocock http://danielpocock.com
+Copyright (C) 2013-2015  Daniel Pocock http://danielpocock.com
 
 The JavaScript code in this page is free software: you can
 redistribute it and/or modify it under the terms of the GNU
