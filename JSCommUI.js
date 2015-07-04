@@ -451,6 +451,13 @@ window.JSCommUI = {
     }
   },
 
+  session_accepted : function(call, e) {
+    localStream = call.connection.getLocalStreams()[0];
+    var selfView = document.getElementById('selfView');
+    JsSIP.rtcninja.attachMediaStream(selfView, localStream);
+    selfView.volume = 0;
+  },
+
   session_connect : function(call, e) {
     clearInterval(JSCommUI.soundLoop);
     soundPlayer.pause();
@@ -464,25 +471,26 @@ window.JSCommUI = {
     $("#session-actions button").hide();
     $(".session-active").show();
 
-    var local_stream_count = call.getLocalStreams().length;
-    var remote_stream_count = call.getRemoteStreams().length;
+    var conn = call.connection;
+    var local_stream_count = conn.getLocalStreams().length;
+    var remote_stream_count = conn.getRemoteStreams().length;
 
     console.log("local stream count = " + local_stream_count +
                 ", remote stream count = " + remote_stream_count);
 
-    if(local_stream_count > 0) {
-      $('#selfView').attr('src', window.URL.createObjectURL(call.getLocalStreams()[0]));
+    /*if(local_stream_count > 0) {
+      $('#selfView').attr('src', window.URL.createObjectURL(conn.getLocalStreams()[0]));
       $('#selfView').attr('volume', 0);
-    }
+    }*/
 
-    if(remote_stream_count > 0) {
-      $('#remoteView').attr('src',  window.URL.createObjectURL(call.getRemoteStreams()[0]));
-    }
+    /*if(remote_stream_count > 0) {
+      $('#remoteView').attr('src',  window.URL.createObjectURL(conn.getRemoteStreams()[0]));
+    }*/
 
     var with_video = (local_stream_count > 0 &&
-                      call.getLocalStreams()[0].getVideoTracks().length > 0) ||
+                      conn.getLocalStreams()[0].getVideoTracks().length > 0) ||
                      (remote_stream_count > 0 &&
-                      call.getRemoteStreams()[0].getVideoTracks().length > 0);
+                      conn.getRemoteStreams()[0].getVideoTracks().length > 0);
 
     if(with_video) {
       $('#video-session').show();
@@ -490,6 +498,13 @@ window.JSCommUI = {
     } else {
       $('#video-session').hide();
     }
+  },
+
+  session_add_stream : function(e) {
+    var remoteStream = e.stream;
+    //$('#remoteView').attr('src',  window.URL.createObjectURL(stream));
+    var remoteView = document.getElementById('remoteView');
+    JsSIP.rtcninja.attachMediaStream(remoteView, remoteStream);
   },
 
   session_end : function() {

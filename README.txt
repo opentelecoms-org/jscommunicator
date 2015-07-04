@@ -25,7 +25,9 @@ Only recent versions of the SIP proxies support WebSockets.
 You need to have the following JavaScript libraries available in your
 web server or CMS:
 
-  JsSIP (we currently rely on the code from the develop branch)
+  JsSIP
+    The latest code on the JSCommunicator master branch works with
+    JsSIP version 0.6.x
 
   jQuery (v1.4 or greater has been tested)
 

@@ -20,11 +20,7 @@
 
 function WebRTCSupported() {
 
-  if (navigator.webkitGetUserMedia) {
-    return true;
-  } else if (navigator.mozGetUserMedia) {
-    return true;
-  } else if (navigator.getUserMedia) {
+  if (JsSIP.rtcninja.hasWebRTC()) {
     return true;
   } else {
     console.error("WebRTC support not found");
