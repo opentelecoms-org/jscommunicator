@@ -13,7 +13,7 @@ ln -s /usr/share/javascript/arbiter/Arbiter.js .
 ln -s /usr/share/javascript/jquery-i18n-properties/jquery.i18n.properties-min.js jquery.i18n.properties.js
 ln -s /usr/share/javascript/jquery-ui/jquery-ui.min.js jquery-ui.js
 ln -s /usr/share/javascript/jquery-ui/css/smoothness/jquery-ui.min.css jquery-ui.css
-ln -s /usr/share/javascript/jssip/JsSIP.min.js JsSIP.js
+ln -s /usr/share/javascript/jssip/jssip.min.js jssip.js
 ln -s /usr/share/fonts-font-awesome font-awesome
 
 
