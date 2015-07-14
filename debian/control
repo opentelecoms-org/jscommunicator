@@ -1,0 +1,40 @@
+Source: jscommunicator
+Section: web
+Priority: optional
+Maintainer: Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>
+Uploaders: Daniel Pocock <daniel@pocock.pro>
+Build-Depends: debhelper (>= 9), closure-compiler
+Standards-Version: 3.9.6
+Homepage: http://jscommunicator.org
+Vcs-Browser: http://git.debian.org/?p=pkg-javascript/jscommunicator.git
+Vcs-Git: git://git.debian.org/git/pkg-javascript/jscommunicator.git
+
+Package: libjs-jscommunicator
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}, libjs-jquery, libjs-jquery-ui, libjs-jssip-bundle (>= 0.6.0), libjs-arbiter, libjs-jquery-i18n-properties, fonts-font-awesome (>= 4.1.0~dfsg)
+Recommends: javascript-common
+Breaks: drupal7-mod-jscommunicator (<< 1.0.1-2)
+Description: Browser-based messaging, phone and video chat application
+ HTML5 SIP client entirely written in JavaScript for integration in
+ any web site, incude a blog, CMS or web application.  Requires
+ a modern WebRTC capable web browser and a SIP server/proxy supporting
+ the SIP over WebSockets transport.
+ .
+ This package provides the JavaScript library for use in web sites
+ or for other packages that require it.
+
+Package: jscommunicator-web-phone
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}, libjs-jscommunicator (= ${binary:Version}), apache2 | lighttpd | httpd
+Recommends: repro, resiprocate-turn-server
+Description: Basic SIP video-phone web page using WebRTC
+ HTML5 SIP client entirely written in JavaScript for integration in
+ any web site, incude a blog, CMS or web application.  Requires
+ a modern WebRTC capable web browser and a SIP server/proxy supporting
+ the SIP over WebSockets transport.
+ .
+ This package provides a basic HTML implementation of a phone that
+ can be published through a web server such as Apache.
+

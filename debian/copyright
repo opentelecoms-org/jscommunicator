@@ -1,0 +1,57 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: jscommunicator
+Source: http://jscommunicator.org
+
+Files: *
+Copyright: 2013-2014, Daniel Pocock http://danielpocock.com
+           2014, Juliana Louback http://julianalouback.com
+License: GPL-2+
+
+Files: internationalization/*
+Copyright: 2014, Christian Henz <https://github.com/chenz>
+           2014, Jeroen Massar <http://jeroen.massar.ch>
+           2014, elprincipe <https://github.com/elprincipe>
+           2014, Yehuda Korotkin <https://github.com/yedako>
+           2014, Carla Araos <http://carlaaraos.com>
+           2014, aavia <https://github.com/aavia>
+           2014, mirazusman <https://github.com/mirazusman>
+           2014, tehilazi <https://github.com/tehilazi>
+           2014, Matías A. Bellone <https://github.com/toote>
+           2014, tami4 <https://github.com/tami4>
+           2014, Christian Henz <chrhenz@gmx.de>
+           2014, Dariusz Dwornikowski <dariusz.dwornikowski@cs.put.poznan.pl>
+           2014, Ivan Masár <helix84@centrum.sk>
+           2014, Martin Hristov <martinhristov@abv.bg>
+           2014, Matías A. Bellone <matiasbellone+l10n@gmail.com>
+           2014, Miguel Ángel Molina <sslapp@gmail.com>
+           2014, Thomas Vincent <thomas@vinc-net.fr>
+           2014, timothymctim <timothymctim@users.noreply.github.com>
+License: GPL-2+
+
+Files: parseuri.js
+Copyright: 2007, Steven Levithan <stevenlevithan.com>
+License: MIT
+
+License: GPL-2
+ The full text of the GPL-2 license can be found in
+ /usr/share/common-licenses/GPL-2 on your Debian GNU/Linux system
+
+License: MIT
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+

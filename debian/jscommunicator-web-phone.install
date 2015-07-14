@@ -1,0 +1,8 @@
+phone.shtml	usr/share/jscommunicator-web-phone
+init.js	usr/share/jscommunicator-web-phone
+style-horizontal.css	usr/share/jscommunicator-web-phone
+event-demo.js	usr/share/jscommunicator-web-phone
+event-demo.shtml	usr/share/jscommunicator-web-phone
+style-event-demo.css	usr/share/jscommunicator-web-phone
+debian/conf/apache.conf	/etc/jscommunicator-web-phone
+config.js	/etc/jscommunicator-web-phone

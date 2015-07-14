@@ -1,0 +1,90 @@
+
+The package jscommunicator-web-phone provides a very basic demonstration
+of how to integrate the JavaScript from a HTML web site.
+
+This demonstrates how it could be integrated into a contact form
+on a web site or an intranet-based corporate phone book.
+
+The package does not explicitly depend on all the requirements because
+you don't have to run them on the same host as the web server process.
+Therefore, please review the list of requirements and the setup instructions
+below.
+
+For a thorough overview of the SIP and WebRTC architecture, please
+see the Real-Time Communications Quick Start Guide:
+
+    http://rtcquickstart.org
+
+Requirements
+------------
+
+It doesn't work with just any SIP server/proxy: it requires a SIP proxy
+that supports the SIP over WebSockets transport.  The latest version
+of the Debian packages "repro" and "kamailio" provide WebSocket support.
+
+Furthermore, users accessing the site require a WebRTC capable browser:
+
+  Firefox nightly build
+      http://nightly.mozilla.org/
+
+  Chrome 25 or later
+      https://www.google.com/intl/en/chrome/browser/beta.html
+
+WebRTC requires a TURN server.  There are three TURN servers available
+in Debian:
+
+  reTurn from reSIProcate:
+      http://packages.debian.org/resiprocate-turn-server
+
+  Open TurnServer.org:
+      http://packages.debian.org/turnserver
+
+  CoTurn:
+      http://packages.debian.org/coturn
+
+Finally, the WebRTC browser/phone may insist on some of the following:
+
+  SRTP: any device you call must also support SRTP
+
+  AVPF (SAVPF): many standard SIP devices just support regular AVP.
+
+  Codecs: Opus and G.711 are the core codecs for WebRTC.  Your browser
+  may support others.  Most deskphones support G.711, but not Opus.
+
+Setup
+-----
+
+You basically need to do one of four things:
+
+a) Include /etc/jscommunicator-web-phone/apache.conf into one of
+   your Apache config files
+
+b) symlink /etc/jscommunicator-web-phone/apache.conf into
+   /etc/apache2/conf-available and enable it
+
+c) copy and paste things from /etc/jscommunicator-web-phone/apache.conf
+   into your own conf file
+
+d) symlink the files from /usr/share/doc/jscommunicator-web-phone into
+   some other directory that is already accessible through Apache
+
+You can choose any of those four strategies.
+
+You can use another web server such as Nginx too.  The Apache configuration
+is very trivial and easy to adapt.
+
+Once that is done, you need to modify the config.js file to include
+the connection details for your SIP proxy, TURN server and domain name.
+
+You can copy the /etc/jscommunicator-web-phone/config.js file to
+each site or you can create a symlink to it.
+
+Using JSCommunicator in other projects
+--------------------------------------
+
+If you are trying to use JSCommunicator as part of another project,
+you don't usually need the jscommunicator-web-phone package, just the
+libjs-jscommunicator package.  Look at the file
+/usr/share/doc/libjs-jscommunicator/README.Debian for more details
+about embedding JSCommunicator and using it as a dependency.
+

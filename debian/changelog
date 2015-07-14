@@ -1,0 +1,111 @@
+jscommunicator (2.1.1-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Daniel Pocock <daniel@pocock.pro>  Wed, 08 Jul 2015 20:37:20 +0200
+
+jscommunicator (2.0.3-1) unstable; urgency=high
+
+  * New upstream release.
+  * Support for JsSIP 'confirmed' event. (Closes: #771299)
+  * Update copyright, add translators.
+
+ -- Daniel Pocock <daniel@pocock.pro>  Fri, 28 Nov 2014 11:09:40 +0100
+
+jscommunicator (2.0.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Support for older jQuery versions. (Closes: #768632)
+
+ -- Daniel Pocock <daniel@pocock.pro>  Sat, 08 Nov 2014 22:17:56 +0100
+
+jscommunicator (2.0.0-2) unstable; urgency=medium
+
+  * Relax fonts-font-awesome dependency version. (Closes: #768363)
+
+ -- Daniel Pocock <daniel@pocock.pro>  Thu, 06 Nov 2014 20:44:01 +0100
+
+jscommunicator (2.0.0-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Daniel Pocock <daniel@pocock.pro>  Wed, 05 Nov 2014 22:07:58 +0100
+
+jscommunicator (1.1.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Daniel Pocock <daniel@pocock.com.au>  Wed, 12 Feb 2014 16:07:41 +0100
+
+jscommunicator (1.1.0-1) unstable; urgency=high
+
+  * New upstream release
+  * Fixes local audio feedback issue for some users
+
+ -- Daniel Pocock <daniel@pocock.com.au>  Tue, 04 Feb 2014 20:19:44 +0100
+
+jscommunicator (1.0.11-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Daniel Pocock <daniel@pocock.com.au>  Mon, 27 Jan 2014 22:54:07 +0100
+
+jscommunicator (1.0.10-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Daniel Pocock <daniel@pocock.com.au>  Fri, 24 Jan 2014 16:03:20 +0100
+
+jscommunicator (1.0.9-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Daniel Pocock <daniel@pocock.com.au>  Thu, 23 Jan 2014 21:17:52 +0100
+
+jscommunicator (1.0.8-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Daniel Pocock <daniel@pocock.com.au>  Wed, 22 Jan 2014 19:23:55 +0100
+
+jscommunicator (1.0.7-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Daniel Pocock <daniel@pocock.com.au>  Mon, 20 Jan 2014 16:09:43 +0100
+
+jscommunicator (1.0.6-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Daniel Pocock <daniel@pocock.com.au>  Sun, 19 Jan 2014 10:57:01 +0100
+
+jscommunicator (1.0.5-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Daniel Pocock <daniel@pocock.com.au>  Sat, 18 Jan 2014 08:40:23 +0100
+
+jscommunicator (1.0.4-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Daniel Pocock <daniel@pocock.com.au>  Fri, 17 Jan 2014 16:46:55 +0100
+
+jscommunicator (1.0.3-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Daniel Pocock <daniel@pocock.com.au>  Tue, 14 Jan 2014 23:41:48 +0100
+
+jscommunicator (1.0.2-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Daniel Pocock <daniel@pocock.com.au>  Tue, 14 Jan 2014 23:26:55 +0100
+
+jscommunicator (1.0.1-1) unstable; urgency=low
+
+  * Initial packaging (Closes: #734762)
+
+ -- Daniel Pocock <daniel@pocock.com.au>  Thu, 09 Jan 2014 22:29:38 +0100

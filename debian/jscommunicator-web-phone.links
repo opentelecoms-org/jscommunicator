@@ -1,0 +1,15 @@
+/usr/share/javascript/jscommunicator/JSComm.js	usr/share/jscommunicator-web-phone/JSComm.js
+/usr/share/jscommunicator/jscommunicator.inc	usr/share/jscommunicator-web-phone/jscommunicator.inc
+/usr/share/jscommunicator/style.css	usr/share/jscommunicator-web-phone/style.css
+/usr/share/jscommunicator/sounds	usr/share/jscommunicator-web-phone/sounds
+/usr/share/jscommunicator/available_languages.xml	usr/share/jscommunicator-web-phone/available_languages.xml
+/usr/share/jscommunicator/internationalization	usr/share/jscommunicator-web-phone/internationalization
+/usr/share/jscommunicator/skin.css	usr/share/jscommunicator-web-phone/skin.css
+/usr/share/javascript/jssip/jssip.min.js	usr/share/jscommunicator-web-phone/jssip.js
+/usr/share/javascript/jquery/jquery.min.js	usr/share/jscommunicator-web-phone/jquery.js
+/usr/share/javascript/arbiter/Arbiter.js	usr/share/jscommunicator-web-phone/Arbiter.js
+/usr/share/javascript/jquery-i18n-properties/jquery.i18n.properties-min.js	usr/share/jscommunicator-web-phone/jquery.i18n.properties.js
+/usr/share/javascript/jquery-ui/jquery-ui.min.js	usr/share/jscommunicator-web-phone/jquery-ui.min.js
+/usr/share/javascript/jquery-ui/css/smoothness/jquery-ui.min.css	usr/share/jscommunicator-web-phone/jquery-ui.css
+/usr/share/fonts-font-awesome	usr/share/jscommunicator-web-phone/font-awesome
+/etc/jscommunicator-web-phone/config.js	usr/share/jscommunicator-web-phone/config.js

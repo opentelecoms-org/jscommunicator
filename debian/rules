@@ -1,0 +1,21 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+
+override_dh_auto_build:
+	./make-release
+	cp config-sample.js config.js
+
+override_dh_auto_clean:
+	-rm JSComm.js
+	dh_clean
+
+override_dh_clean:
+	-rm JSComm.js
+	dh_clean
+
+.PHONY: build
+

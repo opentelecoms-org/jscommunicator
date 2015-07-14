@@ -1,0 +1,31 @@
+
+To use this library in your own application, simply take the HTML
+fragments and CSS content from /usr/share/jscommunicator and use
+them as they are or with your own enhancements.
+
+You need to make sure the sounds from /usr/share/jscommunicator/sounds
+are accessible through the web server.
+
+JSCommunicator expects to find all settings in an object called
+JSCommSettings, an example is given in
+/usr/share/doc/libjs-jscommunicator/config.js
+
+You can generate the JSCommSettings object dynamically using server-side
+scripting languages such as PHP or JSP.
+
+The package jscommunicator-web-phone provides a simple deployment example.
+If you build a package of your own, you should try to only depend on
+files from the package libjs-jscommunicator and not require the installation
+of the jscommunicator-web-phone package.
+
+The package drupal7-mod-jscommunicator provides an excellent example
+of how to depend on libjs-jscommunicator.  DruCall itself provides
+a great example of embedding JSCommunicator into another framework, Drupal.
+In particular, it shows how to use PHP to set an authentication cookie
+for the WebSocket connection.
+
+For a thorough overview of the SIP and WebRTC architecture, please
+see the Real-Time Communications Quick Start Guide:
+
+    http://rtcquickstart.org
+
