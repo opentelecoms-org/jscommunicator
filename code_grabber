@@ -1,7 +1,7 @@
 #!/bin/sh
 
 wget http://code.jquery.com/jquery-1.7.2.min.js -O jquery.js
-wget https://freephonebox.net/jssip.js -O jssip.js
+wget https://freephonebox.net/jssip.js -O jssip.js --no-check-certificate
 wget http://arbiterjs.com/Arbiter.js -O Arbiter.js
 wget https://jquery-i18n-properties.googlecode.com/files/jquery.i18n.properties-min-1.0.9.js -O jquery.i18n.properties.js
 
@@ -14,8 +14,8 @@ unzip -d temp temp/jquery-ui-1.10.4.zip
 cp temp/jquery-ui-1.10.4/js/jquery-ui-1.10.4.min.js jquery-ui.js 
 cp temp/jquery-ui-1.10.4/css/ui-lightness/jquery-ui-1.10.4.css jquery-ui.css
 
-wget -P temp http://fortawesome.github.io/Font-Awesome/assets/font-awesome-4.1.0.zip
-unzip -d temp temp/font-awesome-4.1.0.zip
-cp temp/font-awesome-4.1.0/css/font-awesome.min.css font-awesome/css/font-awesome.min.css
-cp -a temp/font-awesome-4.1.0/fonts/. font-awesome/fonts
+wget -P temp http://github.com/FortAwesome/Font-Awesome/archive/4.1.0.zip
+unzip -d temp temp/4.1.0.zip
+cp temp/Font-Awesome-4.1.0/css/font-awesome.min.css font-awesome/css/font-awesome.min.css
+cp -a temp/Font-Awesome-4.1.0/fonts/. font-awesome/fonts
 rm -r temp
