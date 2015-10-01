@@ -59,7 +59,8 @@ Use cases
    - include the HTML fragment into a block in a page
      managed by a CMS.  Configure the CMS to send the JavaScript to
      the user or include <script> tags within the content body with
-     the phone fragment.
+     the phone fragment.  The DruCall module for Drupal provides
+     an excellent example of how to do this, see http://drucall.org
 
 Integration
 -----------
