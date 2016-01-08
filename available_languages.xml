@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <list>
 <language>
     <display>English</display>
@@ -23,5 +23,9 @@
 <language>
     <display>Deutsch</display>
     <code>de</code>
+</language>
+<language>
+    <display>Danish</display>
+    <code>da</code>
 </language>
 </list>
