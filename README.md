@@ -1,5 +1,4 @@
 
-
 Introduction
 ------------
 
@@ -10,8 +9,8 @@ SIP protocol over WebSockets.
 Please see http://jscommunicator.org for more details about features,
 examples, mailing lists and the latest source code.
 
-Requirements
-------------
+Server requirements
+-------------------
 
 To use JSCommunicator, you require a SIP proxy that supports the
 SIP over WebSockets transport.
@@ -23,6 +22,13 @@ Only recent versions of the SIP proxies support WebSockets.
 
   Kamailio
     http://www.kamailio.org
+
+See the [Real-Time Communication Quick Start Guide](http://rtcquickstart.org)
+for details about setting up a SIP and TURN server to support WebRTC
+calls.
+
+Dependencies
+------------
 
 You need to have the following JavaScript libraries available in your
 web server or CMS:
@@ -42,12 +48,18 @@ web server or CMS:
   Font Awesome (v4.1 or greater has been tested, earlier versions
     do not work)
 
-All requirements can be easily fetched using either of the following
+All dependencies can be easily fetched using either of the following
 methods:
 
  * on a Debian/Ubuntu system, use the "deb-setup.sh" script
 
  * on other systems, see the "code_grabber" script
+
+Getting started
+---------------
+
+For integration in static or dynamically generated web sites, frameworks
+and Content Management Systems, please see INTEGRATION.md
 
 Use cases
 ---------
@@ -64,8 +76,8 @@ Use cases
      the phone fragment.  The DruCall module for Drupal provides
      an excellent example of how to do this, see http://drucall.org
 
-Integration
------------
+Interaction with other JavaScript applications in a web page
+------------------------------------------------------------
 
 ArbiterJS is used to provide a loosely-coupled mechanism for integration
 with other JavaScript modules used in the same page/site.
