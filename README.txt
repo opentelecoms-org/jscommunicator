@@ -3,7 +3,9 @@
 Introduction
 ------------
 
-JSCommunicator is a SIP communication tool developed in HTML and JavaScript.
+JSCommunicator is a WebRTC communication tool developed in HTML, CSS
+and JavaScript.  It supports voice, video and chat messaging using the
+SIP protocol over WebSockets.
 
 Please see http://jscommunicator.org for more details about features,
 examples, mailing lists and the latest source code.
