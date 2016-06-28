@@ -43,7 +43,9 @@ approach to integrating JSCommunicator is almost always the same:
    jscommunicator.inc when rendering the page.  In a PHP project,
    this could be done using the include directive, for example:
 
-     <?php include 'jscommunicator.inc';?>
+```
+       <?php include 'jscommunicator.inc';?>
+```
 
    When creating a plugin for a CMS framework, it may be possible to
    simply tell the framework to use the file jscommunicator.inc as a
@@ -51,14 +53,16 @@ approach to integrating JSCommunicator is almost always the same:
    drucall-phone.tpl.php is simply a copy of jscommunicator.inc
    and the drucall_theme() method directs Drupal to use the template:
 
-     function drucall_theme() {
-       return array(
-         'drucall_phone' => array(
-           'render element' => 'element',
-           'template' => 'drucall-phone',
-         ),
-       );
-     }
+```
+       function drucall_theme() {
+         return array(
+           'drucall_phone' => array(
+             'render element' => 'element',
+             'template' => 'drucall-phone',
+           ),
+         );
+       }
+```
 
 4. Make sure your script or plugin includes the necessary JavaScript and CSS
    files from the JSCommunicator project and its dependencies.  If
@@ -71,15 +75,17 @@ approach to integrating JSCommunicator is almost always the same:
    JavaScript and CSS files into the <HEAD> section by using an API
    function.  For example, in the DruCall plugin, the methods used are:
 
-      // Load JavaScript files that are packaged in other plugins:
-      foreach ([ "jssip", "jscommunicator", "arbiterjs", "jqueryi18nproperties", "fontawesome" ] as $libname) {
-         // ... snip ...
-         libraries_load($libname);
-      }
+```
+       // Load JavaScript files that are packaged in other plugins:
+       foreach ([ "jssip", "jscommunicator", "arbiterjs", "jqueryi18nproperties", "fontawesome" ] as $libname) {
+          // ... snip ...
+          libraries_load($libname);
+       }
 
-      // Load JavaScript and CSS files from DruCall plugin:
-      drupal_add_js(drupal_get_path('module', 'drucall') . '/js/drucall.js');
-      drupal_add_css(drupal_get_path('module', 'drucall') . '/css/jscommunicator.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
+       // Load JavaScript and CSS files from DruCall plugin:
+       drupal_add_js(drupal_get_path('module', 'drucall') . '/js/drucall.js');
+       drupal_add_css(drupal_get_path('module', 'drucall') . '/css/jscommunicator.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
+```
 
 5. Edit or dynamically generate the config.js file as required.
    Using the default config.js file, the JSCommunicator phone will
@@ -100,22 +106,25 @@ approach to integrating JSCommunicator is almost always the same:
    For example, in the DruCall plugin for Drupal, the drupal_add_js()
    method is used:
 
+```
        $my_settings = array(
-           'mod_path' => drupal_get_path('module', 'drucall'),
-           'phone_number' => variable_get('default_destination'),
-           'enable_audio' => variable_get('enable_audio'),
-           'enable_video' => variable_get('enable_video'),
-           ....
-         );
+             'mod_path' => drupal_get_path('module', 'drucall'),
+             'phone_number' => variable_get('default_destination'),
+             'enable_audio' => variable_get('enable_audio'),
+             'enable_video' => variable_get('enable_video'),
+             ....
+           );
 
        drupal_add_js(
-         array('drucall' => $my_settings),
-         'setting');
+           array('drucall' => $my_settings),
+           'setting');
+```
 
    In DruCall, some of the variables are configurable using a Drupal
    settings page and the username is set based on the identity of the
    user who is logged in to the CMS:
 
+```
        if($user->uid != 0 && !empty($caller_domain)) {
          // A user is logged in
          $display_name = $user->name;
@@ -129,6 +138,7 @@ approach to integrating JSCommunicator is almost always the same:
          $caller_auth_user = variable_get('auth_user');
          $caller_password = variable_get('auth_password');
        }
+```
 
 6. Set authentication tokens in WebSocket URI parameters or cookies.
    The SIP over WebSocket connection can accept authentication tokens
@@ -144,12 +154,14 @@ approach to integrating JSCommunicator is almost always the same:
    (by modifying the WebSocket URL string in config.js) or cookies
    (using the PHP method setrawcookie()).
 
-    // Append URL parameters containing authentication tokens
-    if($ws_cookies_in_url) {
-      if(empty($ws_url['path']))
-        $websocket_server_url = $websocket_server_url . '/';
-      $websocket_server_url = $websocket_server_url . ';WSSessionInfo=' . $cookie_value_encoded . ';WSSessionExtra=' . $extra_value_encoded . ';WSSessionMAC=' . $cookie_mac;
-    }
+```
+       // Append URL parameters containing authentication tokens
+       if($ws_cookies_in_url) {
+         if(empty($ws_url['path']))
+           $websocket_server_url = $websocket_server_url . '/';
+         $websocket_server_url = $websocket_server_url . ';WSSessionInfo=' . $cookie_value_encoded . ';WSSessionExtra=' . $extra_value_encoded . ';WSSessionMAC=' . $cookie_mac;
+       }
+```
 
 7. If required, integrate with other scripts in the page.  A client-side
    pub/sub framework, ArbiterJS, is used to provide a loosely-coupled
