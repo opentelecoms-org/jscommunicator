@@ -5,7 +5,7 @@ Integrating JSCommunicator
 Setting up a SIP over WebSocket server
 --------------------------------------
 
-See the [Real-Time Communication Quick Start Guide](http://rtcquickstart.org)
+See the [Real-Time Communication Quick Start Guide](https://rtcquickstart.org)
 for details about setting up a SIP and TURN server to support WebRTC
 calls.
 
@@ -29,7 +29,7 @@ Regardless of which framework and scripting language is in use, the
 approach to integrating JSCommunicator is almost always the same:
 
 1. Check if an existing plugin exists.  For example, the
-   [DruCall plugin for the Drupal CMS](http://drucall.org) or
+   [DruCall plugin for the Drupal CMS](https://drucall.org) or
    [WPCall plugin for WebRTC with Wordpress](http://wpcall.org) are both
    based on JSCommunicator.  Using an existing plugin is often easier than
    creating one yourself.
@@ -148,7 +148,7 @@ approach to integrating JSCommunicator is almost always the same:
    they are permitted to call.
 
    The purpose and syntax of each token is explained in the
-   [reSIProcate wiki page](http://www.resiprocate.org/SIP_Over_WebSocket_Cookies)
+   [reSIProcate wiki page](https://www.resiprocate.org/SIP_Over_WebSocket_Cookies)
 
    The DruCall plugin for Drupal can set either URL parameters
    (by modifying the WebSocket URL string in config.js) or cookies

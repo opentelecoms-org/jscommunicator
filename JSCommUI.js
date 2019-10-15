@@ -1,8 +1,8 @@
 /****************************************************************************
  JSCommunicator
- http://jscommunicator.org
+ https://jscommunicator.org
 
- Copyright (C) 2013-2015  Daniel Pocock http://danielpocock.com
+ Copyright (C) 2013-2015  Daniel Pocock https://danielpocock.com
  Copyright (C) 2014       Juliana Louback http://julianalouback.com
 
  The JavaScript code in this page is free software: you can
@@ -18,7 +18,7 @@
  provided you include this license notice and a URL
  through which recipients can access the Corresponding Source.
 
- Portions of this file adapted from JsSIP, http://jssip.net
+ Portions of this file adapted from JsSIP, https://jssip.net
 
  Copyright © 2012-2013 José Luis Millán – Versatica <http://www.versatica.com>
 

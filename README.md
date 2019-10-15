@@ -6,7 +6,7 @@ JSCommunicator is a WebRTC communication tool developed in HTML, CSS
 and JavaScript.  It supports voice, video and chat messaging using the
 SIP protocol over WebSockets.
 
-Please see http://jscommunicator.org for more details about features,
+Please see https://jscommunicator.org for more details about features,
 examples, mailing lists and the latest source code.
 
 Server requirements
@@ -18,12 +18,12 @@ SIP over WebSockets transport.
 Only recent versions of the SIP proxies support WebSockets.
 
   repro from reSIProcate
-    http://www.resiprocate.org
+    https://www.resiprocate.org
 
   Kamailio
-    http://www.kamailio.org
+    https://www.kamailio.org
 
-See the [Real-Time Communication Quick Start Guide](http://rtcquickstart.org)
+See the [Real-Time Communication Quick Start Guide](https://rtcquickstart.org)
 for details about setting up a SIP and TURN server to support WebRTC
 calls.
 
@@ -74,7 +74,7 @@ Use cases
      managed by a CMS.  Configure the CMS to send the JavaScript to
      the user or include <script> tags within the content body with
      the phone fragment.  The DruCall module for Drupal provides
-     an excellent example of how to do this, see http://drucall.org
+     an excellent example of how to do this, see https://drucall.org
 
 Interaction with other JavaScript applications in a web page
 ------------------------------------------------------------
@@ -106,9 +106,9 @@ License
 -------
 
 JSCommunicator
-http://jscommunicator.org
+https://jscommunicator.org
 
-Copyright (C) 2013-2015  Daniel Pocock http://danielpocock.com
+Copyright (C) 2013-2015  Daniel Pocock https://danielpocock.com
 
 The JavaScript code in this page is free software: you can
 redistribute it and/or modify it under the terms of the GNU

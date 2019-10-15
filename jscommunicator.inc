@@ -140,7 +140,7 @@
 
     <div id="error">
         <span id="js">ERROR: This service requires JavaScript.  Please enable JavaScript in your web browser settings.</span>
-        <span id="webrtc">ERROR: This service requires WebRTC.  Please try <a href="http://www.mozilla.org">Mozilla Firefox</a> or <a href="http://www.google.com/chrome">Google Chrome</a>, using the latest version is strongly recommended.</span>
+        <span id="webrtc">ERROR: This service requires WebRTC.  Please try <a href="https://www.mozilla.org">Mozilla Firefox</a> or <a href="https://www.google.com/chrome">Google Chrome</a>, using the latest version is strongly recommended.</span>
         <span id="no-config">ERROR: JsCommunicator configuration not found</span>
         <span id="ua-init-failure">ERROR: Failed to initialize user agent</span>
         <span id="reg-fail">ERROR: SIP Registration failure</span>

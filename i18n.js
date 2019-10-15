@@ -1,6 +1,6 @@
 /****************************************************************************
  JSCommunicator
- http://jscommunicator.org
+ https://jscommunicator.org
 
  Copyright (C) 2014  Kengne Mabou Hervé Frantz https://github.com/elprincipe
  Copyright (C) 2014  Juliana Louback http://julianalouback.com

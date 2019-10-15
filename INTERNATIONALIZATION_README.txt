@@ -39,7 +39,7 @@ jquery.i18n.properties-1.0.9.js (see https://code.google.com/p/jquery-i18n-prope
 Observed bugs
 ------------------------------------------------
 
-It is recommended to consult the HTML language code (reference http://www.w3schools.com/tags/ref_language_codes.asp). Theoretically, you can invent your own code, and (provided the code in available_languages.xml corresponds to the name of the .properties file) the select language menu will work. However, the page will not load automatically with the browser language preference (as this uses the HTML language code.
+It is recommended to consult the HTML language code (reference https://www.w3schools.com/tags/ref_language_codes.asp). Theoretically, you can invent your own code, and (provided the code in available_languages.xml corresponds to the name of the .properties file) the select language menu will work. However, the page will not load automatically with the browser language preference (as this uses the HTML language code.
 
 In addition, different browsers may use different variations of code. For example: ‘en’ and ‘en_US’. To work around this, feel free to make multiple versions of your translation (example: Messages_en.properties and Messages_en_US.properties). Of course, you only need to add one to the available_languages.xml.
 

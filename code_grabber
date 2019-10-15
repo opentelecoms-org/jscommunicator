@@ -1,15 +1,15 @@
 #!/bin/sh
 
-wget http://code.jquery.com/jquery-1.7.2.min.js -O jquery.js
+wget https://code.jquery.com/jquery-1.7.2.min.js -O jquery.js
 wget https://freephonebox.net/jssip.js -O jssip.js
-wget http://arbiterjs.com/Arbiter.js -O Arbiter.js
+wget https://arbiterjs.com/Arbiter.js -O Arbiter.js
 wget https://jquery-i18n-properties.googlecode.com/files/jquery.i18n.properties-min-1.0.9.js -O jquery.i18n.properties.js
 
 mkdir -p font-awesome/css
 mkdir -p font-awesome/fonts 
 
 mkdir -p temp
-wget -P temp http://jqueryui.com/resources/download/jquery-ui-1.10.4.zip
+wget -P temp https://jqueryui.com/resources/download/jquery-ui-1.10.4.zip
 unzip -d temp temp/jquery-ui-1.10.4.zip
 cp temp/jquery-ui-1.10.4/js/jquery-ui-1.10.4.min.js jquery-ui.js 
 cp temp/jquery-ui-1.10.4/css/ui-lightness/jquery-ui-1.10.4.css jquery-ui.css

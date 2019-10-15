@@ -1,8 +1,8 @@
 /****************************************************************************
  JSCommunicator
- http://jscommunicator.org
+ https://jscommunicator.org
 
- Copyright (C) 2014-2015  Daniel Pocock http://danielpocock.com
+ Copyright (C) 2014-2015  Daniel Pocock https://danielpocock.com
  Copyright (C) 2014       Juliana Louback http://julianalouback.com
 
  The JavaScript code in this page is free software: you can
