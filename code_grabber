@@ -1,9 +1,11 @@
 #!/bin/sh
+set -e
+set -x
 
 wget http://code.jquery.com/jquery-1.7.2.min.js -O jquery.js
-wget https://freephonebox.net/jssip.js -O jssip.js
-wget http://arbiterjs.com/Arbiter.js -O Arbiter.js
-wget https://jquery-i18n-properties.googlecode.com/files/jquery.i18n.properties-min-1.0.9.js -O jquery.i18n.properties.js
+wget https://jssip.net/download/releases/jssip-0.6.34.js -O jssip.js
+wget https://raw.githubusercontent.com/taylor1791/promissory-arbiter/master/src/promissory-arbiter.js -O Arbiter.js
+wget https://raw.githubusercontent.com/jquery-i18n-properties/jquery-i18n-properties/cbb8300bef6e148753f147643ecc5f64f0e0b34e/jquery.i18n.properties.js -O jquery.i18n.properties.js
 
 mkdir -p font-awesome/css
 mkdir -p font-awesome/fonts 
@@ -11,11 +13,11 @@ mkdir -p font-awesome/fonts
 mkdir -p temp
 wget -P temp http://jqueryui.com/resources/download/jquery-ui-1.10.4.zip
 unzip -d temp temp/jquery-ui-1.10.4.zip
-cp temp/jquery-ui-1.10.4/js/jquery-ui-1.10.4.min.js jquery-ui.js 
-cp temp/jquery-ui-1.10.4/css/ui-lightness/jquery-ui-1.10.4.css jquery-ui.css
+cp temp/jquery-ui-1.10.4/ui/minified/jquery-ui.min.js jquery-ui.js
+cp temp/jquery-ui-1.10.4/themes/base/minified/jquery-ui.min.css jquery-ui.css
 
-wget -P temp http://fortawesome.github.io/Font-Awesome/assets/font-awesome-4.1.0.zip
-unzip -d temp temp/font-awesome-4.1.0.zip
-cp temp/font-awesome-4.1.0/css/font-awesome.min.css font-awesome/css/font-awesome.min.css
-cp -a temp/font-awesome-4.1.0/fonts/. font-awesome/fonts
+wget -P temp https://github.com/FortAwesome/Font-Awesome/archive/4.1.0.zip
+unzip -d temp temp/4.1.0.zip
+cp temp/Font-Awesome-4.1.0/css/font-awesome.min.css font-awesome/css/font-awesome.min.css
+cp -a temp/Font-Awesome-4.1.0/fonts/. font-awesome/fonts
 rm -r temp
