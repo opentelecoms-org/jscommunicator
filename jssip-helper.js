@@ -45,6 +45,7 @@ function getJsSIPSettings(settings) {
     uri: settings.user.uri,
     password: settings.user.sip_auth_password,
     ws_servers: settings.websocket.servers,
+    sockets: [ new JsSIP.WebSocketInterface(settings.websocket.servers) ],
     display_name: settings.user.display_name,
     authorization_user: settings.user.sip_auth_user,
     register: settings.registration.on_startup,

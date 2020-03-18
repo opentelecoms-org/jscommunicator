@@ -20,7 +20,7 @@
 
 function WebRTCSupported() {
 
-  if (JsSIP.rtcninja.hasWebRTC()) {
+  if (window.RTCPeerConnection) {
     return true;
   } else {
     console.error("WebRTC support not found");

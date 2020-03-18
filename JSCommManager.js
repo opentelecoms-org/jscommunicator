@@ -389,11 +389,15 @@ window.JSCommManager = {
     }
 
     var conn = call.connection;
-    var with_video = conn != null &&
-                     ((conn.getLocalStreams().length > 0 &&
-                      conn.getLocalStreams()[0].getVideoTracks().length > 0) ||
-                     (conn.getRemoteStreams().length > 0 &&
-                      conn.getRemoteStreams()[0].getVideoTracks().length > 0));
+    var with_video = false;
+    if(conn != null) {
+      var local_stream_count = conn.getSenders().length;
+      var remote_stream_count = conn.getReceivers().length;
+
+      // FIXME: check if one of the streams really is a video stream
+      with_video = (local_stream_count > 1 ) ||
+                       (remote_stream_count > 1 );
+    }
 
     JSCommUI.session_start(status, peer_name, peer_display, peer_uri, with_video);
 
@@ -424,15 +428,6 @@ window.JSCommManager = {
       JSCommUI.session_connect(call, e);
       // Signal that a call connected
       Arbiter.publish("jsc/call/connected", null, {async:true});
-    });
-
-    call.on('addstream', function(e) {
-      console.log('addstream callback');
-      JSCommUI.session_add_stream(e);
-    });
-
-    call.on('removestream', function(e) {
-      console.log('removestream callback (not implemented)'); // FIXME
     });
 
     call.on('newDTMF', function(e) {
